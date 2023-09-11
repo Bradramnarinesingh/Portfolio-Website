@@ -1,4 +1,2 @@
 # Portfolio-Website
-Code for my personal website.
-
-UPDATED CODE TEST
+The following code in this file is my personal portfolio website built using HTML/CSS.
