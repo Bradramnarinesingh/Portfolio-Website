@@ -1,0 +1,567 @@
+body{
+	border: 5px solid #ffffff;
+	margin:0;
+	width: 100%;
+	color: white;
+	background-color: #ffffff;
+}
+	
+*{
+	box-sizing: border-box;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;300&family=Poppins:wght@300&display=swap');
+
+
+#images{
+	border-radius: 500px;
+	border: solid;
+}
+
+#name{
+	margin-top: 20px;
+	font-size: 25px;
+}
+
+.card {
+	font-family: 'Libre Franklin', sans-serif;
+	font-weight: 600;
+	padding-top: 50px;
+	max-width: 380px;
+	margin: auto;
+	text-align: center;
+	height: auto;
+	width: 60%;
+  }
+  
+  .content {
+	padding: 50px 20px; /* Adjust the padding as needed */
+	background-color: rgba(255, 255, 255, 0.3); /* Adjust the background color and opacity as needed */
+	backdrop-filter: blur(10px); /* Adjust the blur amount to match background-blur */
+	border-radius: 10px; /* Adjust the border radius as needed */
+	padding: 20px; /* Add some padding to make the text more readable */
+  }
+  
+  .title {
+	font-family: 'Libre Franklin', sans-serif;
+	color: rgb(211, 211, 211);
+	font-size: 18px;
+  }
+  
+  button {
+	font-family: 'Libre Franklin', sans-serif;
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #000;
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	font-size: 18px;
+  }
+  
+  a {
+	text-decoration: none;
+	font-size: 22px;
+	color: rgb(255, 255, 255);
+  }
+  
+  button:hover, a:hover {
+	opacity: 0.7;
+  }
+
+  .background {
+    position: relative;
+    height: 90vh;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 30px;
+	background-color: rgba(124, 120, 160, 0.151);
+}
+
+#video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place the video behind other content */
+	opacity: 0.9;
+}
+
+
+a{
+	font-family: 'Libre Franklin', sans-serif;
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 15px;
+}
+
+
+
+
+
+.welcome {
+    text-align: left; /* Align text to the left if needed */
+	font-weight: 100;
+    color: #ffffff;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px; /* Add "px" unit to letter-spacing */
+    padding: 50px 0 0 50; /* Set padding: top right bottom left */
+}
+
+
+
+.container {
+	
+	text-align: center;
+	margin-top: 400px;
+	color: white;
+	font-family: 'Libre Franklin', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+.show-menu:hover{
+  
+  cursor: pointer;
+}
+
+input[type=checkbox]{
+   
+   display: none;
+}
+
+input[type=checkbox]:checked ~ #menu{
+    
+	display: block;
+}
+
+
+img {
+	max-width: 100%;
+	border-radius: 5px;
+}
+img:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.img-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 10px;
+}
+
+@media only screen and (min-width: 750px) {
+	.img-grid {
+		grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 970px) {
+  .img-grid {
+		grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+
+
+#title{
+	
+	font-family: 'Libre Franklin', sans-serif;
+	text-align: center;	
+	font-size: 20px;
+	letter-spacing: 2;
+	padding-bottom: 20px;
+	color: #b0aeac;
+	
+}
+
+
+
+
+.title5{
+	
+	font-family: 'Libre Franklin', sans-serif;
+	font-size: 25px;
+	border-bottom: 2px solid white;
+	line-height: 2;
+	letter-spacing: 2;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+
+
+#contact{
+	
+	margin-top: 5%;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+
+
+input[type=text], select {
+	
+	width: 100%;
+	background-color: rgba(0, 0, 0,0.4);
+	padding: 15px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 0px solid #ccc;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: white;
+	margin-top: 1.5%;
+}
+
+
+input[type=text]:hover {
+
+	background-color: rgba(0, 0, 0,0.35);
+}
+
+
+input[type=submit] {
+	
+	width: 150px;
+	background-color: #2f8ae0;
+	border-radius: 10px;
+	color: white;
+	padding: 16px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	font-family: Franklin Gothic;
+	font-size: 16px;
+	margin-top: 2%;
+}
+
+input[type=submit]:hover{
+	
+	background-color: #246bad;	
+}
+
+
+
+::placeholder {
+	
+	color: white;
+	opacity: 1;
+	font-family: Franklin Gothic;
+	font-size: 16px;	
+}
+
+
+input[type=password] {
+	
+	width: 100%;
+	background-color: rgba(0, 0, 0,0.4);
+	padding: 15px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 0px solid #ccc;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: white;
+	
+	margin-top: 1.5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+	
+.title5{
+
+	text-align: center;
+}
+
+#contact{
+	
+	margin-top: 5%;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+
+
+input[type=text], select {
+	
+	width: 100%;
+	background-color: rgba(0, 0, 0,0.4);
+	padding: 15px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 0px solid #ccc;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: white;	
+	margin-top: 5%;
+}
+
+
+input[type=password] {
+	
+	width: 100%;
+	background-color: rgba(0, 0, 0,0.4);
+	padding: 15px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 0px solid #ccc;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: white;	
+	margin-top: 5%;
+}
+
+
+input[type=text]:hover {
+
+	background-color: rgba(0, 0, 0,0.35);
+}
+
+
+input[type=submit] {
+	
+	width: 150px;
+	background-color: #2f8ae0;
+	border-radius: 10px;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	font-family: Franklin Gothic;
+	font-size: 16px;
+	margin-top: 5%;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#footer{
+	
+	background-color: #252324;
+	height: 100px;
+	bottom: 0px;
+	left: 0px;
+	line-height: 30px;
+	color: #aaa;
+	text-align: center;
+	width: 100%;
+	font-size: 50px;
+	font-family: roboto;
+}
+
+
+.copyright{
+
+	font-size: 13px;
+	font-family: roboto;
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width : 1024px){
+
+.welcome {
+    text-align: center; /* Center the text horizontally */
+    color: #ffffff;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 25px;
+    letter-spacing: 2px; /* Add "px" unit to letter-spacing */
+    padding: 50px 0; /* Set padding: top and bottom (0 for left and right) */
+    margin: 0 auto; /* Center horizontally using auto margin */
+}
+
+.card {
+	font-family: 'Libre Franklin', sans-serif;
+	font-weight: 100;
+	padding-top: 50px;
+	width: 430px;
+	margin: auto;
+	text-align: center;
+	height: auto;
+	width: 65%;
+  }
+
+.content {
+	padding: 50px 20px; /* Adjust the padding as needed */
+	background-color: rgba(255, 255, 255, 0.3); /* Adjust the background color and opacity as needed */
+	backdrop-filter: blur(10px); /* Adjust the blur amount to match background-blur */
+	border-radius: 10px; /* Adjust the border radius as needed */
+	padding: 20px; /* Add some padding to make the text more readable */
+	}
+  
+
+
+nav{
+	
+	display: contents;
+	z-index: 2;
+}
+
+nav ul{
+        position: static;
+        display: none;
+}
+
+nav li {
+        margin-bottom: 1px;
+}
+
+    nav ul li, nav li a {
+		z-index: 999;
+        width: 100%;
+    }
+
+    .show-menu {
+        display:block;
+    }
+	
+	
+#nav a{
+
+	display: none;
+	z-index: 0;
+}
+	
+body{
+	border: 5px solid #ffffff;
+	margin:0;
+	width: 100%;
+	background-color: #fffffc;
+	color: rgb(0, 0, 0);
+}
+
+
+
+
+
+.e{
+	
+	margin-top: -45px;
+	margin-right: 35px;
+	float: right;
+	
+}
+
+
+.e{
+	
+	margin-top: -45px;
+	margin-right: 30px;
+	float: right;
+	
+}
+
+
+#aboutus {
+    padding: 20px 0;#
+    background-color: #252324;
+	font-family: roboto;
+}
+
+.iabout {
+    max-width: 100%;
+    margin: 0;
+}
+
+.iabout {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.iabout{
+    font-size: 60px;
+    color: black;
+}
+
+.iabout{
+    font-size: 60px;
+    color: black;
+}
+
+.iabout h1 {
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin: 30px 0;
+    color: #b8860b;
+    text-transform: uppercase;
+}
+
+p{
+	font-size: 20px;
+	color: white;
+	margin: 2vw;
+	line-height: 28px;  
+	padding: 10px;
+	margin-top: 10px;
+}
+}
