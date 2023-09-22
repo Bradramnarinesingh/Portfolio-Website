@@ -1,0 +1,398 @@
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background: rgb(65,122,173);
+    background: radial-gradient(circle, rgba(65,122,173,1) 14%, rgba(29,67,125,1) 69%, rgb(66, 79, 122) 100%);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    height: 100vh;
+    z-index: -1; /* Place the background behind the content */
+    overscroll-behavior: none; /* Disable overscroll behavior */
+    touch-action: pan-y; /* Disable touch gestures that can move the content */
+    animation: fadeInAnimation ease 2.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+ 
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        height: 0vh;
+    }
+    100% {
+        opacity: 1;
+        height: 100vh;
+     }
+}
+
+
+
+#images{
+	border-radius: 500px;
+}
+
+#name{
+	font-size: 25px;
+}
+
+#social{
+	margin: 10px 0;
+}
+
+.card {
+	font-family: 'Libre Franklin', sans-serif;
+	font-weight: 600;
+	max-width: 100%;
+	margin: auto;
+	text-align: center;
+	height: auto;
+	width: 100%;
+  }
+  
+  .content {
+    max-width: 150%;
+	padding: 50px 20px; /* Adjust the padding as needed */
+	background-color: rgba(255, 255, 255, 0.082); /* Adjust the background color and opacity as needed */
+	border-radius: 10px; /* Adjust the border radius as needed */
+	padding: 20px; /* Add some padding to make the text more readable */
+    height: 93%;
+    backdrop-filter: blur(10px);
+  }
+  
+  .title {
+	font-family: 'Libre Franklin', sans-serif;
+	color: rgb(223, 223, 223);
+	font-size: 18px;
+  }
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: white;
+    padding-left: 10px;
+    transition: 0.2s;
+}
+
+
+.fa:hover {
+    opacity: 0.7;
+    margin-right: 1px;
+}
+  
+  
+  button {
+	font-family: 'Libre Franklin', sans-serif;
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #000000c2;
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	font-size: 18px;
+    border-radius: 10px;
+  }
+
+
+/* Styling for the main container */
+.container {
+    display: flex;
+    overflow-x: hidden;
+}
+
+.content{
+    margin-top: 0px;
+}
+/* Styling for the left half (name and navigation) */
+.left-half {
+    font-family: 'Libre Franklin', sans-serif;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff00;
+    color: #fff;
+    width: 38%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+}
+
+#name {
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 700;
+    font-size: 2.1rem;
+    text-align: center; /* Align the name to the left */
+}
+
+#subheading {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: left; /* Align the subheading to the left */
+    margin-left: 20px; /* Add some left margin */
+    padding: 5px;
+    padding-bottom: 8px;
+}
+
+/* Styling for the navigation links */
+.left-half nav {
+    text-align: left;
+    padding-left: 20px; /* Add some left padding to the navigation */
+}
+
+/* Define the initial styles for the navigation links */
+.left-half nav a {
+    display: block;
+    margin: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: left; /* Left-align the navigation links */
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    width: 30%;
+    transition: opacity 0.3s ease, padding-left 0.3s ease; /* Add transitions for opacity and padding-left */
+    padding-left: 0; /* Set initial padding-left to 0 */
+}
+
+/* Apply styles when hovering over the navigation links */
+.left-half nav a:hover {
+    opacity: 0.5;
+    padding-left: 50px; /* Increase padding-left on hover */
+}
+
+
+.icon{
+    color: black;
+}
+
+
+
+
+
+
+
+/* Styling for the right half (parallax scrolling) */
+.right-half {
+    font-family: 'Libre Franklin', sans-serif;
+    flex: 1;
+    background-size: cover;
+    text-align: right;
+    color: #ffffff;
+    padding: 20px;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding-left: 43%;
+}
+
+.heading{
+    font-size: 30px;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: 600;
+    text-align: left;
+    color: white;
+}
+
+.header{
+    font-size: 20px;
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-weight: 500;
+    text-align: left;
+    color: #ffffffda;
+}
+
+li{
+    font-size: 15px;
+    font-weight: 200;
+    padding-top: 1px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    text-align: left;
+    color: #ffffffda;
+}
+
+
+.contentstyle{
+    background-color: rgba(255, 255, 255, 0.100);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 45px;
+    backdrop-filter: blur(15px) saturate(100%);
+    -webkit-backdrop-filter: blur(15px) saturate(100%);
+    z-index: -1;
+}
+
+.grid2x2 {
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .grid2x2 > div {
+    display: flex; 
+    flex-basis: calc(50% - 40px);  
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  .grid2x2 > div > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 20px;
+  }
+  
+.box {
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.281);
+    font-size: 30px;
+}
+
+.fa{
+    margin-top: 5px;
+}
+
+.box a{
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 23px;
+    margin-left: 10px;
+    font-weight: 500;
+    padding-top: 3px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    text-align: left;
+    color: #ffffffda;
+}
+
+.box:hover {
+    cursor: pointer;
+    font-size: 35px;
+    animation-name: h;
+    animation-duration: 0.5s; /* Decreased the duration for a quicker animation */
+    animation-timing-function: ease-in-out; /* Added a timing function for a smoother animation */
+}
+
+@keyframes h {
+    from {
+        font-size: 35px;
+    }
+    to {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 1690px) {
+    #name{
+        font-size: 1.5rem;
+    }
+
+    .left-half nav a {
+        padding-bottom: 0px;
+
+    }
+
+    #images{
+        max-width: 20%;
+    }
+
+}
+
+
+
+/* Media query for mobile devices */
+@media (max-width: 1038px) {
+
+    .content{
+        margin-left: 0%;
+    }
+    .container {
+        flex-direction: column;
+        overflow: hidden; /* Prevent content overflow in the container */
+    }
+
+    .left-half {
+        position: relative;
+        width: 100%;
+        text-align: center; /* Center align text on mobile */
+        overflow: hidden; /* Prevent content overflow */   
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        background: none;
+    }
+
+    .left-half nav a {
+        width: 35%;
+        padding: 5px;
+    }
+
+    #images{
+        max-width: 38%;
+    }
+
+    #name {
+        font-family: 'Libre Franklin', sans-serif;
+        font-size: 24px;
+        text-align: center; /* Center align the name */
+        font-size: 1.5rem;
+    }
+    
+    .heading{
+        padding-left: 15px;
+    }
+
+    .header{
+        padding-left: 15px;
+    }
+
+    .subheading {
+        font-family: 'Libre Franklin', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: left;
+        padding-left: 15px;
+    }
+
+    .right-half {
+        width: 100%;
+        margin-top: 40px;
+        background-attachment: scroll;
+        width: calc(100% - 20px); /* Consider padding in the width */
+        padding: 10px; /* Reduce padding for mobile */
+        font-size: 14px; /* Adjust font size for mobile */
+        text-align: left; /* Left align text on mobile */
+    }
+
+    .box{
+        width: 12%;
+        font-size: 25px;
+    }
+
+    .box a{
+        margin-top: 5px;
+        font-size: 17px;
+    }
+    
+    .fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas {
+        padding-top: 5px;
+        padding-left: 10px;
+    }
+}
