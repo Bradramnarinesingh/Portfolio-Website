@@ -1,0 +1,5 @@
+ErrorDocument 404 /error.php
+<IfModule mod_headers.c>
+    Header set Cache-Control "max-age=0"
+</IfModule>
+
