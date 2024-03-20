@@ -128,6 +128,20 @@ body {
   filter: saturate(120%);
 }
 
+#soctitle {
+  font-family: "Libre Franklin", sans-serif;
+  color: #e6e6e6;
+  font-size: 20px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 8px;
+}
+
 #social {
   text-align: left;
   padding-top: 50px;
@@ -203,7 +217,6 @@ body {
   display: none;
 }
 
-
 .left-half nav a {
   display: block;
   margin: 10px 0px 25px 0px;
@@ -217,14 +230,9 @@ body {
   padding-bottom: 10px;
   width: 30%;
   padding-left: 30px;
-  letter-spacing: .1rem;
-  background: linear-gradient(to right,
-      rgb(113 229 229 / 0%),
-      #2563eb69),
-    linear-gradient(to right,
-      rgb(239 0 0 / 0%),
-      #0051ff,
-      rgb(255 255 255));
+  letter-spacing: 0.1rem;
+  background: linear-gradient(to right, rgb(113 229 229 / 0%), #2563eb69),
+    linear-gradient(to right, rgb(239 0 0 / 0%), #0051ff, rgb(255 255 255));
   background-size: 100% 1px, 0 3px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
@@ -234,7 +242,7 @@ body {
 .left-half #navn a:hover {
   padding-left: 50px;
   font-weight: 500;
-  letter-spacing: .15rem;
+  letter-spacing: 0.15rem;
   transition-duration: 0.25s;
   background-size: 0 3px, 100% 3px;
   color: #c3c0c0;
@@ -459,11 +467,10 @@ footer {
   padding-bottom: 50px;
 }
 
-
-@media (max-width: 1444px) {
+@media (max-width: 2000px) {
   .left-half nav a {
     display: block;
-    margin: 10px 0px 15px 0px;
+    margin: 10px 0px 8px 0px;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -474,14 +481,14 @@ footer {
     padding-bottom: 10px;
     width: 30%;
     padding-left: 30px;
-    letter-spacing: .1rem;
-    background: linear-gradient(to right, rgb(113 229 229 / 0%), #2563eb69), linear-gradient(to right, rgb(239 0 0 / 0%), #0051ff, rgb(255 255 255));
+    letter-spacing: 0.1rem;
+    background: linear-gradient(to right, rgb(113 229 229 / 0%), #2563eb69),
+      linear-gradient(to right, rgb(239 0 0 / 0%), #0051ff, rgb(255 255 255));
     background-size: 100% 1px, 0 3px;
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
     transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
   }
-
 }
 
 @media (max-width: 1084px) {
@@ -599,9 +606,9 @@ footer {
 }
 
 @media (max-width: 637px) {
-html{
+  html {
     overflow: scroll;
-}
+  }
 
   body {
     background: radial-gradient(circle, #0051ff 14%, #29457b, #204579, #2b2f35);
@@ -617,10 +624,6 @@ html{
     scroll-behavior: smooth;
   }
 
-  #title {
-    font-size: 18px;
-  }
-
   .cursor-glow {
     display: none;
   }
@@ -632,6 +635,10 @@ html{
     padding-bottom: 0px;
     font-size: 13px;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  #soctitle {
+    display: none;
   }
 
   .content {
@@ -754,5 +761,4 @@ html{
     opacity: 1;
     transform: translateY(0);
   }
-
 }
