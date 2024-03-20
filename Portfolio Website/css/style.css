@@ -102,7 +102,7 @@ body {
   }
 }
 
-#container {
+#home {
   display: flex;
   overflow-x: hidden;
 }
@@ -218,29 +218,26 @@ body {
   width: 30%;
   padding-left: 30px;
   letter-spacing: .1rem;
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgb(113 229 229 / 0%),
-      #2563eb69
-    ),
-    linear-gradient(
-      to right,
+      #2563eb69),
+    linear-gradient(to right,
       rgb(239 0 0 / 0%),
       #0051ff,
-      rgb(255 255 255)
-  );
+      rgb(255 255 255));
   background-size: 100% 1px, 0 3px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
-  transition: background-size 400ms,opacity 0.5s ease, padding-left 0.3s ease;
+  transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
 }
 
 .left-half #navn a:hover {
   padding-left: 50px;
   font-weight: 500;
   letter-spacing: .15rem;
-  transition-duration: 0.7s;
+  transition-duration: 0.25s;
   background-size: 0 3px, 100% 3px;
+  color: #c3c0c0;
 }
 
 .left-half #navn a:focus {
@@ -267,17 +264,28 @@ body {
 }
 
 .heading {
-  font-size: 22px;
+  font-size: 18px;
   padding-bottom: 5px;
   padding-top: 25px;
   padding-left: 15px;
   padding-right: 15px;
   font-weight: 600;
   text-align: left;
+  z-index: -1;
   color: white;
   letter-spacing: 1px;
   text-decoration: underline;
   text-underline-offset: 5.5px;
+  text-decoration-thickness: 1px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+    background-color 0.3s ease;
+}
+
+.heading.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1.03);
 }
 
 .header {
@@ -313,22 +321,26 @@ li {
   position: absolute;
   pointer-events: none;
   background-color: transparent;
-  background-image: radial-gradient(
-    circle,
-    rgb(255 255 255 / 5%) 0%,
-    transparent 70%
-  );
+  background-image: radial-gradient(circle,
+      rgb(255 255 255 / 5%) 0%,
+      transparent 70%);
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, box-shadow 0.2s, border-radius 0.2s,
     background-color 0.2s;
   z-index: -2;
 }
 
+.contentstyle p {
+  text-align: left;
+  padding: 5px 20px 20px 20px;
+}
+
 .contentstyle {
   padding: 10px;
+  line-height: 1.6;
   margin-bottom: 35px;
   z-index: -1;
-  background-color: rgba(255, 255, 255, 0.068);
+  background-color: rgba(255, 255, 255, 0.09);
   backdrop-filter: blur(15px) saturate(100%);
   -webkit-backdrop-filter: blur(15px) saturate(100%);
   border-radius: 10px;
@@ -336,17 +348,18 @@ li {
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
     background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .contentstyle.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1.02);
 }
 
 .contentstyle:hover {
   background-color: rgba(255, 255, 255, 0.151);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-  transform: translateY(0) scale(1.02);
+  transform: translateY(0) scale(1.03);
 }
 
 .responsivegrid {
@@ -442,6 +455,35 @@ li {
   padding-top: 50px;
 }
 
+footer {
+  padding-bottom: 50px;
+}
+
+
+@media (max-width: 1444px) {
+  .left-half nav a {
+    display: block;
+    margin: 10px 0px 15px 0px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: left;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    width: 30%;
+    padding-left: 30px;
+    letter-spacing: .1rem;
+    background: linear-gradient(to right, rgb(113 229 229 / 0%), #2563eb69), linear-gradient(to right, rgb(239 0 0 / 0%), #0051ff, rgb(255 255 255));
+    background-size: 100% 1px, 0 3px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
+  }
+
+}
+
 @media (max-width: 1084px) {
   .cursor-glow {
     /* Disable or override properties that create the glow effect */
@@ -461,7 +503,7 @@ li {
     margin-left: 0%;
   }
 
-  #container {
+  #home {
     flex-direction: column;
     overflow: hidden;
   }
@@ -491,7 +533,7 @@ li {
     transform: translateX(-50%);
     bottom: 0;
     z-index: 2;
-    padding: 12px;
+    padding: 10px;
     position: fixed;
     background-color: rgba(255, 255, 255, 0.23);
     backdrop-filter: blur(10px) saturate(100%);
@@ -507,6 +549,7 @@ li {
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
     transition: transform 0.3s ease;
+    text-align: center;
   }
 
   #navn1 img {
@@ -548,23 +591,32 @@ li {
   .icon {
     font-size: 25px;
   }
+
+  footer {
+    padding-bottom: 70px;
+    padding-left: 25px;
+  }
 }
 
 @media (max-width: 637px) {
-
-body {
-  background: radial-gradient(circle, #161616 14%, #13377b, hsl(0deg 0% -12.34%));
-  background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
-  height: 100vh;
-  z-index: -1;
-  animation: fadeInAnimation ease 2.3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  height: 100%;
-  overflow: auto;
-  scroll-behavior: smooth;
+html{
+    overflow: scroll;
 }
+
+  body {
+    background: radial-gradient(circle, #0051ff 14%, #29457b, #204579, #2b2f35);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    height: 100vh;
+    z-index: -1;
+    animation: fadeInAnimation ease 2.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    height: 100%;
+    overflow: auto;
+    scroll-behavior: smooth;
+  }
+
   #title {
     font-size: 18px;
   }
@@ -588,16 +640,13 @@ body {
     padding: 14px;
   }
 
-  #container {
+  #home {
     flex-direction: column;
     overflow: hidden;
   }
 
   .card {
     background-color: rgba(255, 255, 255, 0.23);
-    border-radius: 10px;
-    backdrop-filter: blur(15px) saturate(100%);
-    -webkit-backdrop-filter: blur(15px) saturate(100%);
     border-radius: 10px;
     padding: 3px 0px 3px;
   }
@@ -667,19 +716,16 @@ body {
   .contentstyle {
     background-color: rgb(255 255 255 / 20%);
     border-radius: 10px;
-    backdrop-filter: blur(15px) saturate(100%);
-    -webkit-backdrop-filter: blur(15px) saturate(100%);
   }
 
   .contentstyle:hover {
     background-color: rgba(255, 255, 255, 0.23);
     border-radius: 10px;
-    backdrop-filter: blur(15px) saturate(100%);
-    -webkit-backdrop-filter: blur(15px) saturate(100%);
   }
 
-  .heading{
+  .heading {
     text-decoration-thickness: 1px;
+    padding-bottom: 0px;
   }
 
   .box {
@@ -703,5 +749,10 @@ body {
   .right-side-content {
     padding: 10px;
   }
-  
+
+  .contentstyle.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 }
