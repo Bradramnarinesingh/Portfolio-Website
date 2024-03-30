@@ -18,7 +18,6 @@ This repository contains the files for my personal website, which includes my po
 
 - **Responsive Design**: The site is fully responsive and works on mobiles, tablets, and desktops.
 - **Portfolio**: A detailed look at the work I've done.
-- **Blog**: Where I write about my experiences and share my knowledge on various topics.
 
 ## Navigation
 
