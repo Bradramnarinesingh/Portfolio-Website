@@ -6,7 +6,7 @@ This repository contains the files for my personal website, which includes my po
 
 ## Repository Structure
 
-- **css/**: This directory contains all the Cascading Style Sheets (CSS) files for styling the website.
+- **css/**: This directory contains all the CSS files for styling the website.
 - **html/**: Here you'll find the main HTML file.
 - **img/**: This folder houses all the images used across the website, such as photos, graphics, and icons.
 - **.htaccess**: The Apache server configuration file to manage redirects or to enhance website security.
