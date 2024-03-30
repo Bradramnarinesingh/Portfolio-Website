@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background: radial-gradient(circle, #161616 14%, #13377b, hsl(0deg 0% 5.66%));
+  background: radial-gradient(circle, #161616 14%, #13377b, #222f4c);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
   height: 100vh;
