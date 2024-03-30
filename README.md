@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains the files for my personal website, which includes my portfolio, blog, and contact information. This site showcases my skills and projects, and it serves as a platform to share my insights on topics I'm passionate about.
+This repository contains the files for my personal website, which includes my portfolio, work experiences, and contact information. This site showcases my skills and projects, and it serves as a platform to share my insights on topics I'm passionate about.
 
 ## Repository Structure
 
