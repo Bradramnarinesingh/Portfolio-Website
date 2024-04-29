@@ -297,7 +297,7 @@ body {
 }
 
 .header {
-  font-size: 20px;
+  font-size: 18px;
   padding-top: 20px;
   padding-right: 15px;
   padding-left: 15px;
@@ -307,8 +307,7 @@ body {
 }
 
 li {
-  font-size: 15px;
-  font-weight: 200;
+  font-weight: 600;
   padding-top: 1px;
   padding-right: 15px;
   padding-bottom: 10px;
@@ -340,7 +339,7 @@ li {
 
 .contentstyle p {
   text-align: left;
-  padding: 5px 20px 20px 20px;
+  padding: 5px 19px 0px 20px;
 }
 
 .contentstyle {
