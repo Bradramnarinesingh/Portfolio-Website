@@ -653,7 +653,6 @@ footer {
   }
 
   .card {
-    background-color: rgba(255, 255, 255, 0.23);
     border-radius: 10px;
     padding: 3px 0px 3px;
   }
@@ -721,7 +720,6 @@ footer {
   }
 
   .contentstyle {
-    background-color: rgb(255 255 255 / 20%);
     border-radius: 10px;
   }
 
