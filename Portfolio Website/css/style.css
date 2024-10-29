@@ -12,9 +12,8 @@ body {
 }
 
 #content-wrapper {
-   margin-left: 0vw;
+  margin-left: 0vw;
 }
-
 
 #animated-background {
   position: fixed;
@@ -292,7 +291,7 @@ body {
   min-height: 100vh;
   overflow-y: auto;
   padding-left: 43%;
-  padding-top: 70px;
+  padding-top: 150px;
 }
 
 .heading {
@@ -355,9 +354,11 @@ li {
   position: absolute;
   pointer-events: none;
   background-color: transparent;
-  background-image: radial-gradient(circle,
-      rgb(255 255 255 / 6%) 0%,
-      transparent 70%);
+  background-image: radial-gradient(
+    circle,
+    rgb(255 255 255 / 6%) 0%,
+    transparent 70%
+  );
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, box-shadow 0.2s, border-radius 0.2s,
     background-color 0.2s;
@@ -488,34 +489,32 @@ footer {
   padding-bottom: 50px;
 }
 
-@media (max-width: 2000px) {
-  .left-half nav a {
-    display: block;
-    margin: 10px 0px 8px 0px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: left;
-    padding-top: 15px;
-    padding-right: 15px;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    width: 30%;
-    padding-left: 30px;
-    letter-spacing: 0.1rem;
-    background: linear-gradient(to right, rgb(113 229 229 / 0%), #2563eb69),
-      linear-gradient(to right, rgb(239 0 0 / 0%), #0051ff, rgb(255 255 255));
-    background-size: 100% 1px, 0 3px;
-    background-position: 100% 100%, 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
-  }
-  .left-half {
-    margin-left: 70px;
-  }
+.left-half nav a {
+  display: block;
+  margin: 10px 0px 8px 0px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: left;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  width: 30%;
+  padding-left: 30px;
+  letter-spacing: 0.1rem;
+  background: linear-gradient(to right, rgb(113 229 229 / 0%), #2563eb69),
+    linear-gradient(to right, rgb(239 0 0 / 0%), #0051ff, rgb(255 255 255));
+  background-size: 100% 1px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
+}
+.left-half {
+  margin-left: 70px;
 }
 
-@media (max-width: 1084px) {
+@media (max-width: 1440px) {
   .cursor-glow {
     /* Disable or override properties that create the glow effect */
     box-shadow: none;
@@ -628,6 +627,11 @@ footer {
     padding-bottom: 70px;
     padding-left: 25px;
   }
+  
+  .contentstyle {
+    max-width: 100%;
+  }
+  
 }
 
 @media (max-width: 637px) {

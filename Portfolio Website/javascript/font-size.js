@@ -1,9 +1,16 @@
 function adjustFontSize() {
     const nameDiv = document.getElementById("name");
-    let minFontSize = 12; // Minimum font size in pixels
-    let maxFontSize = 35; // Maximum font size in pixels, start big
+    const minFontSize = 12; // Minimum font size in pixels
+    let maxFontSize = 35; // Default maximum font size
     let fontSize = maxFontSize;
 
+    // Check if the device width is less than or equal to 768px (common breakpoint for mobile)
+    if (window.innerWidth <= 768) {
+        maxFontSize = 30; // Maximum font size for mobile
+    }
+
+    // Set initial font size to the determined maximum
+    fontSize = maxFontSize;
     nameDiv.style.fontSize = fontSize + "px";
 
     // Reduce font size until the text fits

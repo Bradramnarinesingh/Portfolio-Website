@@ -64,7 +64,7 @@
         </div>
 
         <!-- Animated Background -->
-        <div id="animated-background" style="width: 100%; height: 100vh;"></div>
+        <div id="animated-background" style="width: 100%; height: 100vh"></div>
         <div id="glass-overlay"></div>
 
         <!-- Main Content -->
@@ -86,12 +86,12 @@
                         mouseControls: true,
                         touchControls: true,
                         gyroControls: false,
-                        minHeight: 200.00,
-                        minWidth: 200.00,
+                        minHeight: 200.0,
+                        minWidth: 200.0,
                         highlightColor: 0x112541,
                         midtoneColor: 0x70737,
                         lowlightColor: 0x214,
-                        baseColor: 0x7
+                        baseColor: 0x7,
                     });
                 });
             </script>
@@ -113,7 +113,9 @@
                         <div class="content">
                             <div id="name">Brad Ramnarinesingh</div>
                             <div id="title">Computer Science Student</div>
-                            <div id="loc"><i class="fa fa-map-marker"></i> Toronto, Ontario</div>
+                            <div id="loc">
+                                <i class="fa fa-map-marker"></i> Toronto, Ontario
+                            </div>
                             <div id="social">
                                 <div id="soctitle">Find me</div>
                                 <a href="https://www.linkedin.com/in/brad-ramnarinesingh/" target="_blank"><i
@@ -141,23 +143,22 @@
                 <div class="right-side-content">
                     <!-- About Me Section -->
                     <div class="contentstyle">
-                        <div class="header">About Me</div>
-                        <p>As a Computer Science student at the University of Toronto, I aim to leverage my strong
-                            problem-solving and technical skills in software development and web design. I am passionate
-                            about coding and problem-solving, seeking opportunities to contribute to innovative projects
-                            within a dynamic team environment. With a strong foundation in programming knowledge and web
-                            technologies, I am eager to apply my skills in a challenging environment, where I can grow
-                            professionally and make a significant impact.</p>
+                        <p>
+                            As a Computer Science student at the University of Toronto, I am passionate about coding and
+                            problem-solving, with skills in software development and web design. I seek opportunities to
+                            contribute to innovative projects within a dynamic team, applying my technical foundation to
+                            make a meaningful impact and grow professionally.
+                        </p>
                     </div>
 
-                    <!-- Education Section -->
+                    <!-- Education Section 
                     <div class="sectiontitle">
                         <div class="heading" id="experience">EDUCATION</div>
                     </div>
                     <div class="contentstyle">
                         <div class="header">University of Toronto</div>
                         <p>Computer Science, Mathematics, and Statistics (Expected in 2025)</p>
-                    </div>
+                    </div> -->
 
                     <!-- Experience Section -->
                     <div class="sectiontitle">
@@ -167,16 +168,16 @@
                         <div class="header">Web Developer & Designer</div>
                         <ul>
                             <li>
-                                Designed and developed visually appealing, functional websites with a focus on
-                                user-friendly, responsive layouts.
+                                Designed and developed visually appealing, functional websites
+                                with a focus on user-friendly, responsive layouts.
                             </li>
                             <li>
-                                Skilled in HTML, CSS, and WordPress; adept at custom theme development and plugin
-                                integration.
-
+                                Skilled in HTML, CSS, and WordPress; adept at custom theme
+                                development and plugin integration.
                             </li>
                             <li>
-                                Troubleshot and resolved technical issues to ensure optimal website performance.
+                                Troubleshot and resolved technical issues to ensure optimal
+                                website performance.
                             </li>
                         </ul>
                     </div>
@@ -191,10 +192,10 @@
                         </div>
                         <ul>
                             <li>
-                                Efficient Algorithm Implementation: Developed a Huffman Lossless
-                                Compression algorithm in Python, emphasizing the efficient use
-                                of data structures and advanced programming techniques for
-                                optimal compression results.
+                                Efficient Algorithm Implementation: Developed a Huffman
+                                Lossless Compression algorithm in Python, emphasizing the
+                                efficient use of data structures and advanced programming
+                                techniques for optimal compression results.
                             </li>
                             <li>
                                 Effective Data Handling: Implemented the algorithm using
@@ -223,10 +224,11 @@
                         <div class="header">Phone Company Management System | Python</div>
                         <ul>
                             <li>
-                                Strategic Data Management: Engineered a Python-based management
-                                system designed to optimize operational workflows within a
-                                telecommunications company, focusing on the effective
-                                organization and tracking of customer contracts and phone lines.
+                                Strategic Data Management: Engineered a Python-based
+                                management system designed to optimize operational workflows
+                                within a telecommunications company, focusing on the effective
+                                organization and tracking of customer contracts and phone
+                                lines.
                             </li>
                             <li>
                                 Dynamic Billing and Event Processing: Designed and implemented
@@ -266,9 +268,9 @@
                                 dynamics.
                             </li>
                             <li>
-                                Robust Program Integrity: Exhibited exemplary error handling and
-                                data validation capabilities, guaranteeing the reliability and
-                                accuracy of program outputs, thus enhancing user trust and
+                                Robust Program Integrity: Exhibited exemplary error handling
+                                and data validation capabilities, guaranteeing the reliability
+                                and accuracy of program outputs, thus enhancing user trust and
                                 program utility
                             </li>
                         </ul>
@@ -293,17 +295,19 @@
                                 <div><i class="fa-brands fa-html5 icon"></i><a> HTML</a></div>
                             </div>
                             <div class="box">
-                                <div><i class="fa-brands fa-css3-alt icon"></i><a> CSS</a></div>
+                                <div>
+                                    <i class="fa-brands fa-css3-alt icon"></i><a> CSS</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Footer Section -->
-                <footer>
-                </footer>
+                <footer></footer>
                 <script>
-                    document.getElementById("year").innerHTML = new Date().getFullYear();
+                    document.getElementById("year").innerHTML =
+                        new Date().getFullYear();
                 </script>
             </div>
 
@@ -327,7 +331,9 @@
             function hidePreloader() {
                 var preloader = document.getElementById("preloader");
                 preloader.style.opacity = "0";
-                setTimeout(function () { preloader.style.display = "none"; }, 1000);
+                setTimeout(function () {
+                    preloader.style.display = "none";
+                }, 1000);
             }
         </script>
     </div>
