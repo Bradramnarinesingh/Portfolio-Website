@@ -546,6 +546,7 @@ footer {
     padding-right: 0px;
     padding-bottom: 0px;
     background: none;
+    margin-left: 0px;
   }
 
   .right-side-content {
@@ -714,6 +715,7 @@ footer {
     font-family: "Libre Franklin", sans-serif;
     text-align: left;
     font-size: 1.5rem;
+    letter-spacing: -1px;
   }
 
   .subheading {
