@@ -4,17 +4,40 @@ html {
 }
 
 body {
-  background: radial-gradient(circle, #161616 14%, #13377b, #222f4c);
-  background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
-  height: 100vh;
-  z-index: -1;
-  animation: fadeInAnimation ease 2.3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
+  display: flex;
+  justify-content: start; /* Aligns content to start but allows for offset */
   height: 100%;
   overflow: auto;
   scroll-behavior: smooth;
+}
+
+#content-wrapper {
+   margin-left: 0vw;
+}
+
+
+#animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  /* Places the background behind other content */
+  filter: blur(0px);
+}
+
+#glass-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.027); /* Semi-transparent background */
+  backdrop-filter: blur(50px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(8px); /* For Safari */
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: -1; /* Keeps it behind the main content but above the animated background */
 }
 
 #preloader {
@@ -121,6 +144,7 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  margin-left: 100px;
 }
 
 #images {
@@ -157,7 +181,7 @@ body {
 
 .card {
   font-family: "Libre Franklin", sans-serif;
-  font-weight: 600;
+  font-weight: 00;
   max-width: 100%;
   margin: auto;
   text-align: left;
@@ -194,7 +218,7 @@ body {
 
 #name {
   font-family: "Libre Franklin", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
@@ -272,12 +296,13 @@ body {
 }
 
 .heading {
+  opacity: 1;
   font-size: 18px;
   padding-bottom: 5px;
   padding-top: 25px;
   padding-left: 15px;
   padding-right: 15px;
-  font-weight: 600;
+  font-weight: 00;
   text-align: left;
   z-index: -1;
   color: white;
@@ -301,18 +326,20 @@ body {
   padding-top: 20px;
   padding-right: 15px;
   padding-left: 15px;
-  font-weight: 600;
+  font-weight: 00;
   text-align: left;
   color: #ffffff;
+  letter-spacing: 1px;
 }
 
 li {
-  font-weight: 600;
+  font-weight: 000;
   padding-top: 1px;
   padding-right: 15px;
   padding-bottom: 10px;
   text-align: left;
   color: #ffffff;
+  letter-spacing: 1px;
 }
 
 .sectiontitle {
@@ -329,18 +356,19 @@ li {
   pointer-events: none;
   background-color: transparent;
   background-image: radial-gradient(circle,
-      rgb(255 255 255 / 5%) 0%,
+      rgb(255 255 255 / 6%) 0%,
       transparent 70%);
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, box-shadow 0.2s, border-radius 0.2s,
     background-color 0.2s;
-  z-index: -2;
+  z-index: 1;
 }
 
 .contentstyle p {
-  font-weight: 600;
+  font-weight: 000;
   text-align: left;
   padding: 5px 19px 0px 20px;
+  letter-spacing: 1px;
 }
 
 .contentstyle {
@@ -348,7 +376,7 @@ li {
   line-height: 1.6;
   margin-bottom: 35px;
   z-index: -1;
-  background-color: rgba(255, 255, 255, 0.09);
+  background-color: rgba(255, 255, 255, 0.141);
   backdrop-filter: blur(15px) saturate(100%);
   -webkit-backdrop-filter: blur(15px) saturate(100%);
   border-radius: 10px;
@@ -357,6 +385,7 @@ li {
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
     background-color 0.3s ease;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  max-width: 55%;
 }
 
 .contentstyle.visible {
@@ -453,14 +482,6 @@ li {
 
 #time-widget p {
   font-size: 18px;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 10%;
-  padding-top: 50px;
 }
 
 footer {
@@ -720,6 +741,7 @@ footer {
 
   .contentstyle {
     border-radius: 10px;
+    max-width: 100%;
   }
 
   .contentstyle:hover {
