@@ -385,7 +385,7 @@ li {
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
     background-color 0.3s ease;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-  max-width: 55%;
+  max-width: 60%;
 }
 
 .contentstyle.visible {
@@ -509,6 +509,9 @@ footer {
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
     transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
+  }
+  .left-half {
+    margin-left: 70px;
   }
 }
 
