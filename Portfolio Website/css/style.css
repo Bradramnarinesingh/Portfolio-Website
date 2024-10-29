@@ -33,7 +33,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.027); /* Semi-transparent background */
+  /*background: rgba(255, 255, 255, 0.027);*/ /* Semi-transparent background */
   backdrop-filter: blur(50px); /* Frosted glass effect */
   -webkit-backdrop-filter: blur(8px); /* For Safari */
   pointer-events: none; /* Allows clicks to pass through */
