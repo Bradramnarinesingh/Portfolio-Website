@@ -374,6 +374,10 @@ li {
   letter-spacing: 2px;
   max-width: 60%;
   line-height: 2;
+  font-weight: 000;
+  text-align: left;
+  padding: 5px 19px 0px 20px;
+  letter-spacing: 1px;
 }
 
 .contentstyle p {
