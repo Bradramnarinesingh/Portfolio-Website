@@ -774,7 +774,9 @@ footer {
 
   .contentstyle {
     border-radius: 10px;
-    max-width: 100%;
+    max-width: 88%; /* Adjust the width as desired */
+    margin: 0 auto; /* Centers the element */
+    margin-bottom: 35px;
   }
 
   .contentstyle:hover {
