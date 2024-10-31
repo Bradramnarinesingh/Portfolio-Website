@@ -380,6 +380,7 @@ li {
   text-align: left;
   padding: 5px 19px 0px 20px;
   letter-spacing: 1px;
+  font-size: 18px;
 }
 
 .contentstyle p {
@@ -614,7 +615,8 @@ footer {
   }
 
   #navn1 a.active-nav-item {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    opacity: 0.6;
   }
 
   .left-half nav {
@@ -670,6 +672,7 @@ footer {
 
   .summary {
     max-width: 100%;
+    font-size: 14px;
   }
 
   #title {
