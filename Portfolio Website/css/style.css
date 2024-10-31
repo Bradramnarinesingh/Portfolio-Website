@@ -338,6 +338,8 @@ li {
   text-align: left;
   color: #ffffff;
   letter-spacing: 0px;
+  list-style-type: none;
+  list-style-type: circle;
 }
 
 .sectiontitle {
@@ -670,6 +672,10 @@ footer {
     max-width: 100%;
   }
 
+  #title {
+    font-size: 18px;
+  }
+
   .cursor-glow {
     display: none;
   }
@@ -740,6 +746,7 @@ footer {
     text-align: left;
     font-size: 1.5rem;
     letter-spacing: -1px;
+    margin-top: 25px;
   }
 
   .subheading {
