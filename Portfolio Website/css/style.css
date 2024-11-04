@@ -532,7 +532,7 @@ footer {
   margin-left: 70px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1200px) {
   .cursor-glow {
     /* Disable or override properties that create the glow effect */
     box-shadow: none;
