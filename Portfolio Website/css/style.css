@@ -203,7 +203,7 @@ body {
 
 .content.visible{
   opacity: 1;
-  transform: translateY(0) scale(1.02);
+  transform: translateY(0) scale(1);
 }
 
 .content .fa {
@@ -325,7 +325,7 @@ body {
 
 .heading.visible {
   opacity: 1;
-  transform: translateY(0) scale(1.03);
+  transform: translateY(0) scale(1);
 }
 
 .header {
@@ -398,7 +398,7 @@ li {
 
 .summary.visible {
   opacity: 1;
-  transform: translateY(0) scale(1.02);
+  transform: translateY(0) scale(1);
 }
 
 .contentstyle p {
@@ -428,13 +428,13 @@ li {
 
 .contentstyle.visible {
   opacity: 1;
-  transform: translateY(0) scale(1.02);
+  transform: translateY(0) scale(1);
 }
 
 .contentstyle:hover {
   background-color: rgba(255, 255, 255, 0.151);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-  transform: translateY(0) scale(1.03);
+  transform: translateY(0) scale(1);
 }
 
 .responsivegrid {
@@ -586,7 +586,7 @@ footer {
 
   .right-side-content.visible{
     opacity: 1;
-    transform: translateY(0) scale(1.02);
+    transform: translateY(0) scale(1);
   }
 
   #navn1 {
