@@ -12,6 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    const contentElements = document.querySelectorAll(".contentstyle, .heading, html, body, .summary, .right-side-content, .content");
+    const contentElements = document.querySelectorAll(".contentstyle, .heading, html, body, .summary, .right-side-content, .content, #social, #navn1");
     contentElements.forEach((el) => observer.observe(el));
 });

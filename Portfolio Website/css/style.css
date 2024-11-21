@@ -34,7 +34,7 @@ body {
   height: 100vh;
   /*background: rgba(255, 255, 255, 0.027);*/ /* Semi-transparent background */
   backdrop-filter: blur(25px); /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(8px); /* For Safari */
+  -webkit-backdrop-filter: blur(25px); /* For Safari */
   pointer-events: none; /* Allows clicks to pass through */
   z-index: -1; /* Keeps it behind the main content but above the animated background */
 }
@@ -172,6 +172,16 @@ body {
   bottom: 0px;
   padding-bottom: 70px;
   -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+    background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+#social.visible{
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 #loc {
@@ -201,7 +211,7 @@ body {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.content.visible{
+.content.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
@@ -423,7 +433,7 @@ li {
     background-color 0.3s ease;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
   max-width: 60%;
-  border: 0.1px solid rgba(255, 255, 255, 0.3);;
+  border: 0.1px solid rgba(255, 255, 255, 0.3);
 }
 
 .contentstyle.visible {
@@ -520,22 +530,16 @@ footer {
   margin-left: 70px;
 }
 
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (min-resolution: 192dpi) { 
-  .contentstyle{
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .contentstyle {
     max-width: 80%;
     font-size: 15px;
   }
-  .summary{
+  .summary {
     max-width: 80%;
     font-size: 15px;
   }
-
 }
-
 
 @media (max-width: 1000px) {
   .cursor-glow {
@@ -584,7 +588,7 @@ footer {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
   }
 
-  .right-side-content.visible{
+  .right-side-content.visible {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
@@ -705,6 +709,7 @@ footer {
     padding-bottom: 0px;
     font-size: 13px;
     -webkit-tap-highlight-color: transparent;
+    padding: 14px;
   }
 
   #soctitle {
@@ -716,6 +721,9 @@ footer {
     padding: 14px;
   }
 
+  #glass-overlay {
+    backdrop-filter: blur(100px); /* Frosted glass effect */
+  }
   #home {
     flex-direction: column;
     overflow: hidden;
@@ -757,6 +765,10 @@ footer {
 
   #images {
     max-width: 38%;
+  }
+
+  #loc {
+    margin-left: 0px;
   }
 
   #name {
