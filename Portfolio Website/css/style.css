@@ -8,7 +8,6 @@ body {
   justify-content: start; /* Aligns content to start but allows for offset */
   height: 100%;
   overflow: auto;
-
   scroll-behavior: smooth;
 }
 
@@ -195,6 +194,16 @@ body {
   padding: 30px;
   height: 93%;
   margin-top: 0px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+    background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.content.visible{
+  opacity: 1;
+  transform: translateY(0) scale(1.02);
 }
 
 .content .fa {
@@ -378,9 +387,18 @@ li {
   line-height: 2;
   font-weight: 000;
   text-align: left;
-  padding: 5px 19px 0px 20px;
   letter-spacing: 1px;
   font-size: 18px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+    background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1.02);
 }
 
 .contentstyle p {
@@ -463,7 +481,7 @@ li {
 
 .box a {
   font-family: "Libre Franklin", sans-serif;
-  font-size: 23px;
+  font-size: 18px;
   margin-left: 10px;
   font-weight: 500;
   padding-top: 3px;
@@ -471,37 +489,6 @@ li {
   padding-bottom: 10px;
   text-align: left;
   color: #ffffff;
-}
-
-#weather-widget,
-#time-widget {
-  font-size: 0.9em;
-  text-align: center;
-  border-bottom: 0.5px solid #ddd;
-  padding: 10px;
-  padding-bottom: 15px;
-  margin-right: 50px;
-  color: white;
-  font-family: "Libre Franklin", sans-serif;
-  box-sizing: border-box;
-  width: 100px;
-}
-
-#weather-widget {
-  position: fixed;
-  padding-top: 120px;
-}
-
-#time-widget {
-  position: fixed;
-}
-
-#weather-widget {
-  cursor: pointer;
-}
-
-#time-widget p {
-  font-size: 18px;
 }
 
 footer {
@@ -590,6 +577,16 @@ footer {
   .right-side-content {
     padding: 40px;
     padding-top: 0px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+      background-color 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .right-side-content.visible{
+    opacity: 1;
+    transform: translateY(0) scale(1.02);
   }
 
   #navn1 {
@@ -651,7 +648,7 @@ footer {
   }
 
   .box a {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 0px;
   }
 
