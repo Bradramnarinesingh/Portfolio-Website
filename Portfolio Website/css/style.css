@@ -34,7 +34,7 @@ body {
   width: 100vw;
   height: 100vh;
   /*background: rgba(255, 255, 255, 0.027);*/ /* Semi-transparent background */
-  backdrop-filter: blur(50px); /* Frosted glass effect */
+  backdrop-filter: blur(25px); /* Frosted glass effect */
   -webkit-backdrop-filter: blur(8px); /* For Safari */
   pointer-events: none; /* Allows clicks to pass through */
   z-index: -1; /* Keeps it behind the main content but above the animated background */
@@ -292,7 +292,7 @@ body {
   min-height: 100vh;
   overflow-y: auto;
   padding-left: 43%;
-  padding-top: 150px;
+  padding-top: 60px;
 }
 
 .heading {
@@ -405,6 +405,7 @@ li {
     background-color 0.3s ease;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
   max-width: 60%;
+  border: 0.1px solid rgba(255, 255, 255, 0.3);;
 }
 
 .contentstyle.visible {
@@ -532,7 +533,24 @@ footer {
   margin-left: 70px;
 }
 
-@media (max-width: 1200px) {
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+  .contentstyle{
+    max-width: 80%;
+    font-size: 15px;
+  }
+  .summary{
+    max-width: 80%;
+    font-size: 15px;
+  }
+
+}
+
+
+@media (max-width: 1000px) {
   .cursor-glow {
     /* Disable or override properties that create the glow effect */
     box-shadow: none;
