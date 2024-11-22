@@ -24,5 +24,4 @@ This repository contains the files for my personal website, which includes my po
 - **Home**: The landing page with a brief introduction and navigation to other sections.
 - **Experience**: A detailed timeline of my professional background and previous job roles.
 - **Projects**: Case studies and descriptions of significant projects I've been involved with.
-- **Skills**: An overview of my technical and soft skills.
 - **Resume**: A downloadable PDF of my formal resume.
