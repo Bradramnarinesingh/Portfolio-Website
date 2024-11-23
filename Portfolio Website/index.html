@@ -1,203 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-Q6C6769Y5E"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-Q6C6769Y5E");
-    </script>
 
-    <!-- External JavaScript Files -->
-    <script src="javascript/cursor.js"></script>
-    <script src="javascript/nav.js"></script>
-    <script src="javascript/font-size.js"></script>
-    <script src="javascript/time.js"></script>
-    <script src="javascript/weather.js"></script>
-    <script src="javascript/preloader.js"></script>
-    <script src="javascript/intersectionObserver.js"></script>
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6C6769Y5E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-Q6C6769Y5E");
+  </script>
 
-    <!-- Vanta.js and p5.js using CDN for Background Animation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+  <!-- External JavaScript Files -->
+  <script src="javascript/cursor.js"></script>
+  <script src="javascript/nav.js"></script>
+  <script src="javascript/font-size.js"></script>
+  <script src="javascript/intersectionObserver.js"></script>
 
-    <!-- Meta Tags for Security and Compatibility -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="upgrade-insecure-requests"
-    />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="expires" content="0" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Vanta.js and p5.js using CDN for Background Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
 
-    <!-- Page Title and Favicon -->
-    <title>Brad Ramnarinesingh</title>
-    <link rel="icon" type="image/x-icon" href="img/logo.png" />
+  <!-- Meta Tags for Security and Compatibility -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Fonts and Icons -->
-    <script
-      src="https://kit.fontawesome.com/fc2ecdd57a.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Poppins:wght@300&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Page Title and Favicon -->
+  <title>Brad Ramnarinesingh</title>
+  <link rel="icon" type="image/x-icon" href="img/logo.png" />
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.1" />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
-    />
-  </head>
+  <!-- Fonts and Icons -->
+  <script src="https://kit.fontawesome.com/fc2ecdd57a.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Poppins:wght@300&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <div id="content-wrapper">
+  <!-- CSS Files -->
+  <link rel="stylesheet" type="text/css" href="css/style.css?v=1.1" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css" />
+</head>
 
-      <!-- Animated Background -->
-      <div id="animated-background" style="width: 100%; height: 100vh"></div>
-      <div id="glass-overlay"></div>
+<body>
+  <div id="content-wrapper">
 
-      <!-- Main Content -->
-      <div id="home">
-        <div class="cursor-glow"></div>
-        <script>
-          document.addEventListener("mousemove", function (e) {
-            const cursor = document.querySelector(".cursor-glow");
-            cursor.style.left = e.pageX + "px";
-            cursor.style.top = e.pageY + "px";
+    <!-- Animated Background -->
+    <div id="animated-background" style="width: 100%; height: 100vh"></div>
+    <div id="glass-overlay"></div>
+
+    <!-- Main Content -->
+    <div id="home">
+      <div class="cursor-glow"></div>
+      <script>
+        document.addEventListener("mousemove", function (e) {
+          const cursor = document.querySelector(".cursor-glow");
+          cursor.style.left = e.pageX + "px";
+          cursor.style.top = e.pageY + "px";
+        });
+      </script>
+
+      <!-- Vanta.js Initialization Script -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          VANTA.FOG({
+            el: "#animated-background",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.0,
+            minWidth: 200.0,
+            highlightColor: 0x112541,
+            midtoneColor: 0x70737,
+            lowlightColor: 0x214,
+            baseColor: 0x7,
+            blurFactor: 0.90
           });
-        </script>
+        });
+      </script>
 
-        <!-- Vanta.js Initialization Script -->
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-            VANTA.FOG({
-              el: "#animated-background",
-              mouseControls: true,
-              touchControls: true,
-              gyroControls: false,
-              minHeight: 200.0,
-              minWidth: 200.0,
-              highlightColor: 0x112541,
-              midtoneColor: 0x70737,
-              lowlightColor: 0x214,
-              baseColor: 0x7,
-              blurFactor: 0.90
-            });
-          });
-        </script>
-
-        <!-- Navigation Menu -->
-        <div class="left-half">
-          <nav id="navn1">
-            <a href="#experience"
-              ><img src="img/briefcase.png" /><span class="nav-text"
-                >Experience</span
-              ></a
-            >
-            <a href="#projects"
-              ><img src="img/project.png" /><span class="nav-text"
-                >Projects</span
-              ></a
-            >
-            <!--
+      <!-- Navigation Menu -->
+      <div class="left-half">
+        <nav id="navn1">
+          <a href="#experience"><img src="img/briefcase.png" /><span class="nav-text">Experience</span></a>
+          <a href="#projects"><img src="img/project.png" /><span class="nav-text">Projects</span></a>
+          <!--
             <a href="#skills"
               ><img src="img/tools.png" /><span class="nav-text"
                 >Skills</span
               ></a>
           -->
-            
-            <a href="brad_ramnarinesingh_resume.pdf" target="_blank"
-              ><img src="img/resume.png" /><span class="nav-text"
-                >Resume</span
-              ></a
-            >
-          </nav>
 
-          <!-- Main Profile Card -->
-          <div class="content">
-            <div class="card">
-              <div class="content">
-                <div id="name">Brad Ramnarinesingh</div>
-                <div id="title">Computer Science Student</div>
-                <div id="loc"><i class="fa fa-map-marker"></i> Toronto</div>
-              </div>
-            </div>
-            <div id="social">
-              <div id="soctitle">Find me</div>
-              <a
-                href="https://www.linkedin.com/in/brad-ramnarinesingh/"
-                target="_blank"
-                ><i class="fa fa-linkedin fa-2x"></i
-              ></a>
-              <a
-                href="https://github.com/Bradramnarinesingh"
-                target="_blank"
-                ><i class="fa fa-github fa-2x"></i
-              ></a>
-              <a href="#" target="_blank"
-                ><i class="fa fa-twitter fa-2x"></i
-              ></a>
-            </div>
+          <a href="brad_ramnarinesingh_resume.pdf" target="_blank"><img src="img/resume.png" /><span
+              class="nav-text">Resume</span></a>
+        </nav>
 
-            <!-- Second Navigation Menu -->
-            <nav id="navn">
-              <a href="#home">HOME</a>
-              <a href="#experience">EXPERIENCE</a>
-              <a href="#projects">PROJECTS</a>
-              <!--<a href="#skills">SKILLS</a> -->
-              <a
-                style="font-weight: 900"
-                href="brad_ramnarinesingh_resume.pdf"
-                target="_blank"
-                >RESUME</a
-              >
-            </nav>
+        <!-- Main Profile Card -->
+        <div class="content">
+          <div class="card">
+            <div class="content">
+              <div id="name">Brad Ramnarinesingh</div>
+              <div id="title">Computer Science Student</div>
+              <div id="loc"><i class="fa fa-map-marker"></i> Toronto</div>
+            </div>
           </div>
+          <div id="social">
+            <div id="soctitle">Find me</div>
+            <a href="https://www.linkedin.com/in/brad-ramnarinesingh/" target="_blank"><i
+                class="fa fa-linkedin fa-2x"></i></a>
+            <a href="https://github.com/Bradramnarinesingh" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+            <a href="#" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+          </div>
+
+          <!-- Second Navigation Menu -->
+          <nav id="navn">
+            <a href="#home">HOME</a>
+            <a href="#experience">EXPERIENCE</a>
+            <a href="#projects">PROJECTS</a>
+            <!--<a href="#skills">SKILLS</a> -->
+            <a style="font-weight: 900" href="brad_ramnarinesingh_resume.pdf" target="_blank">RESUME</a>
+          </nav>
         </div>
+      </div>
 
-        <!-- Right Side Content -->
-        <div class="right-half">
-          <div class="right-side-content">
-            <!-- About Me Section -->
-            <div class="summary">
-              <p>
-                As a Computer Science student at the
-                <b>University of Toronto</b>, I have a strong background in
-                <b>software development</b> and <b>web design</b>. I excel in
-                <b>coding</b> and <b>problem-solving</b> and am looking to
-                contribute to <b>innovative projects</b> within a dynamic team.
-                I aim to apply my <b>technical skills</b> to make a
-                <b>meaningful impact</b> and continue growing professionally.
-              </p>
-            </div>
+      <!-- Right Side Content -->
+      <div class="right-half">
+        <div class="right-side-content">
+          <!-- About Me Section -->
+          <div class="summary">
+            <p>
+              As a Computer Science student at the
+              <b>University of Toronto</b>, I have a strong background in
+              <b>software development</b> and <b>web design</b>. I excel in
+              <b>coding</b> and <b>problem-solving</b> and am looking to
+              contribute to <b>innovative projects</b> within a dynamic team.
+              I aim to apply my <b>technical skills</b> to make a
+              <b>meaningful impact</b> and continue growing professionally.
+            </p>
+          </div>
 
-            <!-- Education Section 
+          <!-- Education Section 
                     <div class="sectiontitle">
                         <div class="heading" id="experience">EDUCATION</div>
                     </div>
@@ -206,78 +157,78 @@
                         <p>Computer Science, Mathematics, and Statistics (Expected in 2025)</p>
                     </div> -->
 
-            <!-- Experience Section -->
-            <div class="sectiontitle">
-              <div class="heading" id="experience">EXPERIENCE</div>
-            </div>
-            <div class="contentstyle">
-              <div class="header">Web Developer & Designer</div>
-              <ul>
-                <li>
-                  <b>Designed and developed</b> visually engaging,
-                  high-performance websites with a focus on
-                  <b>user-friendly</b> and <b>responsive layouts</b>.
-                </li>
-                <li>
-                  Proficient in <b>HTML</b>, <b>CSS</b>, and <b>JavaScript</b>;
-                  skilled in front-end development and creating interactive user
-                  interfaces.
-                </li>
-                <li>
-                  <b>Troubleshot and resolved</b> technical issues to ensure
-                  optimal website performance and enhance user experience.
-                </li>
-              </ul>
-            </div>
+          <!-- Experience Section -->
+          <div class="sectiontitle">
+            <div class="heading" id="experience">EXPERIENCE</div>
+          </div>
+          <div class="contentstyle">
+            <div class="header">Web Developer & Designer</div>
+            <ul>
+              <li>
+                <b>Designed and developed</b> visually engaging,
+                high-performance websites with a focus on
+                <b>user-friendly</b> and <b>responsive layouts</b>.
+              </li>
+              <li>
+                Proficient in <b>HTML</b>, <b>CSS</b>, and <b>JavaScript</b>;
+                skilled in front-end development and creating interactive user
+                interfaces.
+              </li>
+              <li>
+                <b>Troubleshot and resolved</b> technical issues to ensure
+                optimal website performance and enhance user experience.
+              </li>
+            </ul>
+          </div>
 
-            <!-- Projects Section -->
-            <div class="sectiontitle">
-              <div class="heading" id="projects">PROJECTS</div>
+          <!-- Projects Section -->
+          <div class="sectiontitle">
+            <div class="heading" id="projects">PROJECTS</div>
+          </div>
+          <div class="contentstyle">
+            <div class="header">
+              Data Analysis and House Price Prediction | Java
             </div>
-            <div class="contentstyle">
-              <div class="header">
-                Data Analysis and House Price Prediction | Java
-              </div>
-              <ul>
-                <li>
-                  Developed a Java-based House Price Calculator Program that
-                  accurately analyzes and predicts house prices using extensive
-                  datasets, implementing sophisticated data handling and
-                  error-checking techniques to ensure reliable outputs and
-                  providing insights into regional trends to aid market
-                  understanding.
-                </li>
-              </ul>
+            <ul>
+              <li>
+                Developed a Java-based House Price Calculator Program that
+                accurately analyzes and predicts house prices using extensive
+                datasets, implementing sophisticated data handling and
+                error-checking techniques to ensure reliable outputs and
+                providing insights into regional trends to aid market
+                understanding.
+              </li>
+            </ul>
+          </div>
+          <div class="contentstyle">
+            <div class="header">
+              Huffman Lossless Compression Program | Python
             </div>
-            <div class="contentstyle">
-              <div class="header">
-                Huffman Lossless Compression Program | Python
-              </div>
-              <ul>
-                <li>
-                  Worked on a reliable and efficient Huffman Lossless
-                  Compression algorithm in Python, focusing on optimal data
-                  compression through advanced programming techniques, robust
-                  error handling, and thorough testing to ensure data integrity
-                  and accurate decompression.
-                </li>
-              </ul>
-            </div>
-            <div class="contentstyle">
-              <div class="header">Phone Company Management System | Python</div>
-              <ul>
-                <li>
-                  Worked on a Python-based management system for a
-                  telecommunications company, optimizing workflow efficiency,
-                  enhancing billing accuracy with real-time event processing,
-                  and designing a GUI with advanced filters for comprehensive
-                  call data analysis, supporting better decision-making and
-                  service improvements.
-                </li>
-              </ul>
-            </div>
+            <ul>
+              <li>
+                Worked on a reliable and efficient Huffman Lossless
+                Compression algorithm in Python, focusing on optimal data
+                compression through advanced programming techniques, robust
+                error handling, and thorough testing to ensure data integrity
+                and accurate decompression.
+              </li>
+            </ul>
+          </div>
+          <div class="contentstyle">
+            <div class="header">Phone Company Management System | Python</div>
+            <ul>
+              <li>
+                Worked on a Python-based management system for a
+                telecommunications company, optimizing workflow efficiency,
+                enhancing billing accuracy with real-time event processing,
+                and designing a GUI with advanced filters for comprehensive
+                call data analysis, supporting better decision-making and
+                service improvements.
+              </li>
+            </ul>
+          </div>
 
-            <!-- Skills Section 
+          <!-- Skills Section 
             <div class="sectiontitle">
               <div class="heading" id="skills">TECHNICAL SKILLS</div>
             </div>
@@ -311,32 +262,8 @@
               new Date().getFullYear();
           </script>
         </div>
-
-        <!-- Time and Weather Widgets -->
       </div>
-
-      <!-- Preloader JavaScript Functionality -->
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          let loadEventFired = false;
-          setTimeout(function () {
-            if (loadEventFired) hidePreloader();
-            else loadEventFired = true;
-          }, 300);
-          window.addEventListener("load", function () {
-            if (loadEventFired) hidePreloader();
-            else loadEventFired = true;
-          });
-        });
-
-        function hidePreloader() {
-          var preloader = document.getElementById("preloader");
-          preloader.style.opacity = "0";
-          setTimeout(function () {
-            preloader.style.display = "none";
-          }, 1000);
-        }
-      </script>
     </div>
-  </body>
+</body>
+
 </html>
