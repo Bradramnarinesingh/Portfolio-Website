@@ -15,29 +15,6 @@ body {
   margin-left: 0vw;
 }
 
-/* Skeleton loading effect */
-.skeleton {
-  background: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-.skeleton-rect {
-  height: 20px;
-  width: 100%;
-  border-radius: 4px;
-  margin: 10px 0;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
 #animated-background {
   position: fixed;
   top: 0;
@@ -47,19 +24,6 @@ body {
   z-index: -1;
   /* Places the background behind other content */
   filter: blur(0px);
-}
-
-#glass-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  /*background: rgba(255, 255, 255, 0.027);*/ /* Semi-transparent background */
-  backdrop-filter: blur(25px); /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(25px); /* For Safari */
-  pointer-events: none; /* Allows clicks to pass through */
-  z-index: -1; /* Keeps it behind the main content but above the animated background */
 }
 
 #home {
@@ -466,16 +430,20 @@ footer {
 
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .contentstyle {
-    max-width: 80%;
+    max-width: 70%;
     font-size: 15px;
   }
   .summary {
-    max-width: 80%;
+    max-width: 70%;
     font-size: 15px;
   }
 
   .left-half nav a {
     margin: 10px 0px 8px 0px;
+  }
+
+  .left-half{
+    margin-left: 0px
   }
 }
 
@@ -620,6 +588,11 @@ footer {
     max-width: 100%;
     font-size: 14px;
     padding-top: 0px;
+    padding: 20px;
+  }
+
+  #animated-background{
+    filter: blur(100px);
   }
 
   #title {
