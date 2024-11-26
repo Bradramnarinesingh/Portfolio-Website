@@ -75,7 +75,6 @@ body {
   bottom: 0;
   text-align: center;
   padding: 20px;
-  padding-left: 40px;
   color: #fff;
   width: 38%;
   overflow-y: auto;
@@ -147,7 +146,6 @@ body {
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
     background-color 0.3s ease;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .content.visible {
@@ -332,7 +330,7 @@ li {
   font-weight: 000;
   text-align: left;
   letter-spacing: 2px;
-  max-width: 60%;
+  max-width: 55%;
   line-height: 2;
   font-weight: 000;
   text-align: left;
@@ -371,7 +369,7 @@ li {
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
     background-color 0.3s ease;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-  max-width: 60%;
+  max-width: 55%;
   border: 0.1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -465,9 +463,6 @@ footer {
   background-repeat: no-repeat;
   transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
 }
-.left-half {
-  margin-left: 70px;
-}
 
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .contentstyle {
@@ -519,21 +514,6 @@ footer {
     padding-bottom: 0px;
     background: none;
     margin-left: 0px;
-  }
-
-  .right-side-content {
-    padding: 40px;
-    padding-top: 0px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out,
-      background-color 0.3s ease;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-  }
-
-  .right-side-content.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
   }
 
   #navn1 {
@@ -609,6 +589,10 @@ footer {
   }
 
   .contentstyle {
+    max-width: 100%;
+  }
+
+  .summary{
     max-width: 100%;
   }
 }
