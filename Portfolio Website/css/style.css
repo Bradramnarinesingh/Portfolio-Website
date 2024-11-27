@@ -428,7 +428,7 @@ footer {
   transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
 }
 
-@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+@media screen and (min-device-width: 900px) and (max-device-width: 2500px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .contentstyle {
     max-width: 70%;
     font-size: 15px;
