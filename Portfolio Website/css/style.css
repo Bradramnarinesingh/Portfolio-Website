@@ -24,6 +24,7 @@ body {
   z-index: -1;
   /* Places the background behind other content */
   filter: blur(0px);
+  background-color: white;
 }
 
 #home {
