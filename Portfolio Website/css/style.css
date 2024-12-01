@@ -102,7 +102,6 @@ body {
 
 .content {
   max-width: 150%;
-  border-radius: 10px;
   padding: 30px;
   height: 93%;
   margin-top: 0px;
@@ -442,8 +441,13 @@ footer {
     margin: 10px 0px 8px 0px;
   }
 
-  .left-half{
-    margin-left: 0px
+  .left-half {
+    margin-left: 0px;
+  }
+
+  #animated-background {
+    --blur-factor: 0.8;
+    --zoom-level: 0.6;
   }
 }
 
@@ -499,6 +503,7 @@ footer {
     -webkit-backdrop-filter: blur(30px) saturate(100%);
     border-radius: 20px;
     -webkit-tap-highlight-color: transparent;
+    margin-bottom: 15px;
   }
 
   #navn1 a {
@@ -533,6 +538,10 @@ footer {
     display: none;
   }
 
+  .left-half nav a {
+    background: none;
+  }
+
   .right-half {
     width: 100%;
     background-attachment: scroll;
@@ -540,6 +549,7 @@ footer {
     padding: 10px;
     font-size: 14px;
     text-align: left;
+    margin-left: 0%;
   }
 
   .box a {
@@ -558,10 +568,16 @@ footer {
 
   .contentstyle {
     max-width: 100%;
+    margin: 40px;
   }
 
-  .summary{
+  .summary {
     max-width: 100%;
+    padding: 40px;
+  }
+
+  .heading {
+    padding-left: 40px;
   }
 }
 
@@ -589,10 +605,6 @@ footer {
     font-size: 14px;
     padding-top: 0px;
     padding: 20px;
-  }
-
-  #animated-background{
-    filter: blur(100px);
   }
 
   #title {
@@ -624,7 +636,9 @@ footer {
 
   #glass-overlay {
     backdrop-filter: blur(100px); /* Frosted glass effect */
+    background-color: black;
   }
+
   #home {
     flex-direction: column;
     overflow: hidden;
@@ -697,6 +711,7 @@ footer {
     padding-top: 0px;
     font-size: 14px;
     text-align: left;
+    margin-left: 0%;
   }
 
   .left-half navn1 a:hover {
@@ -704,7 +719,6 @@ footer {
   }
 
   .contentstyle {
-    border-radius: 10px;
     max-width: 88%; /* Adjust the width as desired */
     margin: 0 auto; /* Centers the element */
     margin-bottom: 35px;

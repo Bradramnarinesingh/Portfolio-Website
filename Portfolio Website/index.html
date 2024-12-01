@@ -72,18 +72,91 @@
       <!-- Vanta.js Initialization Script -->
       <script>
         document.addEventListener("DOMContentLoaded", function () {
-          VANTA.FOG({
-            el: "#animated-background",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 1000.0,
-            minWidth: 1000.0,
-            highlightColor: 0x161616,
-            midtoneColor: 0x13377b,
-            lowlightColor: 0x222f4c,
-            baseColor: 0x7,
-            blurFactor: 0.90
+          // Function to initialize VANTA.FOG with specific settings
+          function initVanta() {
+            // Destroy existing VANTA instance if any to prevent duplicates
+            if (window.vantaEffect) {
+              window.vantaEffect.destroy();
+            }
+
+            // Define media queries
+            const highDensityLargeScreen = window.matchMedia(
+              "screen and (min-width: 900px) and (max-width: 2500px) " +
+              "and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)"
+            );
+
+            const smallScreen = window.matchMedia(
+              "screen and (max-width: 1000px)"
+            );
+
+            // Determine which settings to apply based on screen size
+            let vantaSettings;
+
+            if (highDensityLargeScreen.matches) {
+              // Settings for high-density large screens
+              vantaSettings = {
+                el: "#animated-background",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                highlightColor: 0xb1a55,
+                midtoneColor: 0xc2341,
+                lowlightColor: 0x71c34,
+                baseColor: 0x9112f,
+                blurFactor: 0.90,
+                zoom: 0.30
+              };
+            } else if (smallScreen.matches) {
+              // Settings for screens 1000px and below
+              vantaSettings = {
+                el: "#animated-background",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                highlightColor: 0xb1a55,
+                midtoneColor: 0xc2341,
+                lowlightColor: 0x71c34,
+                baseColor: 0x9112f,
+                blurFactor: 0.9,
+                zoom: 0.3              // Custom value for small screens
+              };
+            } else {
+              // Default settings for all other screen sizes
+              vantaSettings = {
+                el: "#animated-background",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                highlightColor: 0xb1a55,
+                midtoneColor: 0xc2341,
+                lowlightColor: 0x71c34,
+                baseColor: 0x9112f,
+                blurFactor: 0.90,
+                zoom: 1             // Default zoom
+              };
+            }
+
+            // Initialize VANTA.FOG with the selected settings
+            window.vantaEffect = VANTA.FOG(vantaSettings);
+          }
+
+          // Initialize on load
+          initVanta();
+
+          // Optional: Re-initialize on window resize to handle dynamic changes
+          // Debounce to improve performance
+          let resizeTimeout;
+          window.addEventListener('resize', function () {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () {
+              initVanta();
+            }, 300); // Adjust timeout as needed
           });
         });
       </script>
@@ -134,20 +207,20 @@
 
       <!-- Right Side Content -->
       <div class="right-half">
-          <!-- About Me Section -->
-          <div class="summary">
-            <p>
-              As a Computer Science student at the
-              <b>University of Toronto</b>, I have a strong background in
-              <b>software development</b> and <b>web design</b>. I excel in
-              <b>coding</b> and <b>problem-solving</b> and am looking to
-              contribute to <b>innovative projects</b> within a dynamic team.
-              I aim to apply my <b>technical skills</b> to make a
-              <b>meaningful impact</b> and continue growing professionally.
-            </p>
-          </div>
+        <!-- About Me Section -->
+        <div class="summary">
+          <p>
+            As a Computer Science student at the
+            <b>University of Toronto</b>, I have a strong background in
+            <b>software development</b> and <b>web design</b>. I excel in
+            <b>coding</b> and <b>problem-solving</b> and am looking to
+            contribute to <b>innovative projects</b> within a dynamic team.
+            I aim to apply my <b>technical skills</b> to make a
+            <b>meaningful impact</b> and continue growing professionally.
+          </p>
+        </div>
 
-          <!-- Education Section 
+        <!-- Education Section 
                     <div class="sectiontitle">
                         <div class="heading" id="experience">EDUCATION</div>
                     </div>
@@ -156,111 +229,111 @@
                         <p>Computer Science, Mathematics, and Statistics (Expected in 2025)</p>
                     </div> -->
 
-          <!-- Experience Section -->
-          <div class="sectiontitle">
-            <div class="heading" id="experience">EXPERIENCE</div>
-          </div>
-          <div class="contentstyle">
-            <div class="header">Web Developer & Designer</div>
-            <ul>
-              <li>
-                <b>Designed and developed</b> visually engaging,
-                high-performance websites with a focus on
-                <b>user-friendly</b> and <b>responsive layouts</b>.
-              </li>
-              <li>
-                Proficient in <b>HTML</b>, <b>CSS</b>, and <b>JavaScript</b>;
-                skilled in front-end development and creating interactive user
-                interfaces.
-              </li>
-              <li>
-                <b>Troubleshot and resolved</b> technical issues to ensure
-                optimal website performance and enhance user experience.
-              </li>
-            </ul>
-          </div>
+        <!-- Experience Section -->
+        <div class="sectiontitle">
+          <div class="heading" id="experience">EXPERIENCE</div>
+        </div>
+        <div class="contentstyle">
+          <div class="header">Web Developer & Designer</div>
+          <ul>
+            <li>
+              <b>Designed and developed</b> visually engaging,
+              high-performance websites with a focus on
+              <b>user-friendly</b> and <b>responsive layouts</b>.
+            </li>
+            <li>
+              Proficient in <b>HTML</b>, <b>CSS</b>, and <b>JavaScript</b>;
+              skilled in front-end development and creating interactive user
+              interfaces.
+            </li>
+            <li>
+              <b>Troubleshot and resolved</b> technical issues to ensure
+              optimal website performance and enhance user experience.
+            </li>
+          </ul>
+        </div>
 
-          <!-- Projects Section -->
-          <div class="sectiontitle">
-            <div class="heading" id="projects">PROJECTS</div>
+        <!-- Projects Section -->
+        <div class="sectiontitle">
+          <div class="heading" id="projects">PROJECTS</div>
+        </div>
+        <div class="contentstyle">
+          <div class="header">
+            Travel AI App Development | Gemini LLM, Next.js, Neon PostgreSQL, APIs
           </div>
-          <div class="contentstyle">
-            <div class="header">
-              Travel AI App Development | Gemini LLM, Next.js, Neon PostgreSQL, APIs
-            </div>
-            <ul>
-              <li>
-                Interface: Developed an interactive, mobile-friendly web interface with Next.js for seamless user
-                experience across
-                devices.
-              </li>
+          <ul>
+            <li>
+              Interface: Developed an interactive, mobile-friendly web interface with Next.js for seamless user
+              experience across
+              devices.
+            </li>
 
-              <li> AI: Built a travel assistant app using Gemini LLM to generate personalized travel plans based on user
-                preferences and
-                budgets.
-              </li>
+            <li> AI: Built a travel assistant app using Gemini LLM to generate personalized travel plans based on user
+              preferences and
+              budgets.
+            </li>
 
-              <li> Backend: Integrated Neon PostgreSQL for efficient data management and a robust backend to handle
-                real-time queries
-                and user inputs
-              </li>
+            <li> Backend: Integrated Neon PostgreSQL for efficient data management and a robust backend to handle
+              real-time queries
+              and user inputs
+            </li>
 
-              <li>Features: Incorporated APIs for location-based services and traffic updates to enhance trip planning
-                accuracy and
-                convenience.
-              </li>
-            </ul>
+            <li>Features: Incorporated APIs for location-based services and traffic updates to enhance trip planning
+              accuracy and
+              convenience.
+            </li>
+          </ul>
+        </div>
+        <div class="contentstyle">
+          <div class="header">
+            ML House Price Prediction | Python, Scikit-Learn, Gradient Boosting, Pandas, Matplotlib
           </div>
-          <div class="contentstyle">
-            <div class="header">
-              ML House Price Prediction | Python, Scikit-Learn, Gradient Boosting, Pandas, Matplotlib
-            </div>
-            <ul>
-              <li>
-                Model: Built a predictive model using Python and Scikit-Learn Gradient Boosting Regressor, achieving a
-                Mean Absolute Error of $33,429.72 for house price forecasting.
-              </li>
+          <ul>
+            <li>
+              Model: Built a predictive model using Python and Scikit-Learn Gradient Boosting Regressor, achieving a
+              Mean Absolute Error of $33,429.72 for house price forecasting.
+            </li>
 
-              <li>
-                Processing: Employed Pandas for data cleaning and feature engineering, including price change
-                calculations and normalization with StandardScaler, enhancing model performance by capturing market
-                trends.
-              </li>
-              <li>
-                Algorithm: Developed a conservative growth algorithm incorporating dynamic decay factors and sanity
-                checks to ensure reliable and realistic long-term price predictions
-              </li>
-              <li> Backend: Integrated Neon PostgreSQL for efficient data management and a robust backend to handle
-                real-time queries
-                and user inputs
-              </li>
-              <li>
-                Visualization: Utilized Matplotlib to create comprehensive graphs showcasing historical data and future
-                price projections, facilitating better interpretation and presentation of results.
-              </li>
-            </ul>
-          </div>
-          <div class="contentstyle">
-            <div class="header">Portfolio Website | HTML/CSS, JavaScript</div>
-            <ul>
-              <li>
-                Frontend Development: Designed and built a personal portfolio website using HTML, CSS, and JavaScript to
-                effectively showcase projects and skills.
-              </li>
-              <li>
-                Responsive Design: Implemented responsive web design principles to ensure consistent performance and
-                appearance
-                across various devices and browsers.
-              </li>
-              <li>
-                Interactive Features: Added interactive elements such as animations and hover effects to enhance user
-                engagement
-                and website appeal.
-              </li>
-            </ul>
-          </div>
+            <li>
+              Processing: Employed Pandas for data cleaning and feature engineering, including price change
+              calculations and normalization with StandardScaler, enhancing model performance by capturing market
+              trends.
+            </li>
+            <li>
+              Algorithm: Developed a conservative growth algorithm incorporating dynamic decay factors and sanity
+              checks to ensure reliable and realistic long-term price predictions
+            </li>
+            <li> Backend: Integrated Neon PostgreSQL for efficient data management and a robust backend to handle
+              real-time queries
+              and user inputs
+            </li>
+            <li>
+              Visualization: Utilized Matplotlib to create comprehensive graphs showcasing historical data and future
+              price projections, facilitating better interpretation and presentation of results.
+            </li>
+          </ul>
+        </div>
+        <div class="contentstyle">
+          <div class="header">Portfolio Website | HTML/CSS, JavaScript</div>
+          <ul>
+            <li>
+              Frontend Development: Designed and built a personal portfolio website using HTML, CSS, and JavaScript to
+              effectively showcase projects and skills.
+            </li>
+            <li>
+              Responsive Design: Implemented responsive web design principles to ensure consistent performance and
+              appearance
+              across various devices and browsers.
+            </li>
+            <li>
+              Interactive Features: Added interactive elements such as animations and hover effects to enhance user
+              engagement
+              and website appeal.
+            </li>
+          </ul>
+        </div>
 
-          <!-- Skills Section 
+        <!-- Skills Section 
             <div class="sectiontitle">
               <div class="heading" id="skills">TECHNICAL SKILLS</div>
             </div>
@@ -287,12 +360,12 @@
             </div>
           </div>
           -->
-          <!-- Footer Section -->
-          <footer></footer>
-          <script>
-            document.getElementById("year").innerHTML =
-              new Date().getFullYear();
-          </script>
+        <!-- Footer Section -->
+        <footer></footer>
+        <script>
+          document.getElementById("year").innerHTML =
+            new Date().getFullYear();
+        </script>
       </div>
     </div>
 </body>
