@@ -211,8 +211,9 @@ body {
   padding-right: 40px;
   min-height: 100vh;
   overflow-y: auto;
-  padding-left: 43%;
+  margin-left: 43%;
   padding-top: 60px;
+  padding-left: 44px;
 }
 
 .heading {
