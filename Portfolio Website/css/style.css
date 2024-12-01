@@ -78,7 +78,6 @@ body {
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
     background-color 0.3s ease;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
   padding: 14px 14px 50px 14px;
 }
 
@@ -305,7 +304,6 @@ li {
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
     background-color 0.3s ease;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .summary.visible {
