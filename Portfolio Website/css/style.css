@@ -504,6 +504,7 @@ footer {
     border-radius: 20px;
     -webkit-tap-highlight-color: transparent;
     margin-bottom: 15px;
+    border: 0.1px solid rgba(255, 255, 255, 0.3);
   }
 
   #navn1 a {
@@ -605,6 +606,10 @@ footer {
     font-size: 14px;
     padding-top: 0px;
     padding: 20px;
+  }
+
+  #animated-background {
+    filter: blur(100px);
   }
 
   #title {
