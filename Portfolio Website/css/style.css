@@ -608,10 +608,6 @@ footer {
     padding: 20px;
   }
 
-  #animated-background {
-    filter: blur(100px);
-  }
-
   #title {
     font-size: 18px;
   }
@@ -637,11 +633,6 @@ footer {
   .content {
     margin-left: 0%;
     padding: 14px;
-  }
-
-  #glass-overlay {
-    backdrop-filter: blur(100px); /* Frosted glass effect */
-    background-color: black;
   }
 
   #home {
