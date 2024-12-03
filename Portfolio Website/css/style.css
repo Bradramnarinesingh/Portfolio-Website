@@ -425,11 +425,11 @@ footer {
 @media screen and (min-device-width: 900px) and (max-device-width: 2500px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .contentstyle {
     max-width: 70%;
-    font-size: 15px;
+    font-size: 13.5px;
   }
   .summary {
     max-width: 70%;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .left-half nav a {
