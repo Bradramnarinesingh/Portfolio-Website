@@ -1,6 +1,7 @@
 html {
   overflow: hidden;
   height: 100%;
+  font-family: "Libre Franklin", sans-serif;
 }
 
 body {
@@ -33,7 +34,6 @@ body {
 }
 
 .left-half {
-  font-family: "Libre Franklin", sans-serif;
   position: fixed;
   left: 0;
   top: 0;
@@ -54,7 +54,6 @@ body {
 }
 
 #soctitle {
-  font-family: "Libre Franklin", sans-serif;
   color: #e6e6e6;
   font-size: 20px;
   display: block;
@@ -91,7 +90,6 @@ body {
 }
 
 .card {
-  font-family: "Libre Franklin", sans-serif;
   font-weight: 00;
   max-width: 100%;
   margin: auto;
@@ -136,7 +134,6 @@ body {
 }
 
 #name {
-  font-family: "Libre Franklin", sans-serif;
   font-weight: 500;
   text-align: left;
   white-space: nowrap;
@@ -144,7 +141,6 @@ body {
 }
 
 #title {
-  font-family: "Libre Franklin", sans-serif;
   color: #e6e6e6;
   font-size: 20px;
   display: block;
@@ -202,7 +198,6 @@ body {
 }
 
 .right-half {
-  font-family: "Libre Franklin", sans-serif;
   flex: 1;
   background-size: cover;
   text-align: right;
@@ -299,7 +294,7 @@ li {
   font-weight: 000;
   text-align: left;
   letter-spacing: 1px;
-  font-size: 16.5px;
+  font-size: 14px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
@@ -334,6 +329,7 @@ li {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
   max-width: 55%;
   border: 0.1px solid rgba(255, 255, 255, 0.3);
+  font-size: 13px;
 }
 
 .contentstyle.visible {
@@ -390,7 +386,6 @@ li {
 }
 
 .box a {
-  font-family: "Libre Franklin", sans-serif;
   font-size: 18px;
   margin-left: 10px;
   font-weight: 500;
@@ -683,7 +678,6 @@ footer {
   }
 
   #name {
-    font-family: "Libre Franklin", sans-serif;
     text-align: left;
     font-size: 1.5rem;
     letter-spacing: -1px;
@@ -691,7 +685,6 @@ footer {
   }
 
   .subheading {
-    font-family: "Libre Franklin", sans-serif;
     font-size: 1rem;
     font-weight: 500;
     text-align: left;
