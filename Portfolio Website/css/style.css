@@ -1,7 +1,9 @@
 html {
   overflow: hidden;
   height: 100%;
-  font-family: "Libre Franklin", sans-serif;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -90,7 +92,6 @@ body {
 }
 
 .card {
-  font-weight: 00;
   max-width: 100%;
   margin: auto;
   text-align: left;
@@ -99,6 +100,7 @@ body {
 }
 
 .content {
+  text-align: left;
   max-width: 150%;
   padding: 30px;
   height: 93%;
@@ -134,17 +136,16 @@ body {
 }
 
 #name {
-  font-weight: 500;
-  text-align: left;
   white-space: nowrap;
   overflow: hidden;
+  font-weight: 700;
 }
 
 #title {
   color: #e6e6e6;
   font-size: 20px;
   display: block;
-  margin-block-start: 1em;
+  margin-block-start: 0.5em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
@@ -212,7 +213,7 @@ body {
 
 .heading {
   opacity: 1;
-  font-size: 18px;
+  font-size: 22px;
   padding-top: 25px;
   padding-left: 15px;
   padding-right: 15px;
@@ -220,13 +221,13 @@ body {
   text-align: left;
   z-index: -1;
   color: white;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-underline-offset: 5.5px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out,
     background-color 0.3s ease;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .heading.visible {
@@ -264,15 +265,15 @@ li {
 }
 
 .cursor-glow {
-  width: 250px;
-  height: 250px;
+  width: 500px;
+  height: 500px;
   border-radius: 30%;
   position: absolute;
   pointer-events: none;
   background-color: transparent;
   background-image: radial-gradient(
     circle,
-    rgb(255 255 255 / 6%) 0%,
+    rgb(255 255 255 / 5%) 0%,
     transparent 70%
   );
   transform: translate(-50%, -50%);
@@ -491,7 +492,7 @@ footer {
     transform: translateX(-50%);
     bottom: 0;
     z-index: 2;
-    padding: 10px;
+    padding: 6px;
     position: fixed;
     background-color: rgb(12 21 51 / 84%);
     backdrop-filter: blur(10px) saturate(100%);
@@ -499,12 +500,16 @@ footer {
     border-radius: 20px;
     -webkit-tap-highlight-color: transparent;
     margin-bottom: 15px;
-    border: 0.1px solid rgba(255, 255, 255, 0.3);
+    border: 0.1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  #navn1.hidden {
+    transform: translateY(-100%);
   }
 
   #navn1 a {
     color: white;
-    margin: 0 10px;
+    margin: -4px 10px;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
     transition: transform 0.3s ease;
@@ -516,6 +521,7 @@ footer {
     filter: invert(1);
     -webkit-tap-highlight-color: transparent;
     transition: transform 0.3s ease;
+    margin-bottom: -10px;
   }
 
   .nav-text {
@@ -526,8 +532,8 @@ footer {
   }
 
   #navn1 a.active-nav-item {
-    transform: scale(1.15);
-    opacity: 0.6;
+    transform: scale(1.05);
+    opacity: 0.8;
   }
 
   .left-half nav {
@@ -600,7 +606,7 @@ footer {
     max-width: 100%;
     font-size: 14px;
     padding-top: 0px;
-    padding: 20px;
+    padding: 18px;
   }
 
   #title {
@@ -612,7 +618,7 @@ footer {
   }
 
   #social {
-    text-align: left;
+    text-align: center;
     position: relative;
     padding-top: 30px;
     padding-bottom: 0px;
@@ -626,8 +632,8 @@ footer {
   }
 
   .content {
-    margin-left: 0%;
     padding: 14px;
+    text-align: center;
   }
 
   #home {
@@ -638,6 +644,7 @@ footer {
   .card {
     border-radius: 10px;
     padding: 3px 0px 3px;
+    text-align: center;
   }
 
   .left-half {
@@ -673,12 +680,7 @@ footer {
     max-width: 38%;
   }
 
-  #loc {
-    margin-left: 0px;
-  }
-
   #name {
-    text-align: left;
     font-size: 1.5rem;
     letter-spacing: -1px;
     margin-top: 25px;
