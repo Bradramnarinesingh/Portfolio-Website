@@ -494,18 +494,19 @@ footer {
     z-index: 2;
     padding: 6px;
     position: fixed;
-    background-color: rgb(12 21 51 / 84%);
+    background-color: rgba(12, 21, 51, 0.84);
     backdrop-filter: blur(10px) saturate(100%);
-    -webkit-backdrop-filter: blur(30px) saturate(100%);
     border-radius: 20px;
-    -webkit-tap-highlight-color: transparent;
     margin-bottom: 15px;
     border: 0.1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease-in-out;
   }
-
+  
   #navn1.hidden {
-    transform: translateY(-100%);
+    transform: translate(-50%, 100%); /* moves navbar below the viewport */
   }
+  
+  
 
   #navn1 a {
     color: white;
