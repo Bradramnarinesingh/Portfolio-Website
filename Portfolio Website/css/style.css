@@ -502,13 +502,11 @@ footer {
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Combine transform and opacity transitions */
     opacity: 1; /* Default is fully visible */
   }
-  
+
   #navn1.hidden {
     transform: translate(-50%, 100%); /* Moves navbar below the viewport */
     opacity: 0; /* Makes the navbar fully transparent */
   }
-  
-  
 
   #navn1 a {
     color: white;
