@@ -640,6 +640,10 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     font-size: 18px;
   }
 
+  .cursor-glow {
+    display: none;
+  }
+
   #social {
     text-align: center;
     position: relative;
