@@ -384,13 +384,15 @@ footer {
   padding-bottom: 50px;
 }
 
-@media screen and (min-device-width: 900px) and (max-device-width: 2500px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+@media screen
+and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .contentstyle {
-    max-width: 70%;
+    max-width: 85%;
     font-size: 13.5px;
+    padding: 5px;
   }
   .summary {
-    max-width: 70%;
+    max-width: 85%;
     font-size: 14px;
   }
 
@@ -408,10 +410,7 @@ footer {
   }
 }
 
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
+@media (max-width: 900px) {
   .cursor-glow {
     box-shadow: none;
     border: none;
@@ -509,6 +508,11 @@ and (orientation : landscape) {
     font-size: 14px;
     text-align: left;
     margin-left: 0%;
+  }
+
+  .left-half nav a {
+    margin: 10px 0 8px 0;
+    background: none;
   }
 
   .box a {
