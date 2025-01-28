@@ -474,7 +474,7 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     background-color: rgba(12, 21, 51, 0.84);
     backdrop-filter: blur(10px) saturate(100%);
     border-radius: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border: 0.1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 1;
@@ -500,12 +500,13 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     -webkit-tap-highlight-color: transparent;
     transition: transform 0.3s ease;
     margin-bottom: -10px;
+    padding-bottom: 8px;
   }
 
   .nav-text {
     display: inline;
     color: white;
-    font-size: 8px;
+    font-size: 10px;
     transition: font-size 0.3s ease;
   }
 
@@ -636,12 +637,16 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     padding: 18px;
   }
 
+  .nav-text {
+    font-size: 8px;
+  }
+
   #title {
     font-size: 18px;
   }
 
   .cursor-glow {
-    display: none;
+    display: none; # always leave off on mobile
   }
 
   #social {
@@ -702,6 +707,7 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     width: 25px;
     filter: invert(1);
     -webkit-tap-highlight-color: transparent;
+    padding-bottom: 5px;
   }
 
   #navn1 {

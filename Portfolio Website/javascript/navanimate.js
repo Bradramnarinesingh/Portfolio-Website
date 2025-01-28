@@ -12,7 +12,7 @@ function handleHideShow() {
   // Show navbar again after 300 ms of no "scroll/move" activity
   scrollTimeout = setTimeout(() => {
     navbar.classList.remove('hidden');
-  }, 300);
+  }, 500);
 }
 
 // Listen for actual scroll
