@@ -40,13 +40,14 @@ body {
   top: 0;
   bottom: 0;
   text-align: center;
-  padding: 20px;
+  padding: 20px 20px 20px 0px;
   color: #fff;
-  width: 38%;
+  max-width: 50%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
+  margin-left: 15%;
+  z-index: 0;
 }
 
 #images {
@@ -74,7 +75,7 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease;
-  padding: 14px 14px 50px 14px;
+  padding: 14px 14px 50px 0px;
 }
 
 #social.visible {
@@ -88,7 +89,7 @@ body {
 
 .card {
   max-width: 100%;
-  margin: auto;
+  margin: 0;
   text-align: left;
   height: auto;
   width: 100%;
@@ -97,7 +98,7 @@ body {
 .content {
   text-align: left;
   max-width: 150%;
-  padding: 30px;
+  padding: 60px 30px 30px 0px;
   height: 93%;
   margin-top: 0px;
   opacity: 0;
@@ -155,7 +156,7 @@ body {
   text-decoration: none;
   font-weight: bold;
   text-align: left;
-  padding: 15px 15px 10px 30px;
+  padding: 15px 15px 10px 0px;
   width: 30%;
   letter-spacing: 1.5px;
   background: linear-gradient(to right, rgb(113 229 229 / 0%), #2563eb69),
@@ -193,7 +194,7 @@ body {
   padding-right: 40px;
   min-height: 100vh;
   overflow-y: auto;
-  margin-left: 43%;
+  margin-left: 50%;
   padding-top: 60px;
   padding-left: 44px;
 }
@@ -386,11 +387,23 @@ footer {
 
 @media screen
 and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .right-half {
+    margin-left: 50%;
+}
+.left-half {
+    width: 50%;
+  }
+
   .contentstyle {
     max-width: 85%;
     font-size: 13.5px;
     padding: 5px;
   }
+
+  .content {
+    margin-left: 15%;
+    padding: 60px 30px 30px 0px;
+}
   .summary {
     max-width: 85%;
     font-size: 14px;
@@ -408,6 +421,7 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     --blur-factor: 0.8;
     --zoom-level: 0.6;
   }
+
 }
 
 @media (max-width: 900px) {
