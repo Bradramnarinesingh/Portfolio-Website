@@ -47,7 +47,6 @@ body {
   display: flex;
   flex-direction: column;
   margin-left: 15%;
-  z-index: 0;
 }
 
 #images {
@@ -561,6 +560,54 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
   .heading {
     padding-left: 40px;
   }
+
+  .content {
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Align items horizontally */
+    text-align: center; /* Center-align text within */
+    width: auto; /* Adjust to content width */
+    margin: 0 auto; /* Center the content */
+    box-sizing: border-box; /* Prevent padding from affecting layout */
+}
+
+
+.left-half {
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Stack elements vertically */
+  width: 100%; /* Full container width */
+  text-align: center; /* Align text inside container */
+  box-sizing: border-box; /* Include padding in width/height */
+  padding: 0; /* Remove unnecessary padding */
+  margin: 0 auto; /* Remove conflicting margins */
+}
+
+
+
+.card {
+  max-width: 100%; /* Prevent the card from overflowing */
+  text-align: center; /* Align content inside the card */
+  height: auto; /* Adjust height to content */
+  margin: auto; /* Center the card */
+  padding: 20px; /* Add padding inside the card */
+  box-sizing: border-box; /* Ensure padding doesn't break layout */
+  width: 100%; /* Keep it responsive and prevent overflow */
+}
+
+#soctitle {
+  display: none;
+}
+
+#social {
+  padding-top: 0px;
+}
+
+
+
+
 }
 
 @media (max-width: 637px) {
@@ -614,6 +661,7 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
   .content {
     padding: 14px;
     text-align: center;
+    margin: 0;
   }
 
   #home {
@@ -622,18 +670,26 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
   }
 
   .card {
-    border-radius: 10px;
-    padding: 3px 0px 3px;
-    text-align: center;
+    max-width: 100%; /* Prevent the card from overflowing */
+    text-align: center; /* Align content inside the card */
+    height: auto; /* Adjust height to content */
+    margin: auto; /* Center the card */
+    padding: 20px; /* Add padding inside the card */
+    box-sizing: border-box; /* Ensure padding doesn't break layout */
+    width: 100%; /* Keep it responsive and prevent overflow */
   }
 
   .left-half {
-    position: relative;
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
-    padding: 0;
-    background: none;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack elements vertically */
+    width: 100%; /* Full container width */
+    text-align: center; /* Align text inside container */
+    box-sizing: border-box; /* Include padding in width/height */
+    padding: 0; /* Remove unnecessary padding */
+    margin: 0 auto; /* Remove conflicting margins */
+    max-width: 150%;
   }
 
   .left-half nav a {
@@ -729,4 +785,5 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     opacity: 1;
     transform: translateY(0);
   }
+  
 }
