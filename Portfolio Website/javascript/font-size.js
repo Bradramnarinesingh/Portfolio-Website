@@ -5,7 +5,7 @@ function adjustFontSize() {
     let fontSize = maxFontSize;
 
     // Check if the device width is less than or equal to 768px (common breakpoint for mobile)
-    if (window.innerWidth <= 1200) {
+    if (window.innerWidth <= 1700) {
         maxFontSize = 30; // Maximum font size for mobile
     }
 
