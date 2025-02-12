@@ -13,6 +13,12 @@
     gtag("config", "G-Q6C6769Y5E");
   </script>
 
+  <style>
+    body {
+      background: black !important;
+    }
+  </style>
+
   <!-- External JavaScript Files -->
   <script src="javascript/cursor.js"></script>
   <script src="javascript/nav.js"></script>
@@ -20,6 +26,7 @@
   <script src="javascript/intersectionObserver.js"></script>
   <script src="javascript/navanimate.js"></script>
   <script src="javascript/vanta.js"></script>
+  <script src="javascript/preloader.js"></script>
 
 
   <!-- Vanta.js and p5.js using CDN for Background Animation -->
@@ -59,6 +66,14 @@
 </head>
 
 <body>
+
+  <!-- Preloader Overlay -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+
+
   <div id="content-wrapper">
 
     <!-- Animated Background -->
@@ -83,10 +98,10 @@
         <!-- Main Profile Card -->
         <div class="content">
           <div class="card">
-              <div id="name">Brad Ramnarinesingh</div>
-              <div id="title">Computer Science Student</div>
-              <div id="loc"><i class="fa fa-map-marker"></i> Toronto</div>
-            </div>
+            <div id="name">Brad Ramnarinesingh</div>
+            <div id="title">Computer Science Student</div>
+            <div id="loc"><i class="fa fa-map-marker"></i> Toronto</div>
+          </div>
 
           <div id="social">
             <div id="soctitle">Find me</div>
@@ -108,130 +123,132 @@
       </div>
     </div>
 
-      <!-- Right Side Content -->
-      <div class="right-half">
-        <!-- About Me Section -->
-        <div class="summary">
-          <p>
-            As a Computer Science student at the
-            <b>University of Toronto</b>, I have a strong background in
-            <b>software development</b> and <b>web design</b>. I excel in
-            <b>coding</b> and <b>problem-solving</b> and am looking to
-            contribute to <b>innovative projects</b> within a dynamic team.
-            I aim to apply my <b>technical skills</b> to make a
-            <b>meaningful impact</b> and continue growing professionally.
-          </p>
-        </div>
+    <!-- Right Side Content -->
+    <div class="right-half">
+      <!-- About Me Section -->
+      <div class="summary">
+        <p>
+          As a Computer Science student at the
+          <b>University of Toronto</b>, I have a strong background in
+          <b>software development</b> and <b>web design</b>. I excel in
+          <b>coding</b> and <b>problem-solving</b> and am looking to
+          contribute to <b>innovative projects</b> within a dynamic team.
+          I aim to apply my <b>technical skills</b> to make a
+          <b>meaningful impact</b> and continue growing professionally.
+        </p>
+      </div>
 
-        <!-- Education Section -->
-        <div class="sectiontitle">
-          <div class="heading" id="education">EDUCATION</div>
-        </div>
-        <div class="contentstyle">
-          <div class="header">University of Toronto</div>
-          <p>Bachelor of Science in Computer Science</p>
-          <p><i>2021 - Present</i></p>
-          <ul>
-            <li>Completed coursework in data structures, algorithms, software engineering, probability theory, statistical inference, and linear algebra.</li>
-            <li>Engaged in collaborative projects focusing on machine learning applications and statistical data analysis.</li>
-            <li>Maintained a strong academic record throughout the program.</li>
+      <!-- Education Section -->
+      <div class="sectiontitle">
+        <div class="heading" id="education">EDUCATION</div>
+      </div>
+      <div class="contentstyle">
+        <div class="header">University of Toronto</div>
+        <p>Bachelor of Science in Computer Science</p>
+        <p><i>2021 - Present</i></p>
+        <ul>
+          <li>Completed coursework in data structures, algorithms, software engineering, probability theory, statistical
+            inference, and linear algebra.</li>
+          <li>Engaged in collaborative projects focusing on machine learning applications and statistical data analysis.
+          </li>
+          <li>Maintained a strong academic record throughout the program.</li>
+        </ul>
+      </div>
+
+      <!-- Experience Section -->
+      <div class="sectiontitle">
+        <div class="heading" id="experience">EXPERIENCE</div>
+      </div>
+      <div class="contentstyle">
+        <div class="header">Web Developer & Designer</div>
+        <p>
+          Skilled in front-end development, I design and develop visually engaging, high-performance websites with
+          user-friendly, responsive layouts. Proficient in HTML, CSS, and JavaScript, I create interactive user
+          interfaces and effectively troubleshoot technical issues to ensure optimal website performance and enhance
+          the overall user experience.
           </ul>
-        </div>
+      </div>
 
-        <!-- Experience Section -->
-        <div class="sectiontitle">
-          <div class="heading" id="experience">EXPERIENCE</div>
+      <!-- Projects Section -->
+      <div class="sectiontitle">
+        <div class="heading" id="projects">PROJECTS</div>
+      </div>
+      <div class="contentstyle">
+        <div class="header">
+          AI Travel App | Gemini LLM, Next.js, Neon PostgreSQL, APIs
         </div>
-        <div class="contentstyle">
-          <div class="header">Web Developer & Designer</div>
-          <p>
-            Skilled in front-end development, I design and develop visually engaging, high-performance websites with
-            user-friendly, responsive layouts. Proficient in HTML, CSS, and JavaScript, I create interactive user
-            interfaces and effectively troubleshoot technical issues to ensure optimal website performance and enhance
-            the overall user experience.
-            </ul>
-        </div>
-
-        <!-- Projects Section -->
-        <div class="sectiontitle">
-          <div class="heading" id="projects">PROJECTS</div>
-        </div>
-        <div class="contentstyle">
-          <div class="header">
-            AI Travel App | Gemini LLM, Next.js, Neon PostgreSQL, APIs
-          </div>
-          <p>Developed an interactive, mobile-friendly web interface with Next.js to ensure a seamless user experience
-            across devices and created a travel assistant app using Gemini LLM to generate personalized travel plans
-            based on user preferences and budgets. Integrated Neon PostgreSQL for efficient data management,
-            establishing a robust backend capable of handling real-time queries and user inputs. Additionally,
-            incorporated APIs for location-based services and traffic updates to enhance trip planning accuracy and
-            convenience.
-          </p>
-        </div>
-        <div class="contentstyle" 
-        onclick="window.open('https://github.com/Bradramnarinesingh/House-Prices-Prediction', '_blank')" 
+        <p>Developed an interactive, mobile-friendly web interface with Next.js to ensure a seamless user experience
+          across devices and created a travel assistant app using Gemini LLM to generate personalized travel plans
+          based on user preferences and budgets. Integrated Neon PostgreSQL for efficient data management,
+          establishing a robust backend capable of handling real-time queries and user inputs. Additionally,
+          incorporated APIs for location-based services and traffic updates to enhance trip planning accuracy and
+          convenience.
+        </p>
+      </div>
+      <div class="contentstyle"
+        onclick="window.open('https://github.com/Bradramnarinesingh/House-Prices-Prediction', '_blank')"
         style="cursor: pointer;">
-     <div class="header">
-       <span class="arrow-icon">
-         <i class="fas fa-arrow-up-right-from-square"></i>
-       </span>
-       ML House Price Prediction | Python, Scikit-Learn, Gradient Boosting, Pandas, Matplotlib
-     </div>
-     <p>
-       Developed a house price forecasting model using Python and Scikit-Learn's Gradient Boosting Regressor,
-       achieving a Mean Absolute Error of $33,429.72. Utilized Pandas for data cleaning and feature engineering,
-       including price change calculations and StandardScaler normalization to capture market trends. Created a
-       conservative growth algorithm with dynamic decay factors and sanity checks for reliable long-term
-       predictions. Integrated Neon PostgreSQL for efficient data management and a robust backend handling
-       real-time queries. Employed Matplotlib to visualize historical data and future price projections, enhancing
-       result interpretation and presentation.
-     </p>
-   </div>
-   
-        <div class="contentstyle">
-          <div class="header">Portfolio Website | HTML/CSS, JavaScript</div>
-          <p>
-            Designed and built a personal portfolio website using HTML, CSS, and JavaScript to effectively showcase
-            projects and skills. Implemented responsive design principles to ensure consistent performance and
-            appearance across various devices and browsers. Incorporated interactive elements such as animations and
-            hover effects to enhance user engagement and website appeal.
-          </p>
+        <div class="header">
+          <span class="arrow-icon">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </span>
+          ML House Price Prediction | Python, Scikit-Learn, Gradient Boosting, Pandas, Matplotlib
         </div>
+        <p>
+          Developed a house price forecasting model using Python and Scikit-Learn's Gradient Boosting Regressor,
+          achieving a Mean Absolute Error of $33,429.72. Utilized Pandas for data cleaning and feature engineering,
+          including price change calculations and StandardScaler normalization to capture market trends. Created a
+          conservative growth algorithm with dynamic decay factors and sanity checks for reliable long-term
+          predictions. Integrated Neon PostgreSQL for efficient data management and a robust backend handling
+          real-time queries. Employed Matplotlib to visualize historical data and future price projections, enhancing
+          result interpretation and presentation.
+        </p>
+      </div>
 
-        <!-- Skills Section-->
-        <div class="sectiontitle">
-          <div class="heading" id="skills">TECHNICAL SKILLS</div>
-        </div>
-        <div class="contentstyle">
-          <div class="header">Languages</div>
-          <div class="responsivegrid">
-            <div class="box">
-              <div>
-                <i class="fa-brands fa-python icon"></i><a> Python</a>
-              </div>
+      <div class="contentstyle">
+        <div class="header">Portfolio Website | HTML/CSS, JavaScript</div>
+        <p>
+          Designed and built a personal portfolio website using HTML, CSS, and JavaScript to effectively showcase
+          projects and skills. Implemented responsive design principles to ensure consistent performance and
+          appearance across various devices and browsers. Incorporated interactive elements such as animations and
+          hover effects to enhance user engagement and website appeal.
+        </p>
+      </div>
+
+      <!-- Skills Section-->
+      <div class="sectiontitle">
+        <div class="heading" id="skills">TECHNICAL SKILLS</div>
+      </div>
+      <div class="contentstyle">
+        <div class="header">Languages</div>
+        <div class="responsivegrid">
+          <div class="box">
+            <div>
+              <i class="fa-brands fa-python icon"></i><a> Python</a>
             </div>
-            <div class="box">
-              <div><i class="fa-brands fa-java icon"></i><a> Java</a></div>
-            </div>
-            <div class="box">
-              <div><i class="fa-brands fa-html5 icon"></i><a> HTML</a></div>
-            </div>
-            <div class="box">
-              <div>
-                <i class="fa-brands fa-css3-alt icon"></i><a> CSS</a>
-              </div>
+          </div>
+          <div class="box">
+            <div><i class="fa-brands fa-java icon"></i><a> Java</a></div>
+          </div>
+          <div class="box">
+            <div><i class="fa-brands fa-html5 icon"></i><a> HTML</a></div>
+          </div>
+          <div class="box">
+            <div>
+              <i class="fa-brands fa-css3-alt icon"></i><a> CSS</a>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Footer Section -->
-      <footer></footer>
-      <script>
-        document.getElementById("year").innerHTML =
-          new Date().getFullYear();
-      </script>
     </div>
+
+    <!-- Footer Section -->
+    <footer></footer>
+    <script>
+      document.getElementById("year").innerHTML =
+        new Date().getFullYear();
+    </script>
+  </div>
   </div>
 </body>
 
