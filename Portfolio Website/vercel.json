@@ -1,10 +1,6 @@
 {
-    "static": {
-      "directory": "public"
-    },
     "routes": [
-      { "src": "/files/(.*)", "dest": "/public/files/$1" },
-      { "src": "/img/(.*)", "dest": "/public/img/$1" }
+      { "src": "/", "dest": "/src/index.html" }
     ]
   }
   
