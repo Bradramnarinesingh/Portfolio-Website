@@ -211,6 +211,35 @@
     scroll-behavior: smooth;
   }
 
+  .right-half {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  .contentstyle {
+    width: 100%;
+    max-width: 88%;
+    margin: 0 auto 35px auto;
+    box-sizing: border-box;
+  }
+
+  .left-half {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
   .summary {
     max-width: 100%;
     font-size: 14px;
@@ -265,19 +294,6 @@
     width: 100%;
   }
 
-  .left-half {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 150%;
-  }
-
   .left-half nav a {
     width: 35%;
     padding: 5px;
@@ -313,26 +329,8 @@
     padding-left: 15px;
   }
 
-  .right-half {
-    width: 100%;
-    margin-top: 0px;
-    background-attachment: scroll;
-    width: calc(100% - 20px);
-    padding: 10px;
-    padding-top: 0px;
-    font-size: 14px;
-    text-align: left;
-    margin-left: 0%;
-  }
-
   .left-half navn1 a:hover {
     opacity: 0.5;
-  }
-
-  .contentstyle {
-    max-width: 88%;
-    margin: 0 auto;
-    margin-bottom: 35px;
   }
 
   .contentstyle:hover {
@@ -344,8 +342,9 @@
     text-decoration-thickness: 1px;
     padding-bottom: 0px;
     text-align: center;
-    padding-left: 0;
-    width: 100%;
+    padding-right: 40px;
+    display: flex;
+    justify-content: center;
   }
 
   .box {
