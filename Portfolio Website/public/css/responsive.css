@@ -343,6 +343,9 @@
   .heading {
     text-decoration-thickness: 1px;
     padding-bottom: 0px;
+    text-align: center;
+    padding-left: 0;
+    width: 100%;
   }
 
   .box {
