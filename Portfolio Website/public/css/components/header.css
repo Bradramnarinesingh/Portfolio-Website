@@ -1,0 +1,141 @@
+/* Navigation and Header Styles */
+#navn1 {
+  display: none;
+}
+
+.left-half nav {
+  padding-top: 30px;
+}
+
+.left-half nav a {
+  display: block;
+  margin: 20px 0 8px 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: left;
+  padding: 15px 15px 10px 0px;
+  width: 30%;
+  letter-spacing: 1.5px;
+  background: linear-gradient(to right, rgb(113 229 229 / 0%), #2563eb69),
+    linear-gradient(to right, rgb(239 0 0 / 0%), #0051ff, rgb(255 255 255));
+  background-size: 100% 1px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms, opacity 0.5s ease, padding-left 0.3s ease;
+}
+
+.left-half #navn a:hover {
+  padding-left: 5px;
+  font-weight: 500;
+  letter-spacing: 0.15rem;
+  transition: letter-spacing 0.25s ease, padding-left 0.25s ease, background-size 0.25s ease, color 0.25s ease;
+  background-size: 0 3px, 100% 3px;
+  color: #c3c0c0;
+}
+
+.left-half #navn a:focus {
+  color: #879fbe;
+}
+
+/* Mobile Navigation */
+#navn1 img {
+  width: 25px;
+  filter: invert(1);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s ease;
+  margin-bottom: -10px;
+  padding-bottom: 8px;
+}
+
+#navn1 a {
+  color: white;
+  margin: -4px 10px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.nav-text {
+  display: inline;
+  color: white;
+  font-size: 10px;
+  transition: font-size 0.3s ease;
+}
+
+#navn1 a.active-nav-item {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+/* Resume Link */
+.resume-link {
+  font-weight: 900;
+}
+
+/* Typography */
+#name {
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 700;
+}
+
+#title {
+  color: #e6e6e6;
+  font-size: 20px;
+  display: block;
+  margin: 0.5em 0 1em 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.heading {
+  font-size: 18px;
+  padding: 25px 15px 0;
+  font-weight: 700;
+  text-align: left;
+  z-index: -1;
+  color: white;
+  letter-spacing: 2px;
+  text-underline-offset: 5.5px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease;
+}
+
+.heading.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.header {
+  font-size: 18px;
+  padding: 20px 15px 0;
+  font-weight: bold;
+  text-align: left;
+  color: #ffffff;
+  letter-spacing: 0.1px;
+}
+
+/* Icons */
+.icon {
+  color: rgb(255, 255, 255);
+  padding-top: 2px;
+  padding-right: 10px;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  padding-left: 10px;
+  transition: 0.2s;
+}
+
+.fa:hover {
+  opacity: 0.7;
+} 
