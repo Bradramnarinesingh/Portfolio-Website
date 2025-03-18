@@ -597,6 +597,19 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
 
   .heading {
     padding-left: 40px;
+    text-align: center;
+    padding: 25px 0 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sectiontitle {
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
   }
 
   .content {
