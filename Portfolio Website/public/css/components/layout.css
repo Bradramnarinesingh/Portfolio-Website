@@ -1,11 +1,6 @@
 /* Layout Styles */
 #content-wrapper {
   margin-left: 0vw;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100vh;
-  position: relative;
 }
 
 .left-half {
@@ -16,20 +11,15 @@
   text-align: center;
   padding: 20px 20px 20px 0px;
   color: #fff;
-  width: 50%;
   max-width: 50%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   margin-left: 15%;
-  -webkit-flex: 0 0 50%;
-  flex: 0 0 50%;
-  box-sizing: border-box;
 }
 
 .right-half {
-  position: relative;
-  width: 50%;
+  flex: 1;
   background-size: cover;
   text-align: right;
   color: #ffffff;
@@ -39,9 +29,6 @@
   margin-left: 50%;
   padding-top: 60px;
   padding-left: 44px;
-  -webkit-flex: 0 0 50%;
-  flex: 0 0 50%;
-  box-sizing: border-box;
 }
 
 /* Profile Content */
@@ -54,8 +41,6 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease;
-  display: block;
-  position: relative;
 }
 
 .content.visible {
@@ -65,7 +50,6 @@
 
 .content .fa {
   margin-right: 10px;
-  display: inline-block;
 }
 
 /* Social Media Section */
@@ -81,7 +65,6 @@
   transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease;
   padding: 14px 14px 50px 0px;
   margin-right: 8px;
-  display: block;
 }
 
 #social.visible {
@@ -101,7 +84,6 @@
 
 #loc {
   margin-left: -8px;
-  display: block;
 }
 
 /* Card Layout */
@@ -111,38 +93,27 @@
   text-align: left;
   height: auto;
   width: 100%;
-  display: block;
 }
 
 /* Grid Layout */
 .responsivegrid {
   min-height: 100%;
-  display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -webkit-flex-direction: row;
 }
 
 .responsivegrid div {
-  display: -webkit-flex;
   display: flex;
   flex-basis: calc(50% - 40px);
-  -webkit-flex-basis: calc(50% - 40px);
   justify-content: center;
-  -webkit-justify-content: center;
   flex-direction: column;
-  -webkit-flex-direction: column;
   border-radius: 10px;
 }
 
 .responsivegrid div div {
-  display: -webkit-flex;
   display: flex;
   justify-content: center;
-  -webkit-justify-content: center;
   flex-direction: row;
-  -webkit-flex-direction: row;
   padding: 20px;
 } 
