@@ -74,4 +74,21 @@
   100% {
     opacity: 1;
   }
+}
+
+/* Heading Highlight Animation */
+@keyframes highlightHeading {
+  0% {
+    color: #a0a0a0;
+  }
+  50% {
+    color: #ffffff;
+  }
+  100% {
+    color: #a0a0a0;
+  }
+}
+
+.heading.highlight {
+  animation: highlightHeading 0.5s ease-in-out 3;
 } 
