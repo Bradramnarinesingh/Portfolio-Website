@@ -146,4 +146,22 @@ li {
 
 footer {
   padding-bottom: 50px;
+}
+
+/* Safari User Agent Override */
+@supports (-webkit-touch-callout: none) {
+  input,
+  button,
+  textarea,
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  a,
+  a:link,
+  a:visited {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+  }
 } 
