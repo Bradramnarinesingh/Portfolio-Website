@@ -62,12 +62,17 @@
   }
 
   .left-half {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    height: auto !important;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+    background: none;
   }
 
   #navn1 {
@@ -79,7 +84,7 @@
     bottom: 0;
     z-index: 2;
     padding: 12px;
-    position: fixed;
+    position: fixed !important;
     background-color: rgba(12, 21, 51, 0.84);
     border-radius: 20px;
     margin-bottom: 20px;
@@ -353,33 +358,11 @@
   }
 }
 
-/* Safari minimal fix with !important */
+/* Safari minimal fix */
 @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { 
   @media {
     .left-half {
-      transform: translateZ(0) !important;
-      display: flex !important;
-      position: fixed !important;
+      transform: translateZ(0);
     }
-    
-    @media (max-width: 900px) {
-      .left-half {
-        position: relative !important;
-        width: 100% !important;
-        margin-left: 0 !important;
-      }
-    }
-  }
-}
-
-/* Fix for all mobile devices regardless of browser */
-@media (max-width: 900px) {
-  .left-half {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    height: auto !important;
   }
 } 

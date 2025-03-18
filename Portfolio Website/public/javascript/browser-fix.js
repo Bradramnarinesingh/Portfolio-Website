@@ -1,46 +1,31 @@
-// Safari fix with stronger overrides
+// Safari fix with minimal changes
 document.addEventListener('DOMContentLoaded', function() {
-  // Detect Safari or Mac browser
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
   
-  if (isSafari || isMac) {
+  if (isSafari) {
     const leftHalf = document.querySelector('.left-half');
+    
     if (leftHalf) {
-      // Apply stronger inline styles with !important
-      leftHalf.setAttribute('style', 
-        'position: fixed !important;' +
-        'display: flex !important;' +
-        'flex-direction: column !important;' +
-        'transform: translateZ(0) !important;' +
-        '-webkit-transform: translateZ(0) !important;'
-      );
+      // Add minimal Safari fix without changing layout
+      leftHalf.style.transform = 'translateZ(0)';
       
-      // Special handling for mobile view
-      function updateMobileStyles() {
-        if (window.innerWidth <= 900) {
-          leftHalf.setAttribute('style', 
-            'position: relative !important;' +
-            'display: flex !important;' +
-            'flex-direction: column !important;' +
-            'width: 100% !important;' +
-            'margin-left: 0 !important;' +
-            'height: auto !important;'
-          );
-        } else {
-          leftHalf.setAttribute('style', 
-            'position: fixed !important;' +
-            'display: flex !important;' +
-            'flex-direction: column !important;' +
-            'transform: translateZ(0) !important;' +
-            '-webkit-transform: translateZ(0) !important;'
-          );
-        }
+      // On mobile, ensure position is correct
+      if (window.innerWidth <= 900) {
+        leftHalf.style.position = 'relative';
+        leftHalf.style.width = '100%';
+      } else {
+        leftHalf.style.position = 'fixed';
       }
-      
-      // Initial call and resize listener
-      updateMobileStyles();
-      window.addEventListener('resize', updateMobileStyles);
     }
+    
+    // Listen for resize events
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 900) {
+        leftHalf.style.position = 'relative';
+        leftHalf.style.width = '100%';
+      } else {
+        leftHalf.style.position = 'fixed';
+      }
+    });
   }
 }); 
