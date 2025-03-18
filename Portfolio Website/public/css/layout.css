@@ -1,27 +1,38 @@
 /* Layout Styles */
 #content-wrapper {
   margin-left: 0vw;
-}
-
-.main-container {
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 50%;
-  margin-left: 15%;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  will-change: transform;
 }
 
 .left-half {
+  position: fixed !important;
   display: flex !important;
   flex-direction: column !important;
-  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
   text-align: center;
   padding: 20px 20px 20px 0px;
   color: #fff;
+  max-width: 50%;
   overflow-y: auto;
+  margin-left: 15%;
+  z-index: 1;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  will-change: transform;
+  -webkit-overflow-scrolling: touch;
 }
 
 .right-half {
@@ -31,10 +42,13 @@
   color: #ffffff;
   padding-right: 40px;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   overflow-y: auto;
   margin-left: 50%;
   padding-top: 60px;
   padding-left: 44px;
+  -webkit-overflow-scrolling: touch;
+  will-change: transform;
 }
 
 /* Profile Content */

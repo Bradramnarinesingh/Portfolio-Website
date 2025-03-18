@@ -347,6 +347,24 @@
     justify-content: center;
   }
 
+  .box {
+    width: 12%;
+    font-size: 25px;
+  }
+
+  .box a {
+    margin-top: 5px;
+    font-size: 15px;
+    margin-left: 0px;
+  }
+
+  .icon {
+    color: rgb(255, 255, 255);
+    padding-top: 8px;
+    margin-left: 17px;
+    font-size: 20px;
+  }
+
   .right-side-content {
     padding: 10px;
     padding-top: 0;
@@ -355,14 +373,5 @@
   .contentstyle.visible {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Safari minimal fix */
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { 
-  @media {
-    .left-half {
-      transform: translateZ(0);
-    }
   }
 } 

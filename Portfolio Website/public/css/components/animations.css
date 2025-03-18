@@ -74,21 +74,4 @@
   100% {
     opacity: 1;
   }
-}
-
-/* Heading Highlight Animation */
-@keyframes highlightHeading {
-  0% {
-    background-color: transparent;
-  }
-  50% {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  100% {
-    background-color: transparent;
-  }
-}
-
-.heading.highlight {
-  animation: highlightHeading 1s ease;
 } 

@@ -59,10 +59,10 @@
     rel="stylesheet">
   <!-- CSS Files -->
   <link rel="stylesheet" type="text/css" href="css/base.css" />
-  <link rel="stylesheet" type="text/css" href="css/header.css" />
-  <link rel="stylesheet" type="text/css" href="css/layout.css" />
-  <link rel="stylesheet" type="text/css" href="css/cards.css" />
-  <link rel="stylesheet" type="text/css" href="css/animations.css" />
+  <link rel="stylesheet" type="text/css" href="css/components/header.css" />
+  <link rel="stylesheet" type="text/css" href="css/components/layout.css" />
+  <link rel="stylesheet" type="text/css" href="css/components/cards.css" />
+  <link rel="stylesheet" type="text/css" href="css/components/animations.css" />
   <link rel="stylesheet" type="text/css" href="css/responsive.css" />
   <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
   <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css" />
@@ -90,47 +90,45 @@
       <div class="cursor-glow"></div>
 
       <!-- Navigation Menu -->
-      <main class="main-container">
-        <div class="left-half">
-          <nav id="navn1">
-            <a href="#experience"><img src="./img/briefcase.png" alt="Briefcase icon" /><span
-                class="nav-text">Experience</span></a>
-            <a href="#projects"><img src="./img/project.png" alt="Project icon" /><span
-                class="nav-text">Projects</span></a>
-            <a href="#skills"><img src="./img/tools.png" alt="Tools icon" /><span class="nav-text">Skills</span></a>
+      <div class="left-half">
+        <nav id="navn1">
+          <a href="#experience"><img src="./img/briefcase.png" alt="Briefcase icon" /><span
+              class="nav-text">Experience</span></a>
+          <a href="#projects"><img src="./img/project.png" alt="Project icon" /><span
+              class="nav-text">Projects</span></a>
+          <a href="#skills"><img src="./img/tools.png" alt="Tools icon" /><span class="nav-text">Skills</span></a>
 
-            <a href="./files/brad_ramnarinesingh_resume.pdf" target="_blank"><img src="./img/resume.png"
-                alt="Resume icon" /><span class="nav-text">Resume</span></a>
-          </nav>
+          <a href="./files/brad_ramnarinesingh_resume.pdf" target="_blank"><img src="./img/resume.png"
+              alt="Resume icon" /><span class="nav-text">Resume</span></a>
+        </nav>
 
-          <!-- Main Profile Card -->
-          <div class="content">
-            <div class="card">
-              <div id="name">Brad Ramnarinesingh</div>
-              <div id="title">Computer Science Student</div>
-              <div id="loc"><i class="fa fa-map-marker"></i>Toronto</div>
-            </div>
-
-            <div id="social">
-              <div id="soctitle">Find me</div>
-              <a href="https://www.linkedin.com/in/brad-ramnarinesingh/" target="_blank" rel="noopener"><i
-                  class="fa fa-linkedin fa-2x"></i></a>
-              <a href="https://github.com/Bradramnarinesingh" target="_blank" rel="noopener"><i
-                  class="fa fa-github fa-2x"></i></a>
-              <a href="https://x.com/b_ramnarine" target="_blank" rel="noopener"><i class="fa fa-twitter fa-2x"></i></a>
-            </div>
-
-            <!-- Second Navigation Menu -->
-            <nav id="navn">
-              <a href="#home">HOME</a>
-              <a href="#experience">EXPERIENCE</a>
-              <a href="#projects">PROJECTS</a>
-              <a href="#skills">SKILLS</a>
-              <a class="resume-link" href="./files/brad_ramnarinesingh_resume.pdf" target="_blank">RESUME</a>
-            </nav>
+        <!-- Main Profile Card -->
+        <div class="content">
+          <div class="card">
+            <div id="name">Brad Ramnarinesingh</div>
+            <div id="title">Computer Science Student</div>
+            <div id="loc"><i class="fa fa-map-marker"></i>Toronto</div>
           </div>
+
+          <div id="social">
+            <div id="soctitle">Find me</div>
+            <a href="https://www.linkedin.com/in/brad-ramnarinesingh/" target="_blank" rel="noopener"><i
+                class="fa fa-linkedin fa-2x"></i></a>
+            <a href="https://github.com/Bradramnarinesingh" target="_blank" rel="noopener"><i
+                class="fa fa-github fa-2x"></i></a>
+            <a href="https://x.com/b_ramnarine" target="_blank" rel="noopener"><i class="fa fa-twitter fa-2x"></i></a>
+          </div>
+
+          <!-- Second Navigation Menu -->
+          <nav id="navn">
+            <a href="#home">HOME</a>
+            <a href="#experience">EXPERIENCE</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#skills">SKILLS</a>
+            <a class="resume-link" href="./files/brad_ramnarinesingh_resume.pdf" target="_blank">RESUME</a>
+          </nav>
         </div>
-      </main>
+      </div>
     </div>
 
     <!-- Right Side Content -->
@@ -157,13 +155,10 @@
         <p>Bachelor of Science in Computer Science</p>
         <p><i>2021 - Present</i></p>
         <ul>
-          <li>Studied key concepts in programming, problem-solving, and data analysis, including data structures,
-            algorithms, software engineering, probability, and statistics.</li>
-          <li>Gained hands-on experience through coursework and assignments involving coding, mathematical
-            problem-solving, and data interpretation
+          <li>Studied key concepts in programming, problem-solving, and data analysis, including data structures, algorithms, software engineering, probability, and statistics.</li>
+          <li>Gained hands-on experience through coursework and assignments involving coding, mathematical problem-solving, and data interpretation
           </li>
-          <li>Maintained a strong academic record while actively participating in computer science and mathematics
-            communities.</li>
+          <li>Maintained a strong academic record while actively participating in computer science and mathematics communities.</li>
         </ul>
       </div>
 
@@ -203,25 +198,22 @@
         <div class="header">
           <span class="arrow-icon">
             <i class="fas fa-arrow-up-right-from-square"></i>
-          </span>ML House Price Prediction | Python, Scikit-Learn, Gradient Boosting, Pandas, Matplotlib
+          </span>
+          ML House Price Prediction | Python, Scikit-Learn, Gradient Boosting, Pandas, Matplotlib
         </div>
         <p>
           Developed a house price forecasting model using Python and Scikit-Learn's Gradient Boosting Regressor,
-          achieving a Mean Absolute Error of $33,429.72. Processed and cleaned real estate data with Pandas,
-          implementing feature engineering techniques such as price change calculations and StandardScaler normalization
-          to capture market trends. Designed a conservative growth algorithm with a dynamic decay factor and sanity
-          checks to improve the reliability of long-term predictions. Visualized historical price trends and future
-          projections using Matplotlib, enabling better interpretation and analysis of market patterns.
+          achieving a Mean Absolute Error of $33,429.72. Utilized Pandas for data cleaning and feature engineering,
+          including price change calculations and StandardScaler normalization to capture market trends. Created a
+          conservative growth algorithm with dynamic decay factors and sanity checks for reliable long-term
+          predictions. Integrated Neon PostgreSQL for efficient data management and a robust backend handling
+          real-time queries. Employed Matplotlib to visualize historical data and future price projections, enhancing
+          result interpretation and presentation.
         </p>
       </div>
 
-      
-      <div class="contentstyle clickable"
-        onclick="window.open('https://github.com/Bradramnarinesingh/Portfolio-Website', '_blank')">
-        <div class="header">
-          <span class="arrow-icon">
-            <i class="fas fa-arrow-up-right-from-square"></i>
-          </span>Portfolio Website | HTML/CSS, JavaScript</div>
+      <div class="contentstyle">
+        <div class="header">Portfolio Website | HTML/CSS, JavaScript</div>
         <p>
           Designed and built a personal portfolio website using HTML, CSS, and JavaScript to effectively showcase
           projects and skills. Implemented responsive design principles to ensure consistent performance and
