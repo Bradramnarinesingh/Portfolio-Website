@@ -5,8 +5,8 @@
 
 .left-half {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   bottom: 0;
   text-align: center;
   padding: 20px 20px 20px 0px;
@@ -95,7 +95,8 @@
   width: 100%;
 }
 
-/* Grid Layout */
+/* This section will be removed as it's now in cards.css */
+/* Grid Layout 
 .responsivegrid {
   min-height: 100%;
   display: flex;
@@ -116,4 +117,4 @@
   justify-content: center;
   flex-direction: row;
   padding: 20px;
-} 
+} */ 
