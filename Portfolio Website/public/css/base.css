@@ -149,19 +149,37 @@ footer {
 }
 
 /* Safari User Agent Override */
-@supports (-webkit-touch-callout: none) {
-  input,
-  button,
-  textarea,
-  select {
-    -webkit-appearance: none;
-    appearance: none;
-  }
-  
-  a,
-  a:link,
-  a:visited {
-    -webkit-text-decoration: none;
-    text-decoration: none;
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    /* Target Safari specifically */
+    input,
+    button,
+    textarea,
+    select,
+    a,
+    div,
+    span,
+    nav,
+    ul,
+    li,
+    p,
+    h1, h2, h3, h4, h5, h6 {
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    
+    nav a, nav a:link, nav a:visited {
+      display: inline-block !important;
+    }
+    
+    .left-half nav a {
+      display: inline-flex !important;
+    }
+    
+    #navn1 a, #navn a {
+      display: inline-flex !important;
+    }
   }
 } 
