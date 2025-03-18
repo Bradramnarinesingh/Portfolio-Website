@@ -62,17 +62,12 @@
   }
 
   .left-half {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0 auto;
-    background: none;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    height: auto !important;
   }
 
   #navn1 {
@@ -358,11 +353,33 @@
   }
 }
 
-/* Safari minimal fix */
+/* Safari minimal fix with !important */
 @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { 
   @media {
     .left-half {
-      transform: translateZ(0);
+      transform: translateZ(0) !important;
+      display: flex !important;
+      position: fixed !important;
     }
+    
+    @media (max-width: 900px) {
+      .left-half {
+        position: relative !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+    }
+  }
+}
+
+/* Fix for all mobile devices regardless of browser */
+@media (max-width: 900px) {
+  .left-half {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    height: auto !important;
   }
 } 

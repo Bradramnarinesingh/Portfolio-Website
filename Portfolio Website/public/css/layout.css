@@ -4,18 +4,19 @@
 }
 
 .left-half {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
   text-align: center;
   padding: 20px 20px 20px 0px;
   color: #fff;
   max-width: 50%;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   margin-left: 15%;
+  z-index: 1;
 }
 
 .right-half {
@@ -118,3 +119,26 @@
   flex-direction: row;
   padding: 20px;
 } */ 
+
+/* Safari-specific fix with !important */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .left-half {
+    position: fixed !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    width: 40% !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* Safari/Mac/iOS specific query */
+@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
+  .left-half {
+    display: flex !important;
+    position: fixed !important;
+  }
+} 
