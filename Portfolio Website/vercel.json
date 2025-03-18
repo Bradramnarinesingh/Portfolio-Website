@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "src": "/404",
+      "dest": "/404.html"
+    },
+    {
+      "handle": "filesystem"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+} 
