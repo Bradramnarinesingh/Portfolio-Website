@@ -1,22 +1,30 @@
-let scrollTimeout = null;
+let lastScrollY = window.scrollY;
+const SCROLL_THRESHOLD = 300; // Hide after scrolling 300px
 
 function handleHideShow() {
   const navbar = document.getElementById('navn1');
+  const currentScrollY = window.scrollY;
+  const scrollDistance = Math.abs(currentScrollY - lastScrollY);
   
-  // Hide the navbar
-  navbar.classList.add('hidden');
+  // Update last scroll position
+  lastScrollY = currentScrollY;
   
-  // Clear any existing timeout
-  clearTimeout(scrollTimeout);
+  // Show navbar immediately when scrolling starts
+  navbar.classList.remove('hidden');
   
-  // Show navbar again after 300 ms of no "scroll/move" activity
-  scrollTimeout = setTimeout(() => {
-    navbar.classList.remove('hidden');
-  }, 500);
+  // Hide navbar if scroll distance exceeds threshold
+  if (scrollDistance > SCROLL_THRESHOLD) {
+    navbar.classList.add('hidden');
+  }
 }
 
-// Listen for actual scroll
+// Listen for scroll events
 window.addEventListener('scroll', handleHideShow, { passive: true });
-// Also listen for wheel and touchmove (mobile "swipe" might not trigger scroll if no overflow)
 window.addEventListener('wheel', handleHideShow, { passive: true });
 window.addEventListener('touchmove', handleHideShow, { passive: true });
+
+// Show navbar when scrolling stops
+window.addEventListener('scrollend', () => {
+  const navbar = document.getElementById('navn1');
+  navbar.classList.remove('hidden');
+}, { passive: true });
