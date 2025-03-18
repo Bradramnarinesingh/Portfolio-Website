@@ -4,7 +4,6 @@
 }
 
 .left-half {
-  flex: 2;
   position: fixed;
   left: 0;
   top: 0;
