@@ -4,7 +4,9 @@
 }
 
 .left-half {
-  position: fixed;
+  position: fixed !important;
+  display: flex !important;
+  flex-direction: column !important;
   top: 0;
   left: 0;
   bottom: 0;
@@ -13,9 +15,8 @@
   color: #fff;
   max-width: 50%;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
   margin-left: 15%;
+  z-index: 1;
 }
 
 .right-half {
