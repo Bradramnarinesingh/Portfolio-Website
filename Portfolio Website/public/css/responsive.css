@@ -84,7 +84,7 @@
     bottom: 0;
     z-index: 2;
     padding: 12px;
-    position: fixed !important;
+    position: fixed;
     background-color: rgba(12, 21, 51, 0.84);
     border-radius: 20px;
     margin-bottom: 20px;
