@@ -250,7 +250,7 @@ body {
   text-underline-offset: 5.5px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease, letter-spacing 0.4s ease-out;
   text-decoration:underline;
 }
 
@@ -882,4 +882,5 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     animation: headingBlink 0.4s ease-in-out infinite;
     transform: scale(1.02);
     transition: transform 0.3s ease;
+    letter-spacing: 4px;
 }
