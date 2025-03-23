@@ -400,6 +400,8 @@ p {
   background-color: rgb(255 255 255 / 15%);
   font-size: 30px;
   transition: 0.5s;
+  border: 0.1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
 }
 
 .box:hover {
