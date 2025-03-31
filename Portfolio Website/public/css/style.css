@@ -361,11 +361,11 @@ li {
   right: 10px;
   font-size: 18px;
   color: #ffffff;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.1s ease, color 0.3s ease;
 }
 
 .contentstyle:hover .arrow-icon {
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 
 p {
