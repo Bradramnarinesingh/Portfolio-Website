@@ -773,7 +773,7 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
   }
 
   #navn1 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     -webkit-tap-highlight-color: transparent;
   }
 
