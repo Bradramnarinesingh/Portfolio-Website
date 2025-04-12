@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ritwickdey.liveserver",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "formulahendry.auto-rename-tag",
+        "ms-vsliveshare.vsliveshare",
+        "streetsidesoftware.code-spell-checker",
+        "christian-kohler.path-intellisense",
+        "ms-vscode.vscode-typescript-next",
+        "xabikos.javascriptsnippets",
+        "ecmel.vscode-html-css"
+    ]
+}
