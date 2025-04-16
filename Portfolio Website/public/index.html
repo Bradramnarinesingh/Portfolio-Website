@@ -14,10 +14,10 @@
   </script>
 
   <!-- Vercel Analytics -->
-  <script type="module">
-    import { inject } from '@vercel/analytics';
-    inject();
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 
   <style>
     body {
@@ -26,6 +26,7 @@
       min-height: -webkit-fill-available;
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
+
     html {
       height: -webkit-fill-available;
     }
