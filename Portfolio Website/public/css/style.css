@@ -165,6 +165,10 @@ body {
   opacity: 0.7;
 }
 
+.fa:active {
+  color: #13365a;
+}
+
 #name {
   white-space: nowrap;
   overflow: hidden;
@@ -217,7 +221,7 @@ body {
 }
 
 .left-half #navn a:focus {
-  color: #879fbe;
+  color: #13365a;
 }
 
 .icon {
