@@ -15,8 +15,8 @@
 
   <!-- Vercel Analytics -->
   <script type="module">
-    import { Analytics } from '@vercel/analytics/react';
-    const analytics = new Analytics();
+    import { inject } from '@vercel/analytics';
+    inject();
   </script>
 
   <style>
