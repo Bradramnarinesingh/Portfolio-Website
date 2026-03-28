@@ -10,6 +10,22 @@
   --text-secondary: #999999;
   --text-muted: #666666;
   --accent: #d4c9b8;
+
+  --section-px: 1.25rem;
+  --section-py: 5rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --section-px: 1.5rem;
+    --section-py: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-px: 2.5rem;
+  }
 }
 
 @theme inline {
@@ -29,6 +45,7 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -39,6 +56,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100%;
   overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 ::selection {
@@ -57,31 +77,37 @@ body {
   border-radius: 3px;
 }
 
-/* --- Layout --- */
+/* ================================================================
+   LAYOUT
+   ================================================================ */
 
 .section-inner {
   max-width: 1100px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: var(--section-px);
+  padding-right: var(--section-px);
 }
 
-@media (min-width: 1024px) {
-  .section-inner {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
+main, header, footer {
+  position: relative;
+  z-index: 1;
 }
 
-/* --- Typography --- */
+/* ================================================================
+   TYPOGRAPHY
+   ================================================================ */
 
 .display-title {
-  font-size: clamp(3.5rem, 10.5vw, 8.5rem);
+  font-size: clamp(2.25rem, 10.5vw, 8.5rem);
   line-height: 0.92;
   letter-spacing: -0.04em;
   font-weight: 600;
   color: var(--text-primary);
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .section-label {
@@ -92,7 +118,9 @@ body {
   font-weight: 500;
 }
 
-/* --- Background layers --- */
+/* ================================================================
+   BACKGROUND LAYERS
+   ================================================================ */
 
 .depth-gradient {
   position: fixed;
@@ -112,13 +140,9 @@ body {
   z-index: 0;
 }
 
-/* Content sits above canvas + gradient */
-main, header, footer {
-  position: relative;
-  z-index: 1;
-}
-
-/* --- Card --- */
+/* ================================================================
+   CARD
+   ================================================================ */
 
 .card {
   border-radius: 14px;
@@ -169,7 +193,9 @@ main, header, footer {
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* --- Tag --- */
+/* ================================================================
+   TAG
+   ================================================================ */
 
 .tag {
   font-size: 0.6875rem;
@@ -190,7 +216,9 @@ main, header, footer {
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* --- Link arrow --- */
+/* ================================================================
+   LINK ARROW
+   ================================================================ */
 
 .link-arrow {
   display: inline-flex;
@@ -207,7 +235,9 @@ main, header, footer {
   gap: 0.5rem;
 }
 
-/* --- Ghost button --- */
+/* ================================================================
+   GHOST BUTTON
+   ================================================================ */
 
 .btn-ghost {
   display: inline-flex;
@@ -230,15 +260,13 @@ main, header, footer {
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* --- Animations --- */
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
 
 @keyframes pulse-dot {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45);
-  }
-  50% {
-    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
-  }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45); }
+  50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
 }
 
 .pulse-dot {
@@ -246,14 +274,8 @@ main, header, footer {
 }
 
 @keyframes scroll-bounce {
-  0%, 100% {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-  50% {
-    transform: translateY(8px);
-    opacity: 0.9;
-  }
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(8px); opacity: 0.9; }
 }
 
 .scroll-indicator {
@@ -261,17 +283,9 @@ main, header, footer {
 }
 
 @keyframes scroll-line-draw {
-  0% {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: scaleY(1);
-    opacity: 0.15;
-  }
+  0% { transform: scaleY(0); opacity: 0; }
+  40% { opacity: 0.6; }
+  100% { transform: scaleY(1); opacity: 0.15; }
 }
 
 .scroll-line {
@@ -279,7 +293,9 @@ main, header, footer {
   animation: scroll-line-draw 2.4s ease-in-out infinite;
 }
 
-/* --- Project glow --- */
+/* ================================================================
+   PROJECT GLOW
+   ================================================================ */
 
 .project-glow {
   position: absolute;
@@ -297,7 +313,9 @@ main, header, footer {
   opacity: 1;
 }
 
-/* --- Contact link --- */
+/* ================================================================
+   CONTACT LINK
+   ================================================================ */
 
 .contact-link .arrow-icon {
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
@@ -308,7 +326,9 @@ main, header, footer {
   opacity: 1;
 }
 
-/* --- Nav link underline --- */
+/* ================================================================
+   NAV LINK UNDERLINE
+   ================================================================ */
 
 .nav-link {
   position: relative;
@@ -329,7 +349,61 @@ main, header, footer {
   width: 100%;
 }
 
-/* --- Reduced motion --- */
+/* ================================================================
+   RESPONSIVE GRID LAYOUTS (centralized)
+   ================================================================ */
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 160px 1fr !important;
+    gap: 4rem !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 160px 1fr !important;
+    gap: 4rem !important;
+  }
+
+  .exp-row {
+    grid-template-columns: 160px 1fr !important;
+    gap: 3rem !important;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ================================================================
+   MOBILE REFINEMENTS
+   ================================================================ */
+
+@media (max-width: 639px) {
+  .display-title {
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
+  .project-glow {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .card::before {
+    display: none;
+  }
+
+  .section-label {
+    font-size: 0.625rem;
+  }
+}
+
+/* ================================================================
+   REDUCED MOTION
+   ================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .pulse-dot,

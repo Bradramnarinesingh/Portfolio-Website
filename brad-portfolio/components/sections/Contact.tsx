@@ -15,17 +15,17 @@ const links = [
 
 export function Contact() {
   return (
-    <section id="contact" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
+    <section id="contact" style={{ paddingTop: "var(--section-py)", paddingBottom: "var(--section-py)" }}>
       <div
         className="section-inner"
-        style={{ borderTop: "1px solid var(--border)", paddingTop: "4rem" }}
+        style={{ borderTop: "1px solid var(--border)", paddingTop: "3rem" }}
       >
         <div
-          style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2rem" }}
           className="contact-grid"
+          style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5rem" }}
         >
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease }}
@@ -35,12 +35,12 @@ export function Contact() {
 
           <div>
             <motion.h2
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, ease, delay: 0.05 }}
               style={{
-                fontSize: "clamp(2rem, 5vw, 3.75rem)",
+                fontSize: "clamp(1.75rem, 5vw, 3.5rem)",
                 fontWeight: 600,
                 letterSpacing: "-0.035em",
                 lineHeight: 1.05,
@@ -54,7 +54,7 @@ export function Contact() {
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: 0.14 }}
@@ -62,8 +62,8 @@ export function Contact() {
                 fontSize: "0.9375rem",
                 color: "var(--text-secondary)",
                 lineHeight: 1.7,
-                maxWidth: "420px",
-                marginBottom: "3rem",
+                maxWidth: "400px",
+                marginBottom: "2.5rem",
               }}
             >
               Open to internships, co-ops, freelance, or interesting conversations.
@@ -71,7 +71,7 @@ export function Contact() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: 0.2 }}
@@ -88,7 +88,7 @@ export function Contact() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    padding: "0.875rem 0",
+                    padding: "0.75rem 0",
                     fontSize: "0.9375rem",
                     fontWeight: 500,
                     color: "var(--text-secondary)",
@@ -111,24 +111,13 @@ export function Contact() {
                   }}
                 >
                   <span>{label}</span>
-                  <span className="arrow-icon" style={{ fontSize: "0.8125rem", opacity: 0.4 }}>
-                    ↗
-                  </span>
+                  <span className="arrow-icon" style={{ fontSize: "0.8125rem", opacity: 0.4 }}>↗</span>
                 </a>
               ))}
             </motion.div>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (min-width: 768px) {
-          .contact-grid {
-            grid-template-columns: 180px 1fr !important;
-            gap: 4rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

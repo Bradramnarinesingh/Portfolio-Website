@@ -13,6 +13,39 @@ const NAV_LINKS = [
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      style={{ display: "block" }}
+    >
+      <motion.line
+        x1="3" x2="17"
+        animate={open ? { y1: 10, y2: 10, rotate: 45 } : { y1: 5, y2: 5, rotate: 0 }}
+        transition={{ duration: 0.3, ease }}
+        style={{ transformOrigin: "center" }}
+      />
+      <motion.line
+        x1="3" y1="10" x2="17" y2="10"
+        animate={open ? { opacity: 0 } : { opacity: 1 }}
+        transition={{ duration: 0.2 }}
+      />
+      <motion.line
+        x1="3" x2="17"
+        animate={open ? { y1: 10, y2: 10, rotate: -45 } : { y1: 15, y2: 15, rotate: 0 }}
+        transition={{ duration: 0.3, ease }}
+        style={{ transformOrigin: "center" }}
+      />
+    </svg>
+  );
+}
+
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,7 +82,12 @@ export function Navigation() {
     >
       <nav
         className="section-inner"
-        style={{ height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}
+        style={{
+          height: "56px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
       >
         <a
           href="#home"
@@ -67,6 +105,7 @@ export function Navigation() {
           Brad.
         </a>
 
+        {/* Desktop nav */}
         <ul
           style={{
             display: "flex",
@@ -109,6 +148,7 @@ export function Navigation() {
           <span style={{ fontSize: "0.75rem", opacity: 0.6 }}>↗</span>
         </a>
 
+        {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(o => !o)}
           aria-label="Toggle menu"
@@ -117,17 +157,20 @@ export function Navigation() {
             background: "none",
             border: "none",
             cursor: "pointer",
-            padding: "8px",
+            padding: "6px",
             color: "var(--text-secondary)",
-            zIndex: 60,
+            zIndex: 52,
             position: "relative",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <span style={{ fontSize: "1.25rem" }}>{menuOpen ? "✕" : "☰"}</span>
+          <MenuIcon open={menuOpen} />
         </button>
       </nav>
 
-      {/* Mobile fullscreen overlay */}
+      {/* Mobile fullscreen menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -138,16 +181,17 @@ export function Navigation() {
             style={{
               position: "fixed",
               inset: 0,
-              background: "rgba(8,8,8,0.97)",
+              background: "rgba(8,8,8,0.98)",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
-              zIndex: 49,
+              zIndex: 51,
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              gap: "2.5rem",
+              gap: "2rem",
               padding: "2rem",
+              paddingTop: "5rem",
             }}
             className="sm:hidden"
           >
@@ -156,12 +200,12 @@ export function Navigation() {
                 key={label}
                 href={href}
                 onClick={() => setMenuOpen(false)}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease, delay: 0.08 * i }}
+                transition={{ duration: 0.4, ease, delay: 0.06 * i }}
                 style={{
-                  fontSize: "1.75rem",
-                  fontWeight: 600,
+                  fontSize: "1.5rem",
+                  fontWeight: 500,
                   color: "var(--text-primary)",
                   textDecoration: "none",
                   letterSpacing: "-0.02em",
@@ -174,11 +218,11 @@ export function Navigation() {
               href={siteConfig.links.resume}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease, delay: 0.08 * NAV_LINKS.length }}
+              transition={{ duration: 0.4, ease, delay: 0.06 * NAV_LINKS.length }}
               className="btn-ghost"
-              style={{ fontSize: "1rem", marginTop: "1rem" }}
+              style={{ fontSize: "0.9375rem", marginTop: "0.5rem" }}
             >
               Resume ↗
             </motion.a>

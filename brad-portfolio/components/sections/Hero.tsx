@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/data";
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
@@ -38,11 +38,17 @@ export function Hero() {
         flexDirection: "column",
         justifyContent: "center",
         position: "relative",
-        paddingTop: "80px",
-        paddingBottom: "6rem",
       }}
     >
-      <div className="section-inner" style={{ position: "relative", zIndex: 1 }}>
+      <div
+        className="section-inner"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          paddingTop: "72px",
+          paddingBottom: "4rem",
+        }}
+      >
         {/* Location */}
         <motion.div
           variants={fadeUp}
@@ -53,7 +59,7 @@ export function Hero() {
             display: "flex",
             alignItems: "center",
             gap: "0.5rem",
-            marginBottom: "2.5rem",
+            marginBottom: "2rem",
           }}
         >
           <span
@@ -88,7 +94,7 @@ export function Hero() {
           animate="visible"
           custom={0.2}
           className="display-title"
-          style={{ marginBottom: "1.75rem", color: "#aaaaaa" }}
+          style={{ marginBottom: "1.5rem", color: "#aaaaaa" }}
         >
           Ramnarinesingh.
         </motion.h1>
@@ -102,8 +108,9 @@ export function Hero() {
             transformOrigin: "left center",
             transform: "scaleX(0)",
             opacity: 0,
-            marginBottom: "2rem",
-            maxWidth: "480px",
+            marginBottom: "1.75rem",
+            maxWidth: "100%",
+            width: "min(480px, 100%)",
           }}
         />
 
@@ -114,12 +121,12 @@ export function Hero() {
           animate="visible"
           custom={0.5}
           style={{
-            fontSize: "clamp(0.9375rem, 1.8vw, 1.0625rem)",
+            fontSize: "clamp(0.875rem, 1.8vw, 1.0625rem)",
             color: "var(--text-secondary)",
             letterSpacing: "0.005em",
             lineHeight: 1.7,
             maxWidth: "440px",
-            marginBottom: "2.75rem",
+            marginBottom: "2.5rem",
           }}
         >
           CS, Mathematics &amp; Geospatial Data Science at the{" "}
@@ -136,7 +143,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           custom={0.6}
-          style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}
+          style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}
         >
           <a
             href="#work"
@@ -148,7 +155,7 @@ export function Hero() {
               fontWeight: 500,
               color: "var(--text-primary)",
               textDecoration: "none",
-              padding: "0.5625rem 1.25rem",
+              padding: "0.5rem 1.125rem",
               borderRadius: "6px",
               background: "rgba(255,255,255,0.07)",
               border: "1px solid rgba(255,255,255,0.14)",
@@ -180,46 +187,46 @@ export function Hero() {
             <span style={{ fontSize: "0.75rem", opacity: 0.55 }}>↗</span>
           </a>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={0.85}
-          style={{
-            position: "absolute",
-            bottom: "-5rem",
-            right: 0,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}
-          className="hidden sm:flex"
-        >
-          <span
-            className="scroll-indicator"
-            style={{
-              fontSize: "0.5625rem",
-              letterSpacing: "0.2em",
-              color: "var(--text-muted)",
-              textTransform: "uppercase",
-              writingMode: "vertical-rl",
-            }}
-          >
-            scroll
-          </span>
-          <div
-            className="scroll-line"
-            style={{
-              width: "1px",
-              height: "48px",
-              background: "linear-gradient(to bottom, var(--text-muted), transparent)",
-            }}
-          />
-        </motion.div>
       </div>
+
+      {/* Scroll indicator — outside section-inner to avoid layout interference */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+        custom={0.85}
+        style={{
+          position: "absolute",
+          bottom: "2rem",
+          right: "var(--section-px)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+        className="hidden sm:flex"
+      >
+        <span
+          className="scroll-indicator"
+          style={{
+            fontSize: "0.5625rem",
+            letterSpacing: "0.2em",
+            color: "var(--text-muted)",
+            textTransform: "uppercase",
+            writingMode: "vertical-rl",
+          }}
+        >
+          scroll
+        </span>
+        <div
+          className="scroll-line"
+          style={{
+            width: "1px",
+            height: "40px",
+            background: "linear-gradient(to bottom, var(--text-muted), transparent)",
+          }}
+        />
+      </motion.div>
     </section>
   );
 }

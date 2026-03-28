@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 
 interface Particle {
   x: number;
@@ -12,8 +12,8 @@ interface Particle {
   phase: number;
 }
 
-const DESKTOP_COUNT = 60;
-const MOBILE_COUNT = 25;
+const DESKTOP_COUNT = 55;
+const MOBILE_COUNT = 18;
 const CONNECTION_DIST = 140;
 const CONNECTION_OPACITY = 0.025;
 const MOUSE_INFLUENCE = 8;
@@ -36,7 +36,8 @@ export function ParticleField() {
   const mouseRef = useRef({ x: -1, y: -1 });
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number>(0);
-  const reducedMotion = useRef(false);
+  const isMobileRef = useRef(false);
+  const [mounted, setMounted] = useState(false);
 
   const init = useCallback(() => {
     const canvas = canvasRef.current;
@@ -53,14 +54,16 @@ export function ParticleField() {
     const ctx = canvas.getContext("2d");
     if (ctx) ctx.scale(dpr, dpr);
 
-    const count = w < 768 ? MOBILE_COUNT : DESKTOP_COUNT;
+    isMobileRef.current = w < 768;
+    const count = isMobileRef.current ? MOBILE_COUNT : DESKTOP_COUNT;
     particlesRef.current = Array.from({ length: count }, () => createParticle(w, h));
   }, []);
 
   useEffect(() => {
-    reducedMotion.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion.current) return;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
 
+    setMounted(true);
     init();
 
     const canvas = canvasRef.current;
@@ -97,7 +100,8 @@ export function ParticleField() {
       const particles = particlesRef.current;
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
-      const hasPointer = mx >= 0 && my >= 0;
+      const hasPointer = mx >= 0 && my >= 0 && !isMobileRef.current;
+      const drawConnections = !isMobileRef.current;
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -128,33 +132,35 @@ export function ParticleField() {
         ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
         ctx.fill();
 
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const cdx = p.x - q.x;
-          const cdy = p.y - q.y;
-          const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
-          if (cdist < CONNECTION_DIST) {
-            const lineOpacity = CONNECTION_OPACITY * (1 - cdist / CONNECTION_DIST);
-            ctx.beginPath();
-            ctx.moveTo(drawX, drawY);
+        if (drawConnections) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const cdx = p.x - q.x;
+            const cdy = p.y - q.y;
+            const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+            if (cdist < CONNECTION_DIST) {
+              const lineOpacity = CONNECTION_OPACITY * (1 - cdist / CONNECTION_DIST);
+              ctx.beginPath();
+              ctx.moveTo(drawX, drawY);
 
-            let qDrawX = q.x;
-            let qDrawY = q.y;
-            if (hasPointer) {
-              const qdx = q.x - mx;
-              const qdy = q.y - my;
-              const qdist = Math.sqrt(qdx * qdx + qdy * qdy);
-              if (qdist < 300) {
-                const qs = (1 - qdist / 300) * MOUSE_INFLUENCE;
-                qDrawX += (qdx / qdist) * qs;
-                qDrawY += (qdy / qdist) * qs;
+              let qDrawX = q.x;
+              let qDrawY = q.y;
+              if (hasPointer) {
+                const qdx = q.x - mx;
+                const qdy = q.y - my;
+                const qdist = Math.sqrt(qdx * qdx + qdy * qdy);
+                if (qdist < 300) {
+                  const qs = (1 - qdist / 300) * MOUSE_INFLUENCE;
+                  qDrawX += (qdx / qdist) * qs;
+                  qDrawY += (qdy / qdist) * qs;
+                }
               }
-            }
 
-            ctx.lineTo(qDrawX, qDrawY);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${lineOpacity})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+              ctx.lineTo(qDrawX, qDrawY);
+              ctx.strokeStyle = `rgba(255, 255, 255, ${lineOpacity})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
           }
         }
       }
@@ -172,10 +178,6 @@ export function ParticleField() {
     };
   }, [init]);
 
-  if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return null;
-  }
-
   return (
     <canvas
       ref={canvasRef}
@@ -185,7 +187,8 @@ export function ParticleField() {
         inset: 0,
         zIndex: 0,
         pointerEvents: "none",
-        opacity: 1,
+        opacity: mounted ? 1 : 0,
+        transition: "opacity 0.8s ease",
       }}
     />
   );
