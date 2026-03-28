@@ -5,11 +5,12 @@ import { siteConfig } from "@/lib/data";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const socialLinks = [
-  { label: "GitHub", href: siteConfig.links.github },
-  { label: "LinkedIn", href: siteConfig.links.linkedin },
-  { label: "X / Twitter", href: siteConfig.links.twitter },
-  { label: "Resume", href: siteConfig.links.resume },
+const links = [
+  { label: "Email", href: `mailto:${siteConfig.email}`, external: false },
+  { label: "GitHub", href: siteConfig.links.github, external: true },
+  { label: "LinkedIn", href: siteConfig.links.linkedin, external: true },
+  { label: "X / Twitter", href: siteConfig.links.twitter, external: true },
+  { label: "Resume", href: siteConfig.links.resume, external: true },
 ];
 
 export function Contact() {
@@ -26,11 +27,10 @@ export function Contact() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr",
-            gap: "3rem",
+            gap: "2rem",
           }}
           className="contact-grid"
         >
-          {/* Label */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +40,6 @@ export function Contact() {
             <span className="section-label">Contact</span>
           </motion.div>
 
-          {/* Content */}
           <div>
             <motion.h2
               initial={{ opacity: 0, y: 28 }}
@@ -56,9 +55,9 @@ export function Contact() {
                 marginBottom: "1.25rem",
               }}
             >
-              Open to
+              Let&apos;s
               <br />
-              <span style={{ color: "var(--text-secondary)" }}>opportunities.</span>
+              <span style={{ color: "var(--text-secondary)" }}>connect.</span>
             </motion.h2>
 
             <motion.p
@@ -74,51 +73,57 @@ export function Contact() {
                 marginBottom: "3rem",
               }}
             >
-              Internships, co-ops, or anything interesting. If you&apos;re building something worth talking about, I&apos;d like to hear from you.
+              Open to internships, co-ops, freelance, or interesting conversations.
+              Reach out — I read everything.
             </motion.p>
 
-            {/* Social links */}
+            {/* Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: 0.2 }}
-              style={{ display: "flex", flexDirection: "column", gap: "0.125rem" }}
+              style={{ display: "flex", flexDirection: "column", gap: "0" }}
             >
-              {socialLinks.map(({ label, href }) => (
+              {links.map(({ label, href, external }) => (
                 <a
                   key={label}
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  className="contact-link"
                   style={{
-                    display: "inline-flex",
+                    display: "flex",
                     alignItems: "center",
-                    gap: "0.5rem",
-                    padding: "0.75rem 0",
+                    justifyContent: "space-between",
+                    padding: "0.875rem 0",
                     fontSize: "0.9375rem",
                     fontWeight: 500,
                     color: "var(--text-secondary)",
                     textDecoration: "none",
                     borderBottom: "1px solid var(--border)",
-                    transition: "color 0.2s ease, border-color 0.2s ease",
+                    transition: "color 0.2s ease, border-color 0.25s ease, padding-left 0.3s ease",
                     letterSpacing: "-0.005em",
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
-                    (e.currentTarget as HTMLElement).style.borderBottomColor = "var(--border-hover)";
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.color = "var(--text-primary)";
+                    el.style.borderBottomColor = "var(--border-hover)";
+                    el.style.paddingLeft = "0.5rem";
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.color = "var(--text-secondary)";
-                    (e.currentTarget as HTMLElement).style.borderBottomColor = "var(--border)";
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.color = "var(--text-secondary)";
+                    el.style.borderBottomColor = "var(--border)";
+                    el.style.paddingLeft = "0";
                   }}
                 >
                   <span>{label}</span>
                   <span
+                    className="arrow-icon"
                     style={{
-                      marginLeft: "auto",
-                      fontSize: "0.75rem",
-                      opacity: 0.5,
+                      fontSize: "0.8125rem",
+                      opacity: 0.4,
                     }}
                   >
                     ↗

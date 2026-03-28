@@ -21,11 +21,12 @@ export function Hero() {
   useEffect(() => {
     const el = ruleRef.current;
     if (!el) return;
-    setTimeout(() => {
+    const t = setTimeout(() => {
       el.style.transition = "transform 0.85s cubic-bezier(0.22,1,0.36,1) 0.55s, opacity 0.5s ease 0.45s";
       el.style.transform = "scaleX(1)";
       el.style.opacity = "1";
     }, 60);
+    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -42,7 +43,7 @@ export function Hero() {
       }}
     >
       <div className="section-inner" style={{ position: "relative", zIndex: 1 }}>
-        {/* Location badge */}
+        {/* Location badge with animated pulse */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -56,13 +57,13 @@ export function Hero() {
           }}
         >
           <span
+            className="pulse-dot"
             style={{
               width: "6px",
               height: "6px",
               borderRadius: "50%",
-              background: "rgba(16, 185, 129, 0.7)",
+              background: "rgba(16, 185, 129, 0.8)",
               display: "inline-block",
-              boxShadow: "0 0 6px rgba(16, 185, 129, 0.5)",
             }}
           />
           <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", letterSpacing: "0.08em" }}>
@@ -92,12 +93,12 @@ export function Hero() {
           Ramnarinesingh.
         </motion.h1>
 
-        {/* Thin animated rule */}
+        {/* Animated rule */}
         <div
           ref={ruleRef}
           style={{
             height: "1px",
-            background: "linear-gradient(to right, rgba(255,255,255,0.12), rgba(255,255,255,0.03) 70%, transparent)",
+            background: "linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0.04) 70%, transparent)",
             transformOrigin: "left center",
             transform: "scaleX(0)",
             opacity: 0,
@@ -106,24 +107,27 @@ export function Hero() {
           }}
         />
 
-        {/* Tagline */}
+        {/* Tagline — sharper, more specific */}
         <motion.p
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.45}
           style={{
-            fontSize: "clamp(0.875rem, 1.8vw, 1rem)",
+            fontSize: "clamp(0.9rem, 1.8vw, 1.0625rem)",
             color: "var(--text-secondary)",
             letterSpacing: "0.01em",
-            lineHeight: 1.6,
+            lineHeight: 1.65,
             maxWidth: "440px",
             marginBottom: "2.5rem",
           }}
         >
-          CS, Mathematics &amp; Statistics
+          CS, Mathematics &amp; Geospatial Data Science at the{" "}
+          <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>University of Toronto</span>.
           <br />
-          <span style={{ color: "var(--text-muted)" }}>University of Toronto</span>
+          <span style={{ color: "var(--text-muted)" }}>
+            Building with machine learning, React, and real-world data.
+          </span>
         </motion.p>
 
         {/* CTAs */}
@@ -147,16 +151,20 @@ export function Hero() {
               padding: "0.5625rem 1.25rem",
               borderRadius: "6px",
               background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              transition: "background 0.2s ease, border-color 0.2s ease",
+              border: "1px solid rgba(255,255,255,0.14)",
+              transition: "background 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.11)";
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.2)";
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = "rgba(255,255,255,0.11)";
+              el.style.borderColor = "rgba(255,255,255,0.22)";
+              el.style.transform = "translateY(-1px)";
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.12)";
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = "rgba(255,255,255,0.07)";
+              el.style.borderColor = "rgba(255,255,255,0.14)";
+              el.style.transform = "translateY(0)";
             }}
           >
             Selected Work
@@ -173,7 +181,7 @@ export function Hero() {
           </a>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — now animated */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -188,8 +196,10 @@ export function Hero() {
             alignItems: "center",
             gap: "0.5rem",
           }}
+          className="hidden sm:flex"
         >
           <span
+            className="scroll-indicator"
             style={{
               fontSize: "0.625rem",
               letterSpacing: "0.18em",
@@ -201,6 +211,7 @@ export function Hero() {
             scroll
           </span>
           <div
+            className="scroll-line"
             style={{
               width: "1px",
               height: "48px",

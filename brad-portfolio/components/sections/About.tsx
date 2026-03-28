@@ -19,11 +19,10 @@ export function About() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr",
-            gap: "3rem",
+            gap: "2rem",
           }}
           className="about-grid"
         >
-          {/* Left column: label */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -33,7 +32,6 @@ export function About() {
             <span className="section-label">About</span>
           </motion.div>
 
-          {/* Right column: content */}
           <div>
             <motion.p
               initial={{ opacity: 0, y: 24 }}
@@ -50,8 +48,8 @@ export function About() {
                 maxWidth: "600px",
               }}
             >
-              I&apos;m studying Computer Science, Mathematics &amp; Statistics at the University of Toronto — building
-              things at the intersection of machine learning and clean interfaces.
+              CS student at the University of Toronto with hands-on experience
+              in software development, frontend engineering, and e-commerce systems.
             </motion.p>
 
             <motion.p
@@ -67,8 +65,10 @@ export function About() {
                 marginBottom: "1.25rem",
               }}
             >
-              My projects span NLP classifiers, predictive ML models, and responsive web applications. I care about both
-              how code works and how it presents — the technical rigor and the detail.
+              I&apos;ve built ML classifiers, prediction models, and responsive web apps —
+              and I&apos;ve also configured Shopify storefronts, managed POS systems, and wrangled
+              large product datasets. I work across the stack and care about both the technical
+              quality and the end result.
             </motion.p>
 
             <motion.p
@@ -83,7 +83,8 @@ export function About() {
                 maxWidth: "540px",
               }}
             >
-              Currently open to internships and co-ops where I can contribute technically and grow quickly.
+              Currently looking for internships, co-ops, or interesting
+              projects where I can contribute technically and grow fast.
             </motion.p>
 
             <motion.div
@@ -93,7 +94,7 @@ export function About() {
               transition={{ duration: 0.6, ease, delay: 0.28 }}
               style={{
                 display: "flex",
-                gap: "1rem",
+                gap: "1.5rem",
                 marginTop: "2.5rem",
                 flexWrap: "wrap",
               }}
@@ -123,7 +124,7 @@ export function About() {
                 className="link-arrow"
                 style={{ fontSize: "0.875rem" }}
               >
-                X / Twitter ↗
+                X ↗
               </a>
             </motion.div>
           </div>

@@ -4,11 +4,11 @@
   --bg: #080808;
   --surface: #111111;
   --surface-2: #1a1a1a;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-hover: rgba(255, 255, 255, 0.14);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
   --text-primary: #f0f0f0;
-  --text-secondary: #737373;
-  --text-muted: #3d3d3d;
+  --text-secondary: #999999;
+  --text-muted: #525252;
   --accent: #d4c9b8;
 }
 
@@ -42,7 +42,7 @@ body {
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: #f0f0f0;
 }
 
@@ -53,11 +53,11 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
 }
 
-/* Section utilities */
+/* Section container */
 .section-inner {
   max-width: 1100px;
   margin-left: auto;
@@ -90,37 +90,80 @@ body {
   font-weight: 500;
 }
 
-/* Subtle depth gradient behind content */
+/* Depth gradient — subtle warm ambient glow */
 .depth-gradient {
   position: fixed;
   inset: 0;
-  background: radial-gradient(
-    ellipse 80% 50% at 15% 40%,
-    rgba(255, 255, 255, 0.018) 0%,
-    transparent 70%
-  );
+  background:
+    radial-gradient(
+      ellipse 70% 50% at 10% 35%,
+      rgba(212, 175, 120, 0.025) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 85% 75%,
+      rgba(99, 102, 241, 0.015) 0%,
+      transparent 55%
+    );
   pointer-events: none;
   z-index: 0;
 }
 
-/* Thin horizontal separator */
-.separator {
-  height: 1px;
-  background: var(--border);
-  width: 100%;
+/* Noise texture overlay for cinematic feel */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }
 
-/* Card base */
+/* Card base with animated gradient border */
 .card {
   border-radius: 16px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.02);
-  transition: border-color 0.25s ease, background 0.25s ease;
+  transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  background-position: 100% 100%;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  transition: background-position 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  background-position: 0% 0%;
+  opacity: 1;
 }
 
 .card:hover {
   border-color: var(--border-hover);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* Tag pill */
@@ -133,31 +176,33 @@ body {
   line-height: 1.4;
   font-weight: 400;
   letter-spacing: 0.01em;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
   display: inline-block;
 }
 
 .tag:hover {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.15);
   color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
 }
 
-/* External link arrow button */
+/* External link arrow */
 .link-arrow {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
   color: var(--text-muted);
   font-size: 0.8125rem;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, gap 0.25s ease;
   text-decoration: none;
 }
 
 .link-arrow:hover {
   color: var(--text-primary);
+  gap: 0.5rem;
 }
 
-/* Button styles */
+/* Ghost button */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -176,5 +221,102 @@ body {
 .btn-ghost:hover {
   border-color: var(--border-hover);
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Pulse animation for location dot */
+@keyframes pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+/* Scroll indicator bounce */
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+.scroll-indicator {
+  animation: scroll-bounce 2.2s ease-in-out infinite;
+}
+
+/* Scroll line draw animation */
+@keyframes scroll-line-draw {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0.3;
+  }
+}
+
+.scroll-line {
+  transform-origin: top center;
+  animation: scroll-line-draw 2.2s ease-in-out infinite;
+}
+
+/* Project card accent glow */
+.project-glow {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  border-radius: 16px 16px 0 0;
+}
+
+.card:hover .project-glow {
+  opacity: 1;
+}
+
+/* Contact link animated arrow */
+.contact-link .arrow-icon {
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.contact-link:hover .arrow-icon {
+  transform: translate(3px, -3px);
+  opacity: 1;
+}
+
+/* Nav link underline animation */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--text-primary);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }

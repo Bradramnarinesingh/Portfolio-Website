@@ -22,7 +22,7 @@ function SectionRow({ label, children, delay = 0 }: { label: string; children: R
       }}
       className="exp-row"
     >
-      <span className="section-label" style={{ paddingTop: "0.25rem" }}>
+      <span className="section-label" style={{ paddingTop: "0.25rem", minWidth: "fit-content" }}>
         {label}
       </span>
       <div>{children}</div>
@@ -36,6 +36,52 @@ function SectionRow({ label, children, delay = 0 }: { label: string; children: R
         }
       `}</style>
     </motion.div>
+  );
+}
+
+function JobEntry({ job }: { job: (typeof experience)[number] }) {
+  return (
+    <div style={{ marginBottom: "0.5rem" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1rem" }}>
+        <div>
+          <p style={{ fontSize: "1rem", fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.01em", marginBottom: "0.2rem" }}>
+            {job.company}
+          </p>
+          <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginBottom: "0.25rem" }}>
+            {job.role}
+          </p>
+          <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{job.location}</p>
+        </div>
+        <span
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.75rem",
+            color: "var(--text-muted)",
+            whiteSpace: "nowrap",
+            alignSelf: "flex-start",
+          }}
+        >
+          {job.period}
+        </span>
+      </div>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        {job.bullets.map(bullet => (
+          <li
+            key={bullet}
+            style={{
+              fontSize: "0.875rem",
+              color: "var(--text-secondary)",
+              lineHeight: 1.7,
+              display: "flex",
+              gap: "0.625rem",
+            }}
+          >
+            <span style={{ color: "var(--text-muted)", marginTop: "0.45rem", flexShrink: 0, fontSize: "0.4rem" }}>●</span>
+            {bullet}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -64,15 +110,7 @@ export function Experience() {
         <SectionRow label="Education" delay={0.05}>
           <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.75rem" }}>
             <div>
-              <p
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                  color: "var(--text-primary)",
-                  letterSpacing: "-0.01em",
-                  marginBottom: "0.2rem",
-                }}
-              >
+              <p style={{ fontSize: "1rem", fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.01em", marginBottom: "0.2rem" }}>
                 {education.school}
               </p>
               <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginBottom: "0.25rem" }}>
@@ -101,58 +139,14 @@ export function Experience() {
           </div>
         </SectionRow>
 
-        {/* Work Experience */}
-        {experience.map((job, i) => (
-          <SectionRow key={job.company} label={i === 0 ? "Work" : ""} delay={0.1 + i * 0.05}>
-            <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1rem" }}>
-              <div>
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 600,
-                    color: "var(--text-primary)",
-                    letterSpacing: "-0.01em",
-                    marginBottom: "0.2rem",
-                  }}
-                >
-                  {job.company}
-                </p>
-                <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginBottom: "0.25rem" }}>
-                  {job.role}
-                </p>
-                <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{job.location}</p>
-              </div>
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
-                  color: "var(--text-muted)",
-                  whiteSpace: "nowrap",
-                  alignSelf: "flex-start",
-                }}
-              >
-                {job.period}
-              </span>
-            </div>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-              {job.bullets.map(bullet => (
-                <li
-                  key={bullet}
-                  style={{
-                    fontSize: "0.875rem",
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.7,
-                    display: "flex",
-                    gap: "0.625rem",
-                  }}
-                >
-                  <span style={{ color: "var(--text-muted)", marginTop: "0.45rem", flexShrink: 0, fontSize: "0.5rem" }}>●</span>
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-          </SectionRow>
-        ))}
+        {/* Work entries */}
+        <SectionRow label="Work" delay={0.1}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+            {experience.map(job => (
+              <JobEntry key={job.company} job={job} />
+            ))}
+          </div>
+        </SectionRow>
 
         {/* Skills */}
         <SectionRow label="Skills" delay={0.15}>

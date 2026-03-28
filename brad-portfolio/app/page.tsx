@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <>
       <div className="depth-gradient" aria-hidden="true" />
+      <div className="noise-overlay" aria-hidden="true" />
       <Navigation />
       <main>
         <Hero />
