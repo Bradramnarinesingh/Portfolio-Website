@@ -40,10 +40,10 @@ export function Navigation() {
         left: 0,
         right: 0,
         zIndex: 50,
-        transition: "background 0.4s ease, border-color 0.4s ease",
-        background: scrolled ? "rgba(8, 8, 8, 0.82)" : "transparent",
-        backdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
+        transition: "background 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease",
+        background: scrolled ? "rgba(8, 8, 8, 0.85)" : "transparent",
+        backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
+        WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
         borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
       }}
     >

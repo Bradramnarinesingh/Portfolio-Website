@@ -5,12 +5,13 @@ import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/Footer";
+import { ParticleField } from "@/components/ParticleField";
 
 export default function Home() {
   return (
     <>
+      <ParticleField />
       <div className="depth-gradient" aria-hidden="true" />
-      <div className="noise-overlay" aria-hidden="true" />
       <Navigation />
       <main>
         <Hero />

@@ -52,15 +52,7 @@ function JobEntry({ job }: { job: (typeof experience)[number] }) {
           </p>
           <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{job.location}</p>
         </div>
-        <span
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "0.75rem",
-            color: "var(--text-muted)",
-            whiteSpace: "nowrap",
-            alignSelf: "flex-start",
-          }}
-        >
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)", whiteSpace: "nowrap", alignSelf: "flex-start" }}>
           {job.period}
         </span>
       </div>
@@ -76,7 +68,7 @@ function JobEntry({ job }: { job: (typeof experience)[number] }) {
               gap: "0.625rem",
             }}
           >
-            <span style={{ color: "var(--text-muted)", marginTop: "0.45rem", flexShrink: 0, fontSize: "0.4rem" }}>●</span>
+            <span style={{ color: "var(--text-muted)", marginTop: "0.5rem", flexShrink: 0, fontSize: "0.3rem" }}>●</span>
             {bullet}
           </li>
         ))}
@@ -89,12 +81,11 @@ export function Experience() {
   return (
     <section id="experience" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div className="section-inner">
-        {/* Section heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55, ease }}
+          transition={{ duration: 0.6, ease }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -106,7 +97,6 @@ export function Experience() {
           <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
         </motion.div>
 
-        {/* Education */}
         <SectionRow label="Education" delay={0.05}>
           <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.75rem" }}>
             <div>
@@ -118,28 +108,17 @@ export function Experience() {
               </p>
               <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{education.location}</p>
             </div>
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
-                color: "var(--text-muted)",
-                whiteSpace: "nowrap",
-                alignSelf: "flex-start",
-              }}
-            >
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)", whiteSpace: "nowrap", alignSelf: "flex-start" }}>
               {education.period}
             </span>
           </div>
           <div style={{ marginTop: "1rem", display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
             {education.courses.map(c => (
-              <span key={c} className="tag">
-                {c}
-              </span>
+              <span key={c} className="tag">{c}</span>
             ))}
           </div>
         </SectionRow>
 
-        {/* Work entries */}
         <SectionRow label="Work" delay={0.1}>
           <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
             {experience.map(job => (
@@ -148,27 +127,16 @@ export function Experience() {
           </div>
         </SectionRow>
 
-        {/* Skills */}
         <SectionRow label="Skills" delay={0.15}>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             {Object.entries(skills).map(([category, items]) => (
               <div key={category}>
-                <p
-                  style={{
-                    fontSize: "0.6875rem",
-                    color: "var(--text-muted)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    marginBottom: "0.625rem",
-                  }}
-                >
+                <p style={{ fontSize: "0.6875rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.625rem" }}>
                   {category}
                 </p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
                   {items.map(skill => (
-                    <span key={skill} className="tag">
-                      {skill}
-                    </span>
+                    <span key={skill} className="tag">{skill}</span>
                   ))}
                 </div>
               </div>

@@ -27,22 +27,22 @@ export function About() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, ease }}
+            transition={{ duration: 0.6, ease }}
           >
             <span className="section-label">About</span>
           </motion.div>
 
           <div>
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.65, ease, delay: 0.05 }}
+              transition={{ duration: 0.7, ease, delay: 0.05 }}
               style={{
                 fontSize: "clamp(1.15rem, 2.2vw, 1.375rem)",
                 fontWeight: 500,
                 color: "var(--text-primary)",
-                lineHeight: 1.65,
+                lineHeight: 1.6,
                 letterSpacing: "-0.01em",
                 marginBottom: "1.75rem",
                 maxWidth: "600px",
@@ -53,14 +53,14 @@ export function About() {
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.65, ease, delay: 0.12 }}
+              transition={{ duration: 0.7, ease, delay: 0.12 }}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-secondary)",
-                lineHeight: 1.8,
+                lineHeight: 1.7,
                 maxWidth: "540px",
                 marginBottom: "1.25rem",
               }}
@@ -72,14 +72,14 @@ export function About() {
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.65, ease, delay: 0.18 }}
+              transition={{ duration: 0.7, ease, delay: 0.18 }}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-muted)",
-                lineHeight: 1.8,
+                lineHeight: 1.7,
                 maxWidth: "540px",
               }}
             >
@@ -88,7 +88,7 @@ export function About() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: 0.28 }}
@@ -99,31 +99,13 @@ export function About() {
                 flexWrap: "wrap",
               }}
             >
-              <a
-                href={siteConfig.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-arrow"
-                style={{ fontSize: "0.875rem" }}
-              >
+              <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer" className="link-arrow" style={{ fontSize: "0.875rem" }}>
                 GitHub ↗
               </a>
-              <a
-                href={siteConfig.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-arrow"
-                style={{ fontSize: "0.875rem" }}
-              >
+              <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" className="link-arrow" style={{ fontSize: "0.875rem" }}>
                 LinkedIn ↗
               </a>
-              <a
-                href={siteConfig.links.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-arrow"
-                style={{ fontSize: "0.875rem" }}
-              >
+              <a href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer" className="link-arrow" style={{ fontSize: "0.875rem" }}>
                 X ↗
               </a>
             </motion.div>

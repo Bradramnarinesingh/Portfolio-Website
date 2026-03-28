@@ -8,7 +8,7 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 function ProjectCard({ project, index, featured }: { project: Project; index: number; featured?: boolean }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 36 }}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, ease, delay: index * 0.1 }}
@@ -20,23 +20,21 @@ function ProjectCard({ project, index, featured }: { project: Project; index: nu
         rel="noopener noreferrer"
         className="card"
         style={{
-          display: "grid",
-          gridTemplateColumns: featured ? "1fr" : "1fr",
+          display: "block",
           padding: featured ? "2.5rem" : "2rem",
           textDecoration: "none",
           position: "relative",
           overflow: "hidden",
           height: "100%",
-          transition: "transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease",
         }}
         onMouseEnter={e => {
-          (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+          (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
         }}
         onMouseLeave={e => {
           (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
         }}
       >
-        {/* Accent glow on hover */}
+        {/* Accent glow */}
         <div
           className="project-glow"
           aria-hidden="true"
@@ -45,7 +43,7 @@ function ProjectCard({ project, index, featured }: { project: Project; index: nu
           }}
         />
 
-        {/* Top row: number + external link */}
+        {/* Number + arrow */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: featured ? "2rem" : "1.5rem" }}>
           <span
             style={{
@@ -57,17 +55,16 @@ function ProjectCard({ project, index, featured }: { project: Project; index: nu
           >
             {project.id}
           </span>
-          <motion.span
+          <span
             style={{
               fontSize: "0.875rem",
               color: "var(--text-muted)",
               display: "inline-block",
+              transition: "transform 0.3s ease, color 0.25s ease",
             }}
-            whileHover={{ x: 2, y: -2, color: "var(--text-primary)" }}
-            transition={{ duration: 0.2 }}
           >
             ↗
-          </motion.span>
+          </span>
         </div>
 
         {/* Title + subtitle */}
@@ -101,7 +98,7 @@ function ProjectCard({ project, index, featured }: { project: Project; index: nu
           style={{
             fontSize: "0.875rem",
             color: "var(--text-secondary)",
-            lineHeight: 1.8,
+            lineHeight: 1.7,
             marginBottom: "1.75rem",
             maxWidth: featured ? "600px" : undefined,
           }}
@@ -109,8 +106,8 @@ function ProjectCard({ project, index, featured }: { project: Project; index: nu
           {project.description}
         </p>
 
-        {/* Tech tags */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem", marginTop: "auto" }}>
+        {/* Tags */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
           {project.tech.map(t => (
             <span key={t} className="tag">
               {t}
@@ -126,7 +123,6 @@ export function Work() {
   return (
     <section id="work" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div className="section-inner">
-        {/* Section heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,12 +148,11 @@ export function Work() {
           </span>
         </motion.div>
 
-        {/* Project layout: first card featured full-width, rest in 2-col */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1fr",
-            gap: "1.25rem",
+            gap: "1.5rem",
           }}
           className="project-grid"
         >

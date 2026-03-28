@@ -18,37 +18,30 @@ export function Contact() {
     <section id="contact" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div
         className="section-inner"
-        style={{
-          borderTop: "1px solid var(--border)",
-          paddingTop: "4rem",
-        }}
+        style={{ borderTop: "1px solid var(--border)", paddingTop: "4rem" }}
       >
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: "2rem",
-          }}
+          style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2rem" }}
           className="contact-grid"
         >
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, ease }}
+            transition={{ duration: 0.6, ease }}
           >
             <span className="section-label">Contact</span>
           </motion.div>
 
           <div>
             <motion.h2
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, ease, delay: 0.05 }}
               style={{
                 fontSize: "clamp(2rem, 5vw, 3.75rem)",
-                fontWeight: 700,
+                fontWeight: 600,
                 letterSpacing: "-0.035em",
                 lineHeight: 1.05,
                 color: "var(--text-primary)",
@@ -61,14 +54,14 @@ export function Contact() {
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: 0.14 }}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-secondary)",
-                lineHeight: 1.8,
+                lineHeight: 1.7,
                 maxWidth: "420px",
                 marginBottom: "3rem",
               }}
@@ -77,13 +70,12 @@ export function Contact() {
               Reach out — I read everything.
             </motion.p>
 
-            {/* Links */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: 0.2 }}
-              style={{ display: "flex", flexDirection: "column", gap: "0" }}
+              style={{ display: "flex", flexDirection: "column" }}
             >
               {links.map(({ label, href, external }) => (
                 <a
@@ -102,7 +94,7 @@ export function Contact() {
                     color: "var(--text-secondary)",
                     textDecoration: "none",
                     borderBottom: "1px solid var(--border)",
-                    transition: "color 0.2s ease, border-color 0.25s ease, padding-left 0.3s ease",
+                    transition: "color 0.25s ease, border-color 0.25s ease, padding-left 0.3s cubic-bezier(0.22,1,0.36,1)",
                     letterSpacing: "-0.005em",
                   }}
                   onMouseEnter={e => {
@@ -119,13 +111,7 @@ export function Contact() {
                   }}
                 >
                   <span>{label}</span>
-                  <span
-                    className="arrow-icon"
-                    style={{
-                      fontSize: "0.8125rem",
-                      opacity: 0.4,
-                    }}
-                  >
+                  <span className="arrow-icon" style={{ fontSize: "0.8125rem", opacity: 0.4 }}>
                     ↗
                   </span>
                 </a>
