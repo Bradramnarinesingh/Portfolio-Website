@@ -1,18 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { projects, type Project } from "@/lib/data";
+import { projects } from "@/lib/data";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-function ProjectCard({ project, index, featured }: { project: Project; index: number; featured?: boolean }) {
+function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, ease, delay: index * 0.08 }}
-      style={featured ? { gridColumn: "1 / -1" } : undefined}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.65, ease, delay: index * 0.08 }}
     >
       <a
         href={project.link}
@@ -21,19 +20,37 @@ function ProjectCard({ project, index, featured }: { project: Project; index: nu
         className="card"
         style={{
           display: "block",
-          padding: featured ? "2rem" : "1.75rem",
+          padding: "2rem",
           textDecoration: "none",
+          position: "relative",
+          overflow: "hidden",
           height: "100%",
         }}
         onMouseEnter={e => {
-          (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+          const el = e.currentTarget as HTMLElement;
+          el.style.transform = "translateY(-3px)";
+          el.style.transition = "transform 0.3s ease, border-color 0.25s ease, background 0.25s ease";
         }}
         onMouseLeave={e => {
-          (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+          const el = e.currentTarget as HTMLElement;
+          el.style.transform = "translateY(0)";
         }}
       >
-        {/* Number + arrow */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.25rem" }}>
+        {/* Subtle top gradient per project */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "1px",
+            background: `linear-gradient(to right, transparent, ${project.accent}, transparent)`,
+          }}
+        />
+
+        {/* Top row: number + external link */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.75rem" }}>
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -48,55 +65,47 @@ function ProjectCard({ project, index, featured }: { project: Project; index: nu
             style={{
               fontSize: "0.8125rem",
               color: "var(--text-muted)",
-              transition: "color 0.25s ease",
+              transition: "color 0.2s ease, transform 0.2s ease",
+              display: "inline-block",
             }}
+            className="link-indicator"
           >
             ↗
           </span>
         </div>
 
-        {/* Title + subtitle */}
-        <div style={{ marginBottom: "0.875rem" }}>
-          <h3
-            style={{
-              fontSize: featured ? "clamp(1.25rem, 2.5vw, 1.625rem)" : "clamp(1.05rem, 2vw, 1.25rem)",
-              fontWeight: 600,
-              color: "var(--text-primary)",
-              lineHeight: 1.25,
-              letterSpacing: "-0.02em",
-              marginBottom: "0.25rem",
-            }}
-          >
-            {project.title}
-          </h3>
-          <span
-            style={{
-              fontSize: "0.8125rem",
-              color: "var(--text-muted)",
-              fontWeight: 400,
-            }}
-          >
-            {project.subtitle}
-          </span>
-        </div>
+        {/* Title */}
+        <h3
+          style={{
+            fontSize: "clamp(1.1rem, 2.2vw, 1.35rem)",
+            fontWeight: 600,
+            color: "var(--text-primary)",
+            lineHeight: 1.25,
+            letterSpacing: "-0.02em",
+            marginBottom: "0.875rem",
+          }}
+        >
+          {project.title}
+        </h3>
 
         {/* Description */}
         <p
           style={{
             fontSize: "0.8125rem",
             color: "var(--text-secondary)",
-            lineHeight: 1.7,
-            marginBottom: "1.5rem",
-            maxWidth: featured ? "560px" : undefined,
+            lineHeight: 1.75,
+            marginBottom: "1.75rem",
           }}
         >
           {project.description}
         </p>
 
-        {/* Tags */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
+        {/* Tech tags */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem", marginTop: "auto" }}>
           {project.tech.map(t => (
-            <span key={t} className="tag">{t}</span>
+            <span key={t} className="tag">
+              {t}
+            </span>
           ))}
         </div>
       </a>
@@ -106,10 +115,11 @@ function ProjectCard({ project, index, featured }: { project: Project; index: nu
 
 export function Work() {
   return (
-    <section id="work" style={{ paddingTop: "var(--section-py)", paddingBottom: "var(--section-py)" }}>
+    <section id="work" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div className="section-inner">
+        {/* Section heading */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease }}
@@ -117,11 +127,17 @@ export function Work() {
             display: "flex",
             alignItems: "center",
             gap: "1.25rem",
-            marginBottom: "3rem",
+            marginBottom: "3.5rem",
           }}
         >
           <span className="section-label">Selected Work</span>
-          <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
+          <div
+            style={{
+              flex: 1,
+              height: "1px",
+              background: "var(--border)",
+            }}
+          />
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -133,16 +149,16 @@ export function Work() {
           </span>
         </motion.div>
 
+        {/* Project grid */}
         <div
-          className="project-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))",
             gap: "1rem",
           }}
         >
           {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} featured={i === 0} />
+            <ProjectCard key={project.id} project={project} index={i} />
           ))}
         </div>
       </div>

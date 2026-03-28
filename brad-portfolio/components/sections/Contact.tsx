@@ -5,119 +5,139 @@ import { siteConfig } from "@/lib/data";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const links = [
-  { label: "Email", href: `mailto:${siteConfig.email}`, external: false },
-  { label: "GitHub", href: siteConfig.links.github, external: true },
-  { label: "LinkedIn", href: siteConfig.links.linkedin, external: true },
-  { label: "X / Twitter", href: siteConfig.links.twitter, external: true },
-  { label: "Resume", href: siteConfig.links.resume, external: true },
+const socialLinks = [
+  { label: "GitHub", href: siteConfig.links.github },
+  { label: "LinkedIn", href: siteConfig.links.linkedin },
+  { label: "X / Twitter", href: siteConfig.links.twitter },
+  { label: "Resume", href: siteConfig.links.resume },
 ];
 
 export function Contact() {
   return (
-    <section id="contact" style={{ paddingTop: "var(--section-py)", paddingBottom: "var(--section-py)" }}>
+    <section id="contact" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div
         className="section-inner"
-        style={{ borderTop: "1px solid var(--border)", paddingTop: "3rem" }}
+        style={{
+          borderTop: "1px solid var(--border)",
+          paddingTop: "4rem",
+        }}
       >
         <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "3rem",
+          }}
           className="contact-grid"
-          style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5rem" }}
         >
+          {/* Label */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, ease }}
+            transition={{ duration: 0.55, ease }}
           >
             <span className="section-label">Contact</span>
           </motion.div>
 
+          {/* Content */}
           <div>
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, ease, delay: 0.05 }}
               style={{
-                fontSize: "clamp(1.75rem, 5vw, 3.5rem)",
-                fontWeight: 600,
+                fontSize: "clamp(2rem, 5vw, 3.75rem)",
+                fontWeight: 700,
                 letterSpacing: "-0.035em",
                 lineHeight: 1.05,
                 color: "var(--text-primary)",
                 marginBottom: "1.25rem",
               }}
             >
-              Let&apos;s
+              Open to
               <br />
-              <span style={{ color: "var(--text-secondary)" }}>connect.</span>
+              <span style={{ color: "var(--text-secondary)" }}>opportunities.</span>
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: 0.14 }}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-secondary)",
-                lineHeight: 1.7,
-                maxWidth: "400px",
-                marginBottom: "2.5rem",
+                lineHeight: 1.8,
+                maxWidth: "420px",
+                marginBottom: "3rem",
               }}
             >
-              Open to internships, co-ops, freelance, or interesting conversations.
-              Reach out — I read everything.
+              Internships, co-ops, or anything interesting. If you&apos;re building something worth talking about, I&apos;d like to hear from you.
             </motion.p>
 
+            {/* Social links */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: 0.2 }}
-              style={{ display: "flex", flexDirection: "column" }}
+              style={{ display: "flex", flexDirection: "column", gap: "0.125rem" }}
             >
-              {links.map(({ label, href, external }) => (
+              {socialLinks.map(({ label, href }) => (
                 <a
                   key={label}
                   href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  className="contact-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
-                    display: "flex",
+                    display: "inline-flex",
                     alignItems: "center",
-                    justifyContent: "space-between",
+                    gap: "0.5rem",
                     padding: "0.75rem 0",
                     fontSize: "0.9375rem",
                     fontWeight: 500,
                     color: "var(--text-secondary)",
                     textDecoration: "none",
                     borderBottom: "1px solid var(--border)",
-                    transition: "color 0.25s ease, border-color 0.25s ease, padding-left 0.3s cubic-bezier(0.22,1,0.36,1)",
+                    transition: "color 0.2s ease, border-color 0.2s ease",
                     letterSpacing: "-0.005em",
                   }}
                   onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.color = "var(--text-primary)";
-                    el.style.borderBottomColor = "var(--border-hover)";
-                    el.style.paddingLeft = "0.5rem";
+                    (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
+                    (e.currentTarget as HTMLElement).style.borderBottomColor = "var(--border-hover)";
                   }}
                   onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.color = "var(--text-secondary)";
-                    el.style.borderBottomColor = "var(--border)";
-                    el.style.paddingLeft = "0";
+                    (e.currentTarget as HTMLElement).style.color = "var(--text-secondary)";
+                    (e.currentTarget as HTMLElement).style.borderBottomColor = "var(--border)";
                   }}
                 >
                   <span>{label}</span>
-                  <span className="arrow-icon" style={{ fontSize: "0.8125rem", opacity: 0.4 }}>↗</span>
+                  <span
+                    style={{
+                      marginLeft: "auto",
+                      fontSize: "0.75rem",
+                      opacity: 0.5,
+                    }}
+                  >
+                    ↗
+                  </span>
                 </a>
               ))}
             </motion.div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (min-width: 768px) {
+          .contact-grid {
+            grid-template-columns: 180px 1fr !important;
+            gap: 4rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

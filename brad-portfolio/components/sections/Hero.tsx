@@ -7,11 +7,11 @@ import { siteConfig } from "@/lib/data";
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 28 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease, delay },
+    transition: { duration: 0.7, ease, delay },
   }),
 };
 
@@ -21,12 +21,11 @@ export function Hero() {
   useEffect(() => {
     const el = ruleRef.current;
     if (!el) return;
-    const t = setTimeout(() => {
-      el.style.transition = "transform 1s cubic-bezier(0.22,1,0.36,1) 0.6s, opacity 0.6s ease 0.5s";
+    setTimeout(() => {
+      el.style.transition = "transform 0.85s cubic-bezier(0.22,1,0.36,1) 0.55s, opacity 0.5s ease 0.45s";
       el.style.transform = "scaleX(1)";
       el.style.opacity = "1";
     }, 60);
-    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -38,18 +37,12 @@ export function Hero() {
         flexDirection: "column",
         justifyContent: "center",
         position: "relative",
+        paddingTop: "80px",
+        paddingBottom: "5rem",
       }}
     >
-      <div
-        className="section-inner"
-        style={{
-          position: "relative",
-          zIndex: 1,
-          paddingTop: "72px",
-          paddingBottom: "4rem",
-        }}
-      >
-        {/* Location */}
+      <div className="section-inner" style={{ position: "relative", zIndex: 1 }}>
+        {/* Location badge */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -59,17 +52,17 @@ export function Hero() {
             display: "flex",
             alignItems: "center",
             gap: "0.5rem",
-            marginBottom: "2rem",
+            marginBottom: "2.5rem",
           }}
         >
           <span
-            className="pulse-dot"
             style={{
               width: "6px",
               height: "6px",
               borderRadius: "50%",
-              background: "rgba(16, 185, 129, 0.8)",
+              background: "rgba(16, 185, 129, 0.7)",
               display: "inline-block",
+              boxShadow: "0 0 6px rgba(16, 185, 129, 0.5)",
             }}
           />
           <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", letterSpacing: "0.08em" }}>
@@ -77,7 +70,7 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Name */}
+        {/* Display name */}
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -92,25 +85,24 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          custom={0.2}
+          custom={0.18}
           className="display-title"
-          style={{ marginBottom: "1.5rem", color: "#aaaaaa" }}
+          style={{ marginBottom: "1.5rem", color: "var(--text-secondary)" }}
         >
           Ramnarinesingh.
         </motion.h1>
 
-        {/* Rule */}
+        {/* Thin animated rule */}
         <div
           ref={ruleRef}
           style={{
             height: "1px",
-            background: "linear-gradient(to right, rgba(255,255,255,0.18), rgba(255,255,255,0.05) 60%, transparent)",
+            background: "linear-gradient(to right, rgba(255,255,255,0.12), rgba(255,255,255,0.03) 70%, transparent)",
             transformOrigin: "left center",
             transform: "scaleX(0)",
             opacity: 0,
-            marginBottom: "1.75rem",
-            maxWidth: "100%",
-            width: "min(480px, 100%)",
+            marginBottom: "2rem",
+            maxWidth: "480px",
           }}
         />
 
@@ -119,22 +111,19 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          custom={0.5}
+          custom={0.45}
           style={{
-            fontSize: "clamp(0.875rem, 1.8vw, 1.0625rem)",
+            fontSize: "clamp(0.875rem, 1.8vw, 1rem)",
             color: "var(--text-secondary)",
-            letterSpacing: "0.005em",
-            lineHeight: 1.7,
+            letterSpacing: "0.01em",
+            lineHeight: 1.6,
             maxWidth: "440px",
             marginBottom: "2.5rem",
           }}
         >
-          CS, Mathematics &amp; Geospatial Data Science at the{" "}
-          <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>University of Toronto</span>.
+          CS, Mathematics &amp; Statistics
           <br />
-          <span style={{ color: "var(--text-muted)" }}>
-            Building with machine learning, React, and real-world data.
-          </span>
+          <span style={{ color: "var(--text-muted)" }}>University of Toronto</span>
         </motion.p>
 
         {/* CTAs */}
@@ -142,8 +131,8 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          custom={0.6}
-          style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}
+          custom={0.55}
+          style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}
         >
           <a
             href="#work"
@@ -155,23 +144,19 @@ export function Hero() {
               fontWeight: 500,
               color: "var(--text-primary)",
               textDecoration: "none",
-              padding: "0.5rem 1.125rem",
+              padding: "0.5625rem 1.25rem",
               borderRadius: "6px",
               background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.14)",
-              transition: "background 0.25s ease, border-color 0.25s ease, transform 0.25s ease",
+              border: "1px solid rgba(255,255,255,0.12)",
+              transition: "background 0.2s ease, border-color 0.2s ease",
             }}
             onMouseEnter={e => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.background = "rgba(255,255,255,0.12)";
-              el.style.borderColor = "rgba(255,255,255,0.24)";
-              el.style.transform = "translateY(-1px)";
+              (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.11)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.2)";
             }}
             onMouseLeave={e => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.background = "rgba(255,255,255,0.07)";
-              el.style.borderColor = "rgba(255,255,255,0.14)";
-              el.style.transform = "translateY(0)";
+              (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.12)";
             }}
           >
             Selected Work
@@ -187,46 +172,43 @@ export function Hero() {
             <span style={{ fontSize: "0.75rem", opacity: 0.55 }}>↗</span>
           </a>
         </motion.div>
-      </div>
 
-      {/* Scroll indicator — outside section-inner to avoid layout interference */}
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        animate="visible"
-        custom={0.85}
-        style={{
-          position: "absolute",
-          bottom: "2rem",
-          right: "var(--section-px)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "0.5rem",
-        }}
-        className="hidden sm:flex"
-      >
-        <span
-          className="scroll-indicator"
+        {/* Scroll indicator */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.8}
           style={{
-            fontSize: "0.5625rem",
-            letterSpacing: "0.2em",
-            color: "var(--text-muted)",
-            textTransform: "uppercase",
-            writingMode: "vertical-rl",
+            position: "absolute",
+            bottom: "-4rem",
+            right: 0,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.5rem",
           }}
         >
-          scroll
-        </span>
-        <div
-          className="scroll-line"
-          style={{
-            width: "1px",
-            height: "40px",
-            background: "linear-gradient(to bottom, var(--text-muted), transparent)",
-          }}
-        />
-      </motion.div>
+          <span
+            style={{
+              fontSize: "0.625rem",
+              letterSpacing: "0.18em",
+              color: "var(--text-muted)",
+              textTransform: "uppercase",
+              writingMode: "vertical-rl",
+            }}
+          >
+            scroll
+          </span>
+          <div
+            style={{
+              width: "1px",
+              height: "48px",
+              background: "linear-gradient(to bottom, var(--text-muted), transparent)",
+            }}
+          />
+        </motion.div>
+      </div>
     </section>
   );
 }

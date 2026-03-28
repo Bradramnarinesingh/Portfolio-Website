@@ -5,13 +5,17 @@ import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/Footer";
-import { ParticleField } from "@/components/ParticleField";
 
 export default function Home() {
   return (
     <>
-      <ParticleField />
-      <div className="depth-gradient" aria-hidden="true" />
+      {/* Ambient background — pure CSS, no JS, GPU-accelerated transforms */}
+      <div className="ambient-bg" aria-hidden="true">
+        <div className="ambient-orb ambient-orb--1" />
+        <div className="ambient-orb ambient-orb--2" />
+        <div className="ambient-orb ambient-orb--3" />
+      </div>
+
       <Navigation />
       <main>
         <Hero />

@@ -7,10 +7,11 @@
   --border: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 255, 255, 0.18);
   --text-primary: #f0f0f0;
-  --text-secondary: #999999;
-  --text-muted: #666666;
+  --text-secondary: #888888;
+  --text-muted: #555555;
   --accent: #d4c9b8;
 
+  --nav-height: 60px;
   --section-px: 1.25rem;
   --section-py: 5rem;
 }
@@ -66,16 +67,9 @@ body {
   color: #f0f0f0;
 }
 
-::-webkit-scrollbar {
-  width: 3px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
 
 /* ================================================================
    LAYOUT
@@ -105,7 +99,6 @@ main, footer {
   letter-spacing: -0.04em;
   font-weight: 600;
   color: var(--text-primary);
-  max-width: 100%;
   word-break: break-word;
   overflow-wrap: break-word;
 }
@@ -119,43 +112,350 @@ main, footer {
 }
 
 /* ================================================================
-   BACKGROUND LAYERS
+   AMBIENT BACKGROUND
    ================================================================ */
 
-.depth-gradient {
+.ambient-bg {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(
-      ellipse 70% 50% at 10% 35%,
-      rgba(212, 175, 120, 0.025) 0%,
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse 60% 40% at 85% 75%,
-      rgba(99, 102, 241, 0.015) 0%,
-      transparent 55%
-    );
-  pointer-events: none;
   z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.ambient-orb--1 {
+  width: 90vw;
+  height: 75vh;
+  top: -30vh;
+  left: -20vw;
+  background: radial-gradient(ellipse at center,
+    rgba(210, 175, 115, 0.07) 0%,
+    rgba(210, 175, 115, 0.02) 45%,
+    transparent 70%
+  );
+  animation: orb-drift-1 34s ease-in-out infinite;
+}
+
+.ambient-orb--2 {
+  width: 80vw;
+  height: 65vh;
+  bottom: -20vh;
+  right: -15vw;
+  background: radial-gradient(ellipse at center,
+    rgba(80, 100, 195, 0.06) 0%,
+    rgba(80, 100, 195, 0.02) 45%,
+    transparent 68%
+  );
+  animation: orb-drift-2 42s ease-in-out infinite;
+}
+
+.ambient-orb--3 {
+  width: 65vw;
+  height: 55vh;
+  top: 30vh;
+  left: 20vw;
+  background: radial-gradient(ellipse at center,
+    rgba(145, 128, 175, 0.045) 0%,
+    rgba(145, 128, 175, 0.01) 45%,
+    transparent 68%
+  );
+  animation: orb-drift-3 27s ease-in-out infinite;
+}
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30%       { transform: translate(7vw,  6vh) scale(1.04); }
+  65%       { transform: translate(-3vw, 11vh) scale(0.97); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  38%       { transform: translate(-8vw, -9vh) scale(1.03); }
+  72%       { transform: translate(4vw,  -5vh) scale(0.98); }
+}
+
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(5vw, -7vh) scale(1.05); }
 }
 
 /* ================================================================
-   CARD — tonal surface, no glass
+   NAVIGATION — HEADER
+   ================================================================ */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition: background 0.45s ease, border-color 0.45s ease;
+}
+
+.site-header[data-scrolled="true"] {
+  background: rgba(8, 8, 8, 0.88);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Blur layer — separate element so opacity can transition without
+   the browser needing to animate backdrop-filter itself */
+.site-header__blur {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.site-header[data-scrolled="true"] .site-header__blur {
+  opacity: 1;
+}
+
+.site-header__inner {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+/* Brand / logo */
+.nav-brand {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.nav-brand:hover { opacity: 0.65; }
+
+/* Desktop nav links */
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .nav-desktop { display: flex; }
+}
+
+.nav-desktop__link {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.025em;
+  transition: color 0.2s ease;
+  position: relative;
+  line-height: 1;
+}
+
+.nav-desktop__link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--text-primary);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-desktop__link:hover { color: var(--text-primary); }
+.nav-desktop__link:hover::after { width: 100%; }
+
+/* Resume button */
+.nav-resume {
+  display: none !important;
+}
+
+@media (min-width: 640px) {
+  .nav-resume {
+    display: inline-flex !important;
+  }
+}
+
+/* Hamburger button */
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-primary);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .nav-toggle { display: none; }
+}
+
+/* Three-bar icon */
+.nav-toggle__bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 13px;
+  position: relative;
+}
+
+.nav-toggle__bars span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease;
+}
+
+/* Open state: bars 1 and 3 rotate to form × */
+/* With height=13px, space-between: spans at 0, 5.75, 11.5px center */
+/* Middle = 5.75px. Span 1 moves +5.75px, span 3 moves -5.75px */
+.nav-toggle__bars[data-open="true"] span:nth-child(1) {
+  transform: translateY(5.75px) rotate(45deg);
+}
+.nav-toggle__bars[data-open="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+.nav-toggle__bars[data-open="true"] span:nth-child(3) {
+  transform: translateY(-5.75px) rotate(-45deg);
+}
+
+/* ================================================================
+   NAVIGATION — MOBILE OVERLAY
+   ================================================================ */
+
+.nav-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(8, 8, 8, 0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Visibility controlled via opacity + pointer-events (no display: none
+     toggle so CSS transitions fire correctly on both open and close) */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.nav-mobile[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hide on desktop — display: none is fine here since it won't toggle */
+@media (min-width: 640px) {
+  .nav-mobile { display: none; }
+}
+
+.nav-mobile__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding-top: var(--nav-height);
+  width: 100%;
+}
+
+.nav-mobile__link {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.625rem 2rem;
+  width: 100%;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+
+  /* Staggered entrance — opacity and Y */
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    color 0.2s ease,
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Stagger delays only when opening (data-open="true" on parent) */
+.nav-mobile[data-open="true"] .nav-mobile__link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-mobile[data-open="true"] .nav-mobile__link[data-index="0"] { transition-delay: 0.04s; }
+.nav-mobile[data-open="true"] .nav-mobile__link[data-index="1"] { transition-delay: 0.08s; }
+.nav-mobile[data-open="true"] .nav-mobile__link[data-index="2"] { transition-delay: 0.12s; }
+.nav-mobile[data-open="true"] .nav-mobile__link[data-index="3"] { transition-delay: 0.16s; }
+
+.nav-mobile__link:hover { color: var(--text-secondary); }
+
+.nav-mobile__resume {
+  margin-top: 1.75rem;
+  font-size: 0.9375rem;
+
+  /* Same stagger treatment */
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.35s ease 0.2s,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.nav-mobile[data-open="true"] .nav-mobile__resume {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================================================
+   CARD
    ================================================================ */
 
 .card {
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   background: rgba(255, 255, 255, 0.02);
   transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   position: relative;
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.035);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.038);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* ================================================================
@@ -171,14 +471,13 @@ main, footer {
   line-height: 1.4;
   font-weight: 400;
   letter-spacing: 0.01em;
-  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  transition: border-color 0.2s ease, color 0.2s ease;
   display: inline-block;
 }
 
 .tag:hover {
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.16);
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
 }
 
 /* ================================================================
@@ -191,7 +490,7 @@ main, footer {
   gap: 0.25rem;
   color: var(--text-muted);
   font-size: 0.8125rem;
-  transition: color 0.25s ease, gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: color 0.2s ease, gap 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   text-decoration: none;
 }
 
@@ -214,24 +513,25 @@ main, footer {
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-secondary);
   text-decoration: none;
-  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
   letter-spacing: 0.01em;
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .btn-ghost:hover {
   border-color: var(--border-hover);
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* ================================================================
-   ANIMATIONS
+   MICRO ANIMATIONS
    ================================================================ */
 
 @keyframes pulse-dot {
   0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45); }
-  50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  50%       { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
 }
 
 .pulse-dot {
@@ -240,7 +540,7 @@ main, footer {
 
 @keyframes scroll-bounce {
   0%, 100% { transform: translateY(0); opacity: 0.4; }
-  50% { transform: translateY(8px); opacity: 0.9; }
+  50%       { transform: translateY(8px); opacity: 0.9; }
 }
 
 .scroll-indicator {
@@ -248,8 +548,8 @@ main, footer {
 }
 
 @keyframes scroll-line-draw {
-  0% { transform: scaleY(0); opacity: 0; }
-  40% { opacity: 0.6; }
+  0%   { transform: scaleY(0); opacity: 0; }
+  40%  { opacity: 0.6; }
   100% { transform: scaleY(1); opacity: 0.15; }
 }
 
@@ -257,8 +557,6 @@ main, footer {
   transform-origin: top center;
   animation: scroll-line-draw 2.4s ease-in-out infinite;
 }
-
-/* (project-glow removed — replaced by tonal surface system) */
 
 /* ================================================================
    CONTACT LINK
@@ -274,55 +572,18 @@ main, footer {
 }
 
 /* ================================================================
-   NAV LINK UNDERLINE
-   ================================================================ */
-
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--text-primary);
-  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* ================================================================
-   RESPONSIVE GRID LAYOUTS (centralized)
+   RESPONSIVE GRIDS
    ================================================================ */
 
 @media (min-width: 768px) {
-  .about-grid {
-    grid-template-columns: 160px 1fr !important;
-    gap: 4rem !important;
-  }
-
-  .contact-grid {
-    grid-template-columns: 160px 1fr !important;
-    gap: 4rem !important;
-  }
-
-  .exp-row {
-    grid-template-columns: 160px 1fr !important;
-    gap: 3rem !important;
-  }
-
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
+  .about-grid    { grid-template-columns: 160px 1fr !important; gap: 4rem !important; }
+  .contact-grid  { grid-template-columns: 160px 1fr !important; gap: 4rem !important; }
+  .exp-row       { grid-template-columns: 160px 1fr !important; gap: 3rem !important; }
+  .project-grid  { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 /* ================================================================
-   MOBILE REFINEMENTS
+   MOBILE DISPLAY TITLE ADJUSTMENT
    ================================================================ */
 
 @media (max-width: 639px) {
@@ -331,13 +592,8 @@ main, footer {
     letter-spacing: -0.035em;
   }
 
-  .card {
-    border-radius: 10px;
-  }
-
-  .section-label {
-    font-size: 0.625rem;
-  }
+  .card { border-radius: 10px; }
+  .section-label { font-size: 0.625rem; }
 }
 
 /* ================================================================
@@ -345,6 +601,7 @@ main, footer {
    ================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
+  .ambient-orb,
   .pulse-dot,
   .scroll-indicator,
   .scroll-line {
@@ -355,8 +612,17 @@ main, footer {
   .btn-ghost,
   .tag,
   .link-arrow,
-  .nav-link::after,
-  .contact-link .arrow-icon {
+  .contact-link .arrow-icon,
+  .nav-desktop__link::after,
+  .nav-toggle__bars span {
+    transition: none;
+  }
+
+  .nav-mobile,
+  .nav-mobile__link,
+  .nav-mobile__resume,
+  .site-header,
+  .site-header__blur {
     transition: none;
   }
 }

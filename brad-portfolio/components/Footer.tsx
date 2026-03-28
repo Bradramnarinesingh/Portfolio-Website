@@ -5,8 +5,8 @@ export function Footer() {
     <footer
       style={{
         borderTop: "1px solid var(--border)",
-        paddingTop: "1.5rem",
-        paddingBottom: "2rem",
+        paddingTop: "2rem",
+        paddingBottom: "2.5rem",
       }}
     >
       <div
@@ -16,13 +16,25 @@ export function Footer() {
           justifyContent: "space-between",
           alignItems: "center",
           flexWrap: "wrap",
-          gap: "0.5rem",
+          gap: "0.75rem",
         }}
       >
-        <span style={{ fontSize: "0.6875rem", color: "var(--text-muted)", letterSpacing: "0.01em" }}>
+        <span
+          style={{
+            fontSize: "0.75rem",
+            color: "var(--text-muted)",
+            letterSpacing: "0.01em",
+          }}
+        >
           © {year} Brad Ramnarinesingh
         </span>
-        <span style={{ fontSize: "0.6875rem", color: "var(--text-muted)", letterSpacing: "0.01em" }}>
+        <span
+          style={{
+            fontSize: "0.75rem",
+            color: "var(--text-muted)",
+            letterSpacing: "0.01em",
+          }}
+        >
           Built with Next.js · Deployed on Vercel
         </span>
       </div>
