@@ -90,7 +90,7 @@ body {
   padding-right: var(--section-px);
 }
 
-main, header, footer {
+main, footer {
   position: relative;
   z-index: 1;
 }

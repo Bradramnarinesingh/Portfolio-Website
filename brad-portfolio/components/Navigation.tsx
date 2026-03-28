@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 
@@ -13,39 +13,6 @@ const NAV_LINKS = [
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-function MenuIcon({ open }: { open: boolean }) {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      style={{ display: "block" }}
-    >
-      <motion.line
-        x1="3" x2="17"
-        animate={open ? { y1: 10, y2: 10, rotate: 45 } : { y1: 5, y2: 5, rotate: 0 }}
-        transition={{ duration: 0.3, ease }}
-        style={{ transformOrigin: "center" }}
-      />
-      <motion.line
-        x1="3" y1="10" x2="17" y2="10"
-        animate={open ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.2 }}
-      />
-      <motion.line
-        x1="3" x2="17"
-        animate={open ? { y1: 10, y2: 10, rotate: -45 } : { y1: 15, y2: 15, rotate: 0 }}
-        transition={{ duration: 0.3, ease }}
-        style={{ transformOrigin: "center" }}
-      />
-    </svg>
-  );
-}
-
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,162 +20,198 @@ export function Navigation() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        transition: "background 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease",
-        background: scrolled ? "rgba(8, 8, 8, 0.85)" : "transparent",
-        backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
-        WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
-      }}
-    >
-      <nav
-        className="section-inner"
+    <>
+      {/* Fixed nav bar */}
+      <header
         style={{
-          height: "56px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          background: scrolled ? "rgba(8, 8, 8, 0.9)" : "transparent",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
+          transition: "background 0.4s ease, border-color 0.4s ease",
         }}
       >
-        <a
-          href="#home"
+        {/* Separate blur layer — avoids broken backdrop-filter transitions */}
+        <div
           style={{
-            fontSize: "0.9375rem",
-            fontWeight: 600,
-            letterSpacing: "-0.01em",
-            color: "var(--text-primary)",
-            textDecoration: "none",
-            transition: "opacity 0.2s ease",
+            position: "absolute",
+            inset: 0,
+            backdropFilter: "blur(20px) saturate(180%)",
+            WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            opacity: scrolled ? 1 : 0,
+            transition: "opacity 0.4s ease",
+            pointerEvents: "none",
           }}
-          onMouseEnter={e => (e.currentTarget.style.opacity = "0.7")}
-          onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
-        >
-          Brad.
-        </a>
+        />
 
-        {/* Desktop nav */}
-        <ul
+        <nav
+          className="section-inner"
           style={{
+            height: "56px",
             display: "flex",
             alignItems: "center",
-            gap: "2rem",
-            listStyle: "none",
-            margin: 0,
-            padding: 0,
-          }}
-          className="hidden sm:flex"
-        >
-          {NAV_LINKS.map(({ label, href }) => (
-            <li key={label}>
-              <a
-                href={href}
-                className="nav-link"
-                style={{
-                  fontSize: "0.8125rem",
-                  color: "var(--text-secondary)",
-                  textDecoration: "none",
-                  letterSpacing: "0.02em",
-                  transition: "color 0.2s ease",
-                }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--text-primary)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--text-secondary)")}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href={siteConfig.links.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-ghost hidden sm:inline-flex"
-        >
-          Resume
-          <span style={{ fontSize: "0.75rem", opacity: 0.6 }}>↗</span>
-        </a>
-
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen(o => !o)}
-          aria-label="Toggle menu"
-          className="sm:hidden"
-          style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: "6px",
-            color: "var(--text-secondary)",
-            zIndex: 52,
+            justifyContent: "space-between",
             position: "relative",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
           }}
         >
-          <MenuIcon open={menuOpen} />
-        </button>
-      </nav>
+          <a
+            href="#home"
+            onClick={closeMenu}
+            style={{
+              fontSize: "0.9375rem",
+              fontWeight: 600,
+              letterSpacing: "-0.01em",
+              color: "var(--text-primary)",
+              textDecoration: "none",
+              transition: "opacity 0.2s ease",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = "0.7")}
+            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+          >
+            Brad.
+          </a>
 
-      {/* Mobile fullscreen menu */}
+          {/* Desktop nav links */}
+          <ul
+            className="hidden sm:flex"
+            style={{
+              alignItems: "center",
+              gap: "2rem",
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            {NAV_LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  className="nav-link"
+                  style={{
+                    fontSize: "0.8125rem",
+                    color: "var(--text-secondary)",
+                    textDecoration: "none",
+                    letterSpacing: "0.02em",
+                    transition: "color 0.2s ease",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "var(--text-primary)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "var(--text-secondary)")}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop resume */}
+          <a
+            href={siteConfig.links.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost hidden sm:inline-flex"
+          >
+            Resume
+            <span style={{ fontSize: "0.75rem", opacity: 0.6 }}>↗</span>
+          </a>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="flex sm:hidden"
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              width: "40px",
+              height: "40px",
+              margin: "-8px -8px -8px 0",
+              color: "var(--text-primary)",
+              WebkitTapHighlightColor: "transparent",
+              touchAction: "manipulation",
+            }}
+          >
+            <svg
+              width="18"
+              height="14"
+              viewBox="0 0 18 14"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            >
+              {menuOpen ? (
+                <>
+                  <line x1="1" y1="1" x2="17" y2="13" />
+                  <line x1="1" y1="13" x2="17" y2="1" />
+                </>
+              ) : (
+                <>
+                  <line x1="0" y1="1" x2="18" y2="1" />
+                  <line x1="0" y1="7" x2="18" y2="7" />
+                  <line x1="0" y1="13" x2="18" y2="13" />
+                </>
+              )}
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile fullscreen overlay — OUTSIDE header to avoid nested fixed bugs on iOS */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease }}
+            transition={{ duration: 0.25, ease }}
+            className="flex sm:hidden"
             style={{
               position: "fixed",
               inset: 0,
-              background: "rgba(8,8,8,0.98)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              zIndex: 51,
-              display: "flex",
+              zIndex: 99,
+              background: "rgba(8, 8, 8, 0.98)",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              gap: "2rem",
-              padding: "2rem",
-              paddingTop: "5rem",
+              gap: "1.75rem",
+              paddingTop: "56px",
             }}
-            className="sm:hidden"
           >
             {NAV_LINKS.map(({ label, href }, i) => (
               <motion.a
                 key={label}
                 href={href}
-                onClick={() => setMenuOpen(false)}
-                initial={{ opacity: 0, y: 16 }}
+                onClick={closeMenu}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease, delay: 0.06 * i }}
+                transition={{ duration: 0.35, ease, delay: 0.04 * i }}
                 style={{
-                  fontSize: "1.5rem",
+                  fontSize: "1.375rem",
                   fontWeight: 500,
                   color: "var(--text-primary)",
                   textDecoration: "none",
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.015em",
+                  padding: "0.5rem 1rem",
+                  WebkitTapHighlightColor: "transparent",
                 }}
               >
                 {label}
@@ -218,17 +221,17 @@ export function Navigation() {
               href={siteConfig.links.resume}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease, delay: 0.06 * NAV_LINKS.length }}
+              transition={{ duration: 0.35, ease, delay: 0.04 * NAV_LINKS.length }}
               className="btn-ghost"
-              style={{ fontSize: "0.9375rem", marginTop: "0.5rem" }}
+              style={{ fontSize: "0.875rem", marginTop: "0.75rem" }}
             >
               Resume ↗
             </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
