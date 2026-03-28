@@ -18,8 +18,6 @@ export type Project = {
   description: string;
   tech: string[];
   link: string;
-  accentFrom: string;
-  accentTo: string;
 };
 
 export const projects: Project[] = [
@@ -31,8 +29,6 @@ export const projects: Project[] = [
       "Built a classification model using TensorFlow and NLP to identify fake vs. legitimate news articles. Applied TF-IDF vectorization, text cleaning, and evaluated with precision, recall, and F1-score across both classes.",
     tech: ["TensorFlow", "NLP / TF-IDF", "Python"],
     link: "https://github.com/Bradramnarinesingh/fake-news-detector",
-    accentFrom: "rgba(99, 102, 241, 0.35)",
-    accentTo: "rgba(99, 102, 241, 0.0)",
   },
   {
     id: "02",
@@ -42,8 +38,6 @@ export const projects: Project[] = [
       "Developed a price prediction model using Scikit-Learn's Gradient Boosting Regressor with data cleaning and feature engineering in Pandas. Visualized historical trends and outputs with Matplotlib for analysis and presentation.",
     tech: ["Scikit-Learn", "Pandas", "Matplotlib", "Python"],
     link: "https://github.com/Bradramnarinesingh/House-Prices-Prediction",
-    accentFrom: "rgba(16, 185, 129, 0.3)",
-    accentTo: "rgba(16, 185, 129, 0.0)",
   },
   {
     id: "03",
@@ -53,8 +47,6 @@ export const projects: Project[] = [
       "Designed and built a responsive portfolio to showcase projects and technical work. Improved usability through frontend design, interactive elements, layout refinement, and responsive behavior across devices.",
     tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     link: "https://github.com/Bradramnarinesingh/Portfolio-Website",
-    accentFrom: "rgba(245, 158, 11, 0.28)",
-    accentTo: "rgba(245, 158, 11, 0.0)",
   },
 ];
 
