@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+brad-portfolio/node_modules/
+
+# Next.js build output
+brad-portfolio/.next/
+brad-portfolio/out/
+
+# Environment
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# macOS
+.DS_Store
+
+# Vercel
+.vercel
+
+# Misc
+*.log
+npm-debug.log*

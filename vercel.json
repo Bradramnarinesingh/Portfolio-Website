@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd brad-portfolio && npm install && npm run build",
+  "outputDirectory": "brad-portfolio/.next",
+  "framework": "nextjs",
+  "installCommand": "echo 'skip root install'"
+}
