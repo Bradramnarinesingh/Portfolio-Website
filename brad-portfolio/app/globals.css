@@ -216,8 +216,8 @@ main, footer {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(8, 8, 11, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: transparent;
+  border-bottom: 1px solid transparent;
   transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -227,15 +227,20 @@ main, footer {
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Always-on blur layer — separate element so backdrop-filter
-   doesn't need to be animated (causes rendering issues) */
+/* Blur layer — only visible once scrolled */
 .site-header__blur {
   position: absolute;
   inset: 0;
   z-index: 0;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
   pointer-events: none;
+}
+
+.site-header[data-scrolled="true"] .site-header__blur {
+  opacity: 1;
 }
 
 .site-header__inner {
