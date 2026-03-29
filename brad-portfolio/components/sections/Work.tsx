@@ -8,10 +8,10 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 28, filter: "blur(4px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.65, ease, delay: index * 0.08 }}
+      transition={{ duration: 0.75, ease, delay: index * 0.08 }}
     >
       <a
         href={project.link}
@@ -27,13 +27,10 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
           height: "100%",
         }}
         onMouseEnter={e => {
-          const el = e.currentTarget as HTMLElement;
-          el.style.transform = "translateY(-3px)";
-          el.style.transition = "transform 0.3s ease, border-color 0.25s ease, background 0.25s ease";
+          (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
         }}
         onMouseLeave={e => {
-          const el = e.currentTarget as HTMLElement;
-          el.style.transform = "translateY(0)";
+          (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
         }}
       >
         {/* Subtle top gradient per project */}
@@ -135,7 +132,7 @@ export function Work() {
             style={{
               flex: 1,
               height: "1px",
-              background: "var(--border)",
+              background: "linear-gradient(to right, var(--border), rgba(120, 140, 255, 0.05), transparent)",
             }}
           />
           <span

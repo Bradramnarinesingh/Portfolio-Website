@@ -2,16 +2,6 @@
 
 import { useEffect, useRef } from "react";
 
-/**
- * AmbientField — canvas-based flowing interference field.
- *
- * Draws N horizontal contour lines displaced by three superimposed sine waves.
- * The interference between waves creates a slowly-morphing energy-field texture
- * that reads as structured and futuristic rather than random particle noise.
- *
- * Performance: throttled to ~28fps, uses only clearRect + beginPath/stroke.
- * Respects prefers-reduced-motion.
- */
 export function AmbientField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -26,7 +16,7 @@ export function AmbientField() {
     let animId: number;
     let t = 0;
     let lastFrame = 0;
-    const INTERVAL = 1000 / 28; // ~28fps cap — smooth but light on battery
+    const INTERVAL = 1000 / 28;
 
     const setup = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -36,7 +26,6 @@ export function AmbientField() {
       canvas.height = h * dpr;
       canvas.style.width = w + "px";
       canvas.style.height = h + "px";
-      // Scale so all draw calls use logical (CSS) pixel coordinates
       ctx.scale(dpr, dpr);
     };
 
@@ -45,34 +34,36 @@ export function AmbientField() {
       const h = window.innerHeight;
       ctx.clearRect(0, 0, w, h);
 
-      const N = 12; // number of contour lines
+      const N = 18;
       const spacing = h / (N + 1);
-      const A = spacing * 0.30; // max wave amplitude — 30% of line spacing
+      const A = spacing * 0.30;
 
       for (let i = 0; i < N; i++) {
         const baseY = spacing * (i + 1);
-        // Irrational phase offset per line so no two lines are in sync
         const phase = i * 0.73;
 
-        // Two visual registers: primary blue-violet lines + accent teal lines
+        // Fade lines near edges for natural vignette
+        const edgeFade = Math.min((i + 1) / 3, (N - i) / 3, 1);
+
         const isTeal = i % 5 === 4;
-        const alpha = isTeal ? 0.024 : 0.038;
-        const r = isTeal ? 50 : 100;
-        const g = isTeal ? 195 : 140;
-        const b = isTeal ? 175 : 255;
+        const baseAlpha = isTeal ? 0.045 : 0.07;
+        const alpha = baseAlpha * edgeFade;
+        const r = isTeal ? 55 : 100;
+        const g = isTeal ? 185 : 140;
+        const b = isTeal ? 215 : 255;
 
         ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
-        ctx.lineWidth = 0.6;
+        ctx.lineWidth = 0.6 + Math.sin(i * 0.8) * 0.15;
         ctx.beginPath();
 
-        // Step every 3px — good resolution vs. CPU balance
         for (let x = 0; x <= w; x += 3) {
-          // Three-wave superposition — interference creates the field structure
+          // Four-wave superposition for richer interference structure
           const y =
             baseY +
-            A * 0.50 * Math.sin(x * 0.009 + t + phase) +          // ~700px period, dominant wave
-            A * 0.32 * Math.sin(x * 0.016 + t * 1.25 + phase + 1.3) + // ~390px period
-            A * 0.18 * Math.sin(x * 0.030 + t * 0.72 + phase + 2.8);  // ~210px period, texture
+            A * 0.42 * Math.sin(x * 0.008 + t + phase) +
+            A * 0.28 * Math.sin(x * 0.015 + t * 1.25 + phase + 1.3) +
+            A * 0.18 * Math.sin(x * 0.028 + t * 0.72 + phase + 2.8) +
+            A * 0.09 * Math.sin(x * 0.045 + t * 1.6 + phase + 4.1);
 
           if (x === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
@@ -87,7 +78,7 @@ export function AmbientField() {
       if (ts - lastFrame < INTERVAL) return;
       lastFrame = ts;
       draw();
-      t += 0.0032; // very slow — perceptible motion without feeling rushed
+      t += 0.006;
     };
 
     setup();

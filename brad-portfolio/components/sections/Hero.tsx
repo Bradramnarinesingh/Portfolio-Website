@@ -7,11 +7,12 @@ import { siteConfig } from "@/lib/data";
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease, delay },
+    filter: "blur(0px)",
+    transition: { duration: 0.85, ease, delay },
   }),
 };
 
@@ -51,21 +52,29 @@ export function Hero() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "0.5rem",
+            gap: "0.625rem",
             marginBottom: "2.5rem",
           }}
         >
           <span
             style={{
-              width: "6px",
-              height: "6px",
+              width: "5px",
+              height: "5px",
               borderRadius: "50%",
-              background: "rgba(16, 185, 129, 0.7)",
+              background: "rgba(16, 185, 129, 0.75)",
               display: "inline-block",
-              boxShadow: "0 0 6px rgba(16, 185, 129, 0.5)",
+              boxShadow: "0 0 10px rgba(16, 185, 129, 0.4), 0 0 3px rgba(16, 185, 129, 0.6)",
             }}
           />
-          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", letterSpacing: "0.08em" }}>
+          <span
+            style={{
+              fontSize: "0.6875rem",
+              color: "var(--text-muted)",
+              letterSpacing: "0.12em",
+              fontFamily: "var(--font-mono)",
+              textTransform: "uppercase",
+            }}
+          >
             {siteConfig.location}
           </span>
         </motion.div>
@@ -76,7 +85,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           custom={0.1}
-          className="display-title"
+          className="display-title text-gradient-subtle"
           style={{ marginBottom: 0 }}
         >
           Brad
@@ -97,12 +106,12 @@ export function Hero() {
           ref={ruleRef}
           style={{
             height: "1px",
-            background: "linear-gradient(to right, rgba(255,255,255,0.12), rgba(255,255,255,0.03) 70%, transparent)",
+            background: "linear-gradient(to right, rgba(120,140,255,0.22), rgba(255,255,255,0.08) 40%, rgba(120,140,255,0.06) 70%, transparent)",
             transformOrigin: "left center",
             transform: "scaleX(0)",
             opacity: 0,
             marginBottom: "2rem",
-            maxWidth: "480px",
+            maxWidth: "520px",
           }}
         />
 
@@ -146,17 +155,21 @@ export function Hero() {
               textDecoration: "none",
               padding: "0.5625rem 1.25rem",
               borderRadius: "6px",
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              transition: "background 0.2s ease, border-color 0.2s ease",
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(130,150,255,0.1)",
+              transition: "background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease",
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.11)";
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.2)";
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = "rgba(255,255,255,0.09)";
+              el.style.borderColor = "rgba(130,150,255,0.18)";
+              el.style.boxShadow = "0 0 24px rgba(100,120,255,0.05)";
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.12)";
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = "rgba(255,255,255,0.06)";
+              el.style.borderColor = "rgba(130,150,255,0.1)";
+              el.style.boxShadow = "none";
             }}
           >
             Selected Work
@@ -179,6 +192,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           custom={0.8}
+          className="hero-scroll"
           style={{
             position: "absolute",
             bottom: "-4rem",
@@ -186,16 +200,17 @@ export function Hero() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "0.5rem",
+            gap: "0.625rem",
           }}
         >
           <span
             style={{
-              fontSize: "0.625rem",
-              letterSpacing: "0.18em",
+              fontSize: "0.5625rem",
+              letterSpacing: "0.2em",
               color: "var(--text-muted)",
               textTransform: "uppercase",
               writingMode: "vertical-rl",
+              fontFamily: "var(--font-mono)",
             }}
           >
             scroll
@@ -204,7 +219,7 @@ export function Hero() {
             style={{
               width: "1px",
               height: "48px",
-              background: "linear-gradient(to bottom, var(--text-muted), transparent)",
+              background: "linear-gradient(to bottom, rgba(130,150,255,0.25), transparent)",
             }}
           />
         </motion.div>

@@ -43,10 +43,10 @@ export function Contact() {
           {/* Content */}
           <div>
             <motion.h2
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, ease, delay: 0.05 }}
+              transition={{ duration: 0.8, ease, delay: 0.05 }}
               style={{
                 fontSize: "clamp(2rem, 5vw, 3.75rem)",
                 fontWeight: 700,
@@ -106,7 +106,7 @@ export function Contact() {
                   }}
                   onMouseEnter={e => {
                     (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
-                    (e.currentTarget as HTMLElement).style.borderBottomColor = "var(--border-hover)";
+                    (e.currentTarget as HTMLElement).style.borderBottomColor = "rgba(130, 150, 255, 0.12)";
                   }}
                   onMouseLeave={e => {
                     (e.currentTarget as HTMLElement).style.color = "var(--text-secondary)";
