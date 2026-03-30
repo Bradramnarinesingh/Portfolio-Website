@@ -58,16 +58,6 @@ export function Hero() {
         >
           <span
             style={{
-              width: "5px",
-              height: "5px",
-              borderRadius: "50%",
-              background: "rgba(16, 185, 129, 0.75)",
-              display: "inline-block",
-              boxShadow: "0 0 10px rgba(16, 185, 129, 0.4), 0 0 3px rgba(16, 185, 129, 0.6)",
-            }}
-          />
-          <span
-            style={{
               fontSize: "0.6875rem",
               color: "var(--text-muted)",
               letterSpacing: "0.12em",
