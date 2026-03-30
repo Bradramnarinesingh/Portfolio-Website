@@ -733,6 +733,9 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
     padding: 14px;
     text-align: center;
     margin: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   #home {
@@ -786,8 +789,14 @@ and (orientation: landscape) and (max-device-width: 2500px) and (-webkit-min-dev
   }
 
   #name {
-    font-size: 1.5rem;
-    letter-spacing: -1px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: visible;
+    line-height: 1.1;
+    font-size: clamp(18px, 6.2vw, 30px);
+    letter-spacing: -0.6px;
     margin-top: 25px;
   }
 
