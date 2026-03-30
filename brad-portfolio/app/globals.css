@@ -616,9 +616,9 @@ main, footer {
 
 @media (max-width: 639px) {
   .display-title {
-    font-size: clamp(2.75rem, 14vw, 4.25rem);
+    font-size: clamp(1.75rem, 8.2vw, 2.75rem);
     line-height: 0.93;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.03em;
   }
 
   .section-label { font-size: 0.625rem; }
