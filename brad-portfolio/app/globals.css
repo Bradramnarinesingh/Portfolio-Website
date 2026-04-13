@@ -52,8 +52,11 @@ html {
   scroll-padding-top: var(--nav-total);
   height: 100%;
   font-size: 16px;
-  background-color: var(--bg);
   overflow-x: hidden;
+  /* iOS Safari with viewport-fit=cover: the area behind the status bar /
+     Dynamic Island is painted by the html element's background, not body's.
+     Without this, that region renders as black. */
+  background-color: var(--bg);
 }
 
 body {
@@ -195,7 +198,12 @@ main, footer {
 
 .ambient-bg {
   position: fixed;
-  inset: 0;
+  /* Extend past safe-area boundaries so the dot grid and orbs paint
+     behind the iOS status bar / Dynamic Island for a seamless top edge */
+  top: calc(env(safe-area-inset-top, 0px) * -1);
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -279,6 +287,9 @@ main, footer {
   right: 0;
   z-index: 100;
   background: transparent;
+  /* Extend the header's painted area into the iOS safe-area inset so its
+     background/blur covers the status bar region instead of leaving a gap */
+  padding-top: env(safe-area-inset-top, 0px);
   border-bottom: 1px solid transparent;
   transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
@@ -533,19 +544,10 @@ main, footer {
   transform: translateY(0);
 }
 
-/* iPhone / iOS Safari safe-area integration.
-   Keep the top region blended with the site background instead of a solid black bar. */
+/* iPhone / iOS Safari: backdrop-filter over fixed chrome + canvas often composites as a solid black bar */
 @media (max-width: 639px) {
   .site-header {
-    padding-top: env(safe-area-inset-top, 0px);
     isolation: isolate;
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(25, 34, 70, 0.3) 0%,
-        rgba(8, 8, 11, 0.08) 55%,
-        transparent 100%
-      );
   }
 
   .site-header__blur {
@@ -553,14 +555,8 @@ main, footer {
   }
 
   .site-header[data-scrolled="true"] {
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(26, 36, 74, 0.55) 0%,
-        rgba(8, 8, 11, 0.62) 70%,
-        rgba(8, 8, 11, 0.56) 100%
-      );
-    box-shadow: 0 1px 0 rgba(90, 110, 190, 0.18);
+    background: rgba(8, 8, 8, 0.96);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
   }
 
   .nav-mobile {
