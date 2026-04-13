@@ -48,14 +48,11 @@
 }
 
 html {
-  /* background-color on html (not just body) fills the iOS safe-area zone
-     that viewport-fit=cover exposes. Without this, iOS paints pure black
-     there regardless of what body or any child element specifies. */
-  background-color: var(--bg);
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-total);
   height: 100%;
   font-size: 16px;
+  background-color: var(--bg);
   overflow-x: hidden;
 }
 
@@ -536,15 +533,19 @@ main, footer {
   transform: translateY(0);
 }
 
-/* iPhone / iOS Safari: backdrop-filter over fixed chrome + canvas often composites as a solid black bar */
+/* iPhone / iOS Safari safe-area integration.
+   Keep the top region blended with the site background instead of a solid black bar. */
 @media (max-width: 639px) {
   .site-header {
     padding-top: env(safe-area-inset-top, 0px);
-    /* isolation: isolate was here to work around a backdrop-filter compositing
-       bug, but .site-header__blur is disabled on mobile so there is no
-       backdrop-filter in play. Keeping isolation created a stacking context
-       that composited the transparent header against html (black) instead of
-       the ambient layers underneath — removed. */
+    isolation: isolate;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(25, 34, 70, 0.3) 0%,
+        rgba(8, 8, 11, 0.08) 55%,
+        transparent 100%
+      );
   }
 
   .site-header__blur {
@@ -552,8 +553,14 @@ main, footer {
   }
 
   .site-header[data-scrolled="true"] {
-    background: rgba(8, 8, 8, 0.96);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(26, 36, 74, 0.55) 0%,
+        rgba(8, 8, 11, 0.62) 70%,
+        rgba(8, 8, 11, 0.56) 100%
+      );
+    box-shadow: 0 1px 0 rgba(90, 110, 190, 0.18);
   }
 
   .nav-mobile {
