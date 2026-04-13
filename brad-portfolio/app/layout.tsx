@@ -9,6 +9,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  // Tells iOS 26 Safari's browser chrome (and Android Chrome) what colour to
+  // use for its own UI area. Matches --bg so there is no visible seam between
+  // the page and the system chrome at the top safe area.
+  themeColor: "#08080b",
 };
 
 export const metadata: Metadata = {
