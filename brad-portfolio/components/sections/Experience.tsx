@@ -16,7 +16,7 @@ function SectionRow({
   delay?: number;
   isMobile: boolean;
 }) {
-  const enter = viewportFade(isMobile, { y: 20, duration: 0.6, delay });
+  const enter = viewportFade(isMobile, { y: 20, duration: 0.6, delay, blur: 10, blurDuration: 0.38 });
   return (
     <motion.div
       {...enter}
@@ -50,7 +50,7 @@ function SectionRow({
 
 export function Experience() {
   const isMobile = useMobileLayout();
-  const headingEnter = viewportFade(isMobile, { y: 20, duration: 0.55 });
+  const headingEnter = viewportFade(isMobile, { y: 20, duration: 0.55, blur: 10 });
 
   return (
     <section id="experience" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>

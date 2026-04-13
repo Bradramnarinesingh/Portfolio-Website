@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { projects } from "@/lib/data";
 import { useMobileLayout } from "@/lib/useMobileLayout";
 import { revealViewport, viewportFade } from "@/lib/viewportMotion";
+import { RevealSweep } from "@/components/RevealSweep";
 
 function ProjectCard({
   project,
@@ -19,6 +20,8 @@ function ProjectCard({
     y: 28,
     duration: 0.75,
     delay: index * 0.08,
+    blur: 14,
+    blurDuration: 0.4,
   });
 
   const cardRef = useRef<HTMLAnchorElement>(null);
@@ -34,7 +37,15 @@ function ProjectCard({
   }, []);
 
   return (
-    <motion.div {...enter} viewport={revealViewport}>
+    <motion.div
+      {...enter}
+      viewport={revealViewport}
+      whileHover={{
+        y: -4,
+        scale: 1.015,
+        transition: { type: "spring", stiffness: 340, damping: 28 },
+      }}
+    >
       <a
         ref={cardRef}
         href={project.link}
@@ -155,7 +166,7 @@ function ProjectCard({
 
 export function Work() {
   const isMobile = useMobileLayout();
-  const headingEnter = viewportFade(isMobile, { y: 20, duration: 0.6 });
+  const headingEnter = viewportFade(isMobile, { y: 20, duration: 0.6, blur: 10 });
 
   return (
     <section id="work" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
@@ -171,7 +182,10 @@ export function Work() {
             marginBottom: "3.5rem",
           }}
         >
-          <span className="section-label">Selected Work</span>
+          <span className="section-label" style={{ position: "relative", overflow: "hidden" }}>
+            Selected Work
+            <RevealSweep delay={0.32} />
+          </span>
           <div
             style={{
               flex: 1,

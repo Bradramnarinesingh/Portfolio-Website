@@ -5,13 +5,26 @@ import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const blurEase: [number, number, number, number] = [0.25, 0, 0.1, 1];
 
-const fadeUp = (delay: number) => ({
-  hidden: { opacity: 0, y: 30 },
+const fadeUp = (delay: number, blurPx = 0) => ({
+  hidden: {
+    opacity: 0,
+    y: 30,
+    ...(blurPx > 0 && { filter: `blur(${blurPx}px)` }),
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1.0, ease, delay },
+    ...(blurPx > 0 && { filter: "blur(0px)" }),
+    transition: {
+      duration: 1.0,
+      ease,
+      delay,
+      ...(blurPx > 0 && {
+        filter: { duration: 0.38, ease: blurEase, delay },
+      }),
+    },
   },
 });
 
@@ -59,7 +72,7 @@ export function Hero() {
 
         {/* Location badge */}
         <motion.div
-          variants={fadeUp(0.05)}
+          variants={fadeUp(0.05, 10)}
           initial="hidden"
           animate="visible"
           style={{
@@ -131,7 +144,7 @@ export function Hero() {
           style={{ transitionDelay: "0.55s" }}
         >
           <motion.p
-            variants={fadeUp(0.5)}
+            variants={fadeUp(0.5, 8)}
             initial="hidden"
             animate="visible"
             style={{
@@ -153,7 +166,7 @@ export function Hero() {
 
         {/* CTAs */}
         <motion.div
-          variants={fadeUp(0.65)}
+          variants={fadeUp(0.65, 6)}
           initial="hidden"
           animate="visible"
           style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}
@@ -175,7 +188,7 @@ export function Hero() {
 
         {/* Scroll indicator */}
         <motion.div
-          variants={fadeUp(0.9)}
+          variants={fadeUp(0.9, 4)}
           initial="hidden"
           animate="visible"
           className="hero-scroll"

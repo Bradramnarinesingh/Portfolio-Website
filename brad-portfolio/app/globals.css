@@ -45,6 +45,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
   height: 100%;
   font-size: 16px;
   overflow-x: hidden;
@@ -88,6 +89,21 @@ body {
 main, footer {
   position: relative;
   z-index: 1;
+}
+
+/* ================================================================
+   SCROLL ANCHORING
+   scroll-margin-top offsets all sections from the fixed nav when
+   anchor links fire. This keeps section landings clean without
+   forcing any snap behavior during native trackpad scrolling.
+   ================================================================ */
+
+#home,
+#work,
+#about,
+#experience,
+#contact {
+  scroll-margin-top: var(--nav-height);
 }
 
 /* ================================================================
@@ -261,19 +277,18 @@ main, footer {
 }
 
 .site-header[data-scrolled="true"] {
-  background: rgba(8, 8, 11, 0.82);
+  background: rgba(8, 8, 11, 0.45);
   border-bottom-color: rgba(130, 150, 255, 0.08);
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Blur layer — only visible once scrolled */
 .site-header__blur {
   position: absolute;
   inset: 0;
   z-index: 0;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  opacity: 0;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  opacity: 0.35;
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
@@ -441,12 +456,14 @@ main, footer {
      toggle so CSS transitions fire correctly on both open and close) */
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .nav-mobile[data-open="true"] {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 @media (min-width: 640px) {
@@ -832,5 +849,18 @@ main, footer {
 
   .hero-glow {
     opacity: 0 !important;
+  }
+
+  /* Framer Motion blur/filter animations are already disabled by
+     MotionConfig reducedMotion="user". Zero out CSS filter and
+     collapse animation/transition durations to instant per WCAG. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    filter: none !important;
+    scroll-behavior: auto !important;
   }
 }

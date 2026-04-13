@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 import { useMobileLayout } from "@/lib/useMobileLayout";
 import { revealViewport, viewportFade } from "@/lib/viewportMotion";
+import { RevealSweep } from "@/components/RevealSweep";
 
 const socialLinks = [
   { label: "GitHub", href: siteConfig.links.github },
@@ -14,10 +15,10 @@ const socialLinks = [
 
 export function Contact() {
   const isMobile = useMobileLayout();
-  const labelEnter = viewportFade(isMobile, { y: 16, duration: 0.55 });
-  const titleEnter = viewportFade(isMobile, { y: 24, duration: 0.8, delay: 0.05 });
-  const bodyEnter = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.14 });
-  const listEnter = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.2 });
+  const labelEnter = viewportFade(isMobile, { y: 16, duration: 0.55, blur: 8 });
+  const titleEnter = viewportFade(isMobile, { y: 24, duration: 0.8, delay: 0.05, blur: 16, blurDuration: 0.45 });
+  const bodyEnter = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.14, blur: 8 });
+  const listEnter = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.2, blur: 8 });
 
   return (
     <section id="contact" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
@@ -41,7 +42,10 @@ export function Contact() {
             {...labelEnter}
             viewport={revealViewport}
           >
-            <span className="section-label">Contact</span>
+            <span className="section-label" style={{ position: "relative", overflow: "hidden" }}>
+              Contact
+              <RevealSweep delay={0.3} />
+            </span>
           </motion.div>
 
           {/* Content */}

@@ -22,8 +22,18 @@ export function Navigation() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const mobileQuery = window.matchMedia("(max-width: 639px)");
+    const syncScrollLock = () => {
+      // Only lock page scroll for the fullscreen mobile menu.
+      document.body.style.overflow = open && mobileQuery.matches ? "hidden" : "";
+    };
+
+    syncScrollLock();
+    mobileQuery.addEventListener("change", syncScrollLock);
+    return () => {
+      mobileQuery.removeEventListener("change", syncScrollLock);
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   const close = () => setOpen(false);

@@ -7,11 +7,11 @@ import { revealViewport, viewportFade } from "@/lib/viewportMotion";
 
 export function About() {
   const isMobile = useMobileLayout();
-  const labelEnter = viewportFade(isMobile, { y: 16, duration: 0.55 });
-  const p1 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.05 });
-  const p2 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.12 });
-  const p3 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.18 });
-  const links = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.28 });
+  const labelEnter = viewportFade(isMobile, { y: 16, duration: 0.55, blur: 8 });
+  const p1 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.05, blur: 10, blurDuration: 0.38 });
+  const p2 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.12, blur: 8 });
+  const p3 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.18, blur: 8 });
+  const links = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.28, blur: 8 });
 
   return (
     <section id="about" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
