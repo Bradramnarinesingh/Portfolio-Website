@@ -2,16 +2,25 @@
 
 import { motion } from "framer-motion";
 import { experience, education, skills } from "@/lib/data";
+import { useMobileLayout } from "@/lib/useMobileLayout";
+import { viewportFade } from "@/lib/viewportMotion";
 
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-function SectionRow({ label, children, delay = 0 }: { label: string; children: React.ReactNode; delay?: number }) {
+function SectionRow({
+  label,
+  children,
+  delay = 0,
+  isMobile,
+}: {
+  label: string;
+  children: React.ReactNode;
+  delay?: number;
+  isMobile: boolean;
+}) {
+  const enter = viewportFade(isMobile, { y: 20, duration: 0.6, delay });
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      {...enter}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, ease, delay }}
       style={{
         display: "grid",
         gridTemplateColumns: "1fr",
@@ -40,15 +49,16 @@ function SectionRow({ label, children, delay = 0 }: { label: string; children: R
 }
 
 export function Experience() {
+  const isMobile = useMobileLayout();
+  const headingEnter = viewportFade(isMobile, { y: 20, duration: 0.55 });
+
   return (
     <section id="experience" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div className="section-inner">
         {/* Section heading */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          {...headingEnter}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55, ease }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -61,7 +71,7 @@ export function Experience() {
         </motion.div>
 
         {/* Education */}
-        <SectionRow label="Education" delay={0.05}>
+        <SectionRow label="Education" delay={0.05} isMobile={isMobile}>
           <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.75rem" }}>
             <div>
               <p
@@ -103,7 +113,7 @@ export function Experience() {
 
         {/* Work Experience */}
         {experience.map((job, i) => (
-          <SectionRow key={job.company} label={i === 0 ? "Work" : ""} delay={0.1 + i * 0.05}>
+          <SectionRow key={job.company} label={i === 0 ? "Work" : ""} delay={0.1 + i * 0.05} isMobile={isMobile}>
             <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1rem" }}>
               <div>
                 <p
@@ -155,7 +165,7 @@ export function Experience() {
         ))}
 
         {/* Skills */}
-        <SectionRow label="Skills" delay={0.15}>
+        <SectionRow label="Skills" delay={0.15} isMobile={isMobile}>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             {Object.entries(skills).map(([category, items]) => (
               <div key={category}>

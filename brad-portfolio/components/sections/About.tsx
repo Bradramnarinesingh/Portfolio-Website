@@ -2,10 +2,17 @@
 
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
-
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+import { useMobileLayout } from "@/lib/useMobileLayout";
+import { viewportFade } from "@/lib/viewportMotion";
 
 export function About() {
+  const isMobile = useMobileLayout();
+  const labelEnter = viewportFade(isMobile, { y: 16, duration: 0.55 });
+  const p1 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.05 });
+  const p2 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.12 });
+  const p3 = viewportFade(isMobile, { y: 24, duration: 0.65, delay: 0.18 });
+  const links = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.28 });
+
   return (
     <section id="about" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div
@@ -25,10 +32,8 @@ export function About() {
         >
           {/* Left column: label */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...labelEnter}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, ease }}
           >
             <span className="section-label">About</span>
           </motion.div>
@@ -36,10 +41,8 @@ export function About() {
           {/* Right column: content */}
           <div>
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...p1}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.65, ease, delay: 0.05 }}
               style={{
                 fontSize: "clamp(1.15rem, 2.2vw, 1.375rem)",
                 fontWeight: 500,
@@ -55,10 +58,8 @@ export function About() {
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...p2}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.65, ease, delay: 0.12 }}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-secondary)",
@@ -72,10 +73,8 @@ export function About() {
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...p3}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.65, ease, delay: 0.18 }}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-muted)",
@@ -87,10 +86,8 @@ export function About() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...links}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease, delay: 0.28 }}
               style={{
                 display: "flex",
                 gap: "1rem",

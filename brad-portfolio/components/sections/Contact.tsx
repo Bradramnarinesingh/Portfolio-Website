@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
-
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+import { useMobileLayout } from "@/lib/useMobileLayout";
+import { viewportFade } from "@/lib/viewportMotion";
 
 const socialLinks = [
   { label: "GitHub", href: siteConfig.links.github },
@@ -13,6 +13,12 @@ const socialLinks = [
 ];
 
 export function Contact() {
+  const isMobile = useMobileLayout();
+  const labelEnter = viewportFade(isMobile, { y: 16, duration: 0.55 });
+  const titleEnter = viewportFade(isMobile, { y: 24, blur: true, duration: 0.8, delay: 0.05 });
+  const bodyEnter = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.14 });
+  const listEnter = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.2 });
+
   return (
     <section id="contact" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div
@@ -32,10 +38,8 @@ export function Contact() {
         >
           {/* Label */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...labelEnter}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, ease }}
           >
             <span className="section-label">Contact</span>
           </motion.div>
@@ -43,10 +47,8 @@ export function Contact() {
           {/* Content */}
           <div>
             <motion.h2
-              initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              {...titleEnter}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.8, ease, delay: 0.05 }}
               style={{
                 fontSize: "clamp(2rem, 5vw, 3.75rem)",
                 fontWeight: 700,
@@ -62,10 +64,8 @@ export function Contact() {
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...bodyEnter}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease, delay: 0.14 }}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-secondary)",
@@ -79,10 +79,8 @@ export function Contact() {
 
             {/* Social links */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...listEnter}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease, delay: 0.2 }}
               style={{ display: "flex", flexDirection: "column", gap: "0.125rem" }}
             >
               {socialLinks.map(({ label, href }) => (

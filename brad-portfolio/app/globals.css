@@ -458,6 +458,34 @@ main, footer {
   transform: translateY(0);
 }
 
+/* iPhone / iOS Safari: backdrop-filter over fixed chrome + canvas often composites as a solid black bar */
+@media (max-width: 639px) {
+  .site-header {
+    padding-top: env(safe-area-inset-top, 0px);
+    isolation: isolate;
+  }
+
+  .site-header__blur {
+    display: none;
+  }
+
+  .site-header[data-scrolled="true"] {
+    background: rgba(8, 8, 8, 0.96);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  .nav-mobile {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(8, 8, 8, 0.98);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .nav-mobile__inner {
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+  }
+}
+
 /* ================================================================
    CARD
    ================================================================ */

@@ -6,18 +6,18 @@ import { siteConfig } from "@/lib/data";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.85, ease, delay },
-  }),
-};
-
 export function Hero() {
   const ruleRef = useRef<HTMLDivElement>(null);
+
+  const fadeUpIntro = {
+    hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.85, ease, delay },
+    }),
+  };
 
   useEffect(() => {
     const el = ruleRef.current;
@@ -45,7 +45,7 @@ export function Hero() {
       <div className="section-inner" style={{ position: "relative", zIndex: 1 }}>
         {/* Location badge */}
         <motion.div
-          variants={fadeUp}
+          variants={fadeUpIntro}
           initial="hidden"
           animate="visible"
           custom={0.05}
@@ -71,7 +71,7 @@ export function Hero() {
 
         {/* Display name */}
         <motion.h1
-          variants={fadeUp}
+          variants={fadeUpIntro}
           initial="hidden"
           animate="visible"
           custom={0.1}
@@ -81,7 +81,7 @@ export function Hero() {
           Brad
         </motion.h1>
         <motion.h1
-          variants={fadeUp}
+          variants={fadeUpIntro}
           initial="hidden"
           animate="visible"
           custom={0.18}
@@ -107,7 +107,7 @@ export function Hero() {
 
         {/* Tagline */}
         <motion.p
-          variants={fadeUp}
+          variants={fadeUpIntro}
           initial="hidden"
           animate="visible"
           custom={0.45}
@@ -127,7 +127,7 @@ export function Hero() {
 
         {/* CTAs */}
         <motion.div
-          variants={fadeUp}
+          variants={fadeUpIntro}
           initial="hidden"
           animate="visible"
           custom={0.55}
@@ -178,7 +178,7 @@ export function Hero() {
 
         {/* Scroll indicator */}
         <motion.div
-          variants={fadeUp}
+          variants={fadeUpIntro}
           initial="hidden"
           animate="visible"
           custom={0.8}

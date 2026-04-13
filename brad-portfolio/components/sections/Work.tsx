@@ -2,16 +2,28 @@
 
 import { motion } from "framer-motion";
 import { projects } from "@/lib/data";
+import { useMobileLayout } from "@/lib/useMobileLayout";
+import { viewportFade } from "@/lib/viewportMotion";
 
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
+function ProjectCard({
+  project,
+  index,
+  isMobile,
+}: {
+  project: (typeof projects)[number];
+  index: number;
+  isMobile: boolean;
+}) {
+  const enter = viewportFade(isMobile, {
+    y: 28,
+    blur: true,
+    duration: 0.75,
+    delay: index * 0.08,
+  });
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28, filter: "blur(4px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      {...enter}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.75, ease, delay: index * 0.08 }}
     >
       <a
         href={project.link}
@@ -111,15 +123,16 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
 }
 
 export function Work() {
+  const isMobile = useMobileLayout();
+  const headingEnter = viewportFade(isMobile, { y: 20, duration: 0.6 });
+
   return (
     <section id="work" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
       <div className="section-inner">
         {/* Section heading */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          {...headingEnter}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -155,7 +168,7 @@ export function Work() {
           }}
         >
           {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
+            <ProjectCard key={project.id} project={project} index={i} isMobile={isMobile} />
           ))}
         </div>
       </div>

@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-website",
+  "private": true,
+  "description": "Monorepo root — Next.js app lives in brad-portfolio/",
+  "scripts": {
+    "dev": "npm --prefix brad-portfolio run dev",
+    "build": "npm --prefix brad-portfolio run build",
+    "start": "npm --prefix brad-portfolio run start",
+    "lint": "npm --prefix brad-portfolio run lint"
+  }
+}
