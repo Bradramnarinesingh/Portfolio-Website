@@ -14,6 +14,10 @@
   --glow-line: rgba(120, 140, 255, 0.12);
 
   --nav-height: 56px;
+  /* Full visual height of the fixed header including the device safe-area
+     inset (notch / Dynamic Island / iOS 26 chrome). Used wherever content
+     needs to be offset below the header's actual painted bottom edge. */
+  --nav-total: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
   --section-px: 1.5rem;
   --section-py: 5rem;
 }
@@ -45,7 +49,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height);
+  scroll-padding-top: var(--nav-total);
   height: 100%;
   font-size: 16px;
   overflow-x: hidden;
@@ -59,9 +63,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100%;
   overflow-x: hidden;
+  /* Ensure content is never obscured by the iOS bottom home indicator
+     or the iOS 26 browser bottom bar */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   width: 100%;
   margin: 0;
-  padding: 0;
 }
 
 ::selection {
@@ -103,7 +109,7 @@ main, footer {
 #about,
 #experience,
 #contact {
-  scroll-margin-top: var(--nav-height);
+  scroll-margin-top: var(--nav-total);
 }
 
 /* ================================================================
@@ -550,7 +556,7 @@ main, footer {
   }
 
   .nav-mobile__inner {
-    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+    padding-top: var(--nav-total);
   }
 }
 
@@ -760,7 +766,7 @@ main, footer {
   #home {
     min-height: auto !important;
     justify-content: flex-start !important;
-    padding-top: calc(var(--nav-height) + 0.9rem) !important;
+    padding-top: calc(var(--nav-total) + 0.9rem) !important;
     padding-bottom: 2.5rem !important;
   }
 
