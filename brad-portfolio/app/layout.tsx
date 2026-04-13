@@ -9,7 +9,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#08080b",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#050814" },
+    { media: "(prefers-color-scheme: light)", color: "#050814" },
+  ],
   colorScheme: "dark",
 };
 
@@ -22,6 +25,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://brad1.dev"),
   alternates: { canonical: "/" },
   verification: { google: "Jnqi6GitWUP8saB4joeHa-1chcYZcy7rYg73UcaXO70" },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Brad Ramnarinesingh",
+  },
   openGraph: {
     title: "Brad Ramnarinesingh",
     description:
