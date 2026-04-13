@@ -10,8 +10,12 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#050814" },
-    { media: "(prefers-color-scheme: light)", color: "#050814" },
+    // Request transparent browser chrome so iOS Safari can blend page
+    // content beneath the top UI instead of painting a solid tint.
+    { media: "(prefers-color-scheme: dark)", color: "transparent" },
+    { media: "(prefers-color-scheme: light)", color: "transparent" },
+    // Fallback for browsers that ignore transparent theme-color.
+    { color: "#050814" },
   ],
   colorScheme: "dark",
 };
