@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 import { useMobileLayout } from "@/lib/useMobileLayout";
-import { viewportFade } from "@/lib/viewportMotion";
+import { revealViewport, viewportFade } from "@/lib/viewportMotion";
 
 export function About() {
   const isMobile = useMobileLayout();
@@ -33,7 +33,7 @@ export function About() {
           {/* Left column: label */}
           <motion.div
             {...labelEnter}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={revealViewport}
           >
             <span className="section-label">About</span>
           </motion.div>
@@ -42,7 +42,7 @@ export function About() {
           <div>
             <motion.p
               {...p1}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={revealViewport}
               style={{
                 fontSize: "clamp(1.15rem, 2.2vw, 1.375rem)",
                 fontWeight: 500,
@@ -59,7 +59,7 @@ export function About() {
 
             <motion.p
               {...p2}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={revealViewport}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-secondary)",
@@ -74,7 +74,7 @@ export function About() {
 
             <motion.p
               {...p3}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={revealViewport}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-muted)",
@@ -87,7 +87,7 @@ export function About() {
 
             <motion.div
               {...links}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={revealViewport}
               style={{
                 display: "flex",
                 gap: "1rem",

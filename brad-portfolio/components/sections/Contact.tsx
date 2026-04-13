@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 import { useMobileLayout } from "@/lib/useMobileLayout";
-import { viewportFade } from "@/lib/viewportMotion";
+import { revealViewport, viewportFade } from "@/lib/viewportMotion";
 
 const socialLinks = [
   { label: "GitHub", href: siteConfig.links.github },
@@ -15,7 +15,7 @@ const socialLinks = [
 export function Contact() {
   const isMobile = useMobileLayout();
   const labelEnter = viewportFade(isMobile, { y: 16, duration: 0.55 });
-  const titleEnter = viewportFade(isMobile, { y: 24, blur: true, duration: 0.8, delay: 0.05 });
+  const titleEnter = viewportFade(isMobile, { y: 24, duration: 0.8, delay: 0.05 });
   const bodyEnter = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.14 });
   const listEnter = viewportFade(isMobile, { y: 20, duration: 0.6, delay: 0.2 });
 
@@ -39,7 +39,7 @@ export function Contact() {
           {/* Label */}
           <motion.div
             {...labelEnter}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={revealViewport}
           >
             <span className="section-label">Contact</span>
           </motion.div>
@@ -48,7 +48,8 @@ export function Contact() {
           <div>
             <motion.h2
               {...titleEnter}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={revealViewport}
+              
               style={{
                 fontSize: "clamp(2rem, 5vw, 3.75rem)",
                 fontWeight: 700,
@@ -65,7 +66,7 @@ export function Contact() {
 
             <motion.p
               {...bodyEnter}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={revealViewport}
               style={{
                 fontSize: "0.9375rem",
                 color: "var(--text-secondary)",
@@ -80,7 +81,7 @@ export function Contact() {
             {/* Social links */}
             <motion.div
               {...listEnter}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={revealViewport}
               style={{ display: "flex", flexDirection: "column", gap: "0.125rem" }}
             >
               {socialLinks.map(({ label, href }) => (

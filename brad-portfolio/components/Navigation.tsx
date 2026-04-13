@@ -63,7 +63,7 @@ export function Navigation() {
             className="nav-toggle"
             onClick={() => setOpen(o => !o)}
             aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
+            aria-expanded={open ? "true" : "false"}
           >
             <span className="nav-toggle__bars" data-open={String(open)}>
               <span />
@@ -78,7 +78,7 @@ export function Navigation() {
       <div
         className="nav-mobile"
         data-open={String(open)}
-        aria-hidden={!open}
+        aria-hidden={open ? "false" : "true"}
       >
         <nav className="nav-mobile__inner" aria-label="Mobile navigation">
           {NAV_LINKS.map(({ label, href }, i) => (

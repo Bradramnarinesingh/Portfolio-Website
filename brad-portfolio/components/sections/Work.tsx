@@ -1,9 +1,10 @@
 "use client";
 
+import { useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { projects } from "@/lib/data";
 import { useMobileLayout } from "@/lib/useMobileLayout";
-import { viewportFade } from "@/lib/viewportMotion";
+import { revealViewport, viewportFade } from "@/lib/viewportMotion";
 
 function ProjectCard({
   project,
@@ -16,20 +17,31 @@ function ProjectCard({
 }) {
   const enter = viewportFade(isMobile, {
     y: 28,
-    blur: true,
     duration: 0.75,
     delay: index * 0.08,
   });
+
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const onMove = useCallback((e: React.MouseEvent) => {
+    const card = cardRef.current;
+    const glow = glowRef.current;
+    if (!card || !glow) return;
+    const rect = card.getBoundingClientRect();
+    glow.style.setProperty("--glow-x", `${e.clientX - rect.left}px`);
+    glow.style.setProperty("--glow-y", `${e.clientY - rect.top}px`);
+  }, []);
+
   return (
-    <motion.div
-      {...enter}
-      viewport={{ once: true, margin: "-80px" }}
-    >
+    <motion.div {...enter} viewport={revealViewport}>
       <a
+        ref={cardRef}
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
         className="card"
+        onMouseMove={onMove}
         style={{
           display: "block",
           padding: "2rem",
@@ -38,13 +50,10 @@ function ProjectCard({
           overflow: "hidden",
           height: "100%",
         }}
-        onMouseEnter={e => {
-          (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-        }}
-        onMouseLeave={e => {
-          (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-        }}
       >
+        {/* Cursor-reactive glow */}
+        <div ref={glowRef} className="card-glow" aria-hidden="true" />
+
         {/* Subtle top gradient per project */}
         <div
           aria-hidden="true"
@@ -59,7 +68,16 @@ function ProjectCard({
         />
 
         {/* Top row: number + external link */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.75rem" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            marginBottom: "1.75rem",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -92,6 +110,8 @@ function ProjectCard({
             lineHeight: 1.25,
             letterSpacing: "-0.02em",
             marginBottom: "0.875rem",
+            position: "relative",
+            zIndex: 1,
           }}
         >
           {project.title}
@@ -104,14 +124,25 @@ function ProjectCard({
             color: "var(--text-secondary)",
             lineHeight: 1.75,
             marginBottom: "1.75rem",
+            position: "relative",
+            zIndex: 1,
           }}
         >
           {project.description}
         </p>
 
         {/* Tech tags */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem", marginTop: "auto" }}>
-          {project.tech.map(t => (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.375rem",
+            marginTop: "auto",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          {project.tech.map((t) => (
             <span key={t} className="tag">
               {t}
             </span>
@@ -132,7 +163,7 @@ export function Work() {
         {/* Section heading */}
         <motion.div
           {...headingEnter}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={revealViewport}
           style={{
             display: "flex",
             alignItems: "center",
@@ -145,7 +176,8 @@ export function Work() {
             style={{
               flex: 1,
               height: "1px",
-              background: "linear-gradient(to right, var(--border), rgba(120, 140, 255, 0.05), transparent)",
+              background:
+                "linear-gradient(to right, var(--border), rgba(120, 140, 255, 0.05), transparent)",
             }}
           />
           <span
@@ -163,12 +195,18 @@ export function Work() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fill, minmax(min(100%, 320px), 1fr))",
             gap: "1rem",
           }}
         >
           {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} isMobile={isMobile} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={i}
+              isMobile={isMobile}
+            />
           ))}
         </div>
       </div>

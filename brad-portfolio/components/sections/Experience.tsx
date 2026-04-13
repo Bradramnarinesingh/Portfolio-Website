@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { experience, education, skills } from "@/lib/data";
 import { useMobileLayout } from "@/lib/useMobileLayout";
-import { viewportFade } from "@/lib/viewportMotion";
+import { revealViewport, viewportFade } from "@/lib/viewportMotion";
 
 function SectionRow({
   label,
@@ -20,7 +20,7 @@ function SectionRow({
   return (
     <motion.div
       {...enter}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={revealViewport}
       style={{
         display: "grid",
         gridTemplateColumns: "1fr",
@@ -58,7 +58,7 @@ export function Experience() {
         {/* Section heading */}
         <motion.div
           {...headingEnter}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={revealViewport}
           style={{
             display: "flex",
             alignItems: "center",
